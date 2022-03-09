@@ -1,5 +1,5 @@
 package javaCode;
 
-public class cook {
+public class Cook {
 
 }
