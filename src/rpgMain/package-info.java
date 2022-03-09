@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author dev
- *
- */
-package rpgMain;
