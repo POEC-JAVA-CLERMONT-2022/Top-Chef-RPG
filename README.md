@@ -1,3 +1,5 @@
 # Top-Chef-RPG
 
-# ou comment devenir Philippe Etchebest 
+# by Emmanuel Gicquel and Fabien Daudet
+
+# RPG game where you can learn to cook differents recipes and improve your skills.
