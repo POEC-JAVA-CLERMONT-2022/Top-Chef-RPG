@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javaCode.Cook;
 import javaCode.Lesson;
 import javaCode.Recipe;
+import javaCode.User;
 
 public interface InterfaceData {
 	
@@ -20,5 +21,5 @@ public interface InterfaceData {
 	// fonction qui fournit la liste des Recettes achetées par un joueur
 	public ArrayList<Lesson> getOwnedLessons (String nameCook);
 
-
+	public void saveUser (User user);
 }

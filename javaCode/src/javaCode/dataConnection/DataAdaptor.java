@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javaCode.Cook;
 import javaCode.Lesson;
 import javaCode.Recipe;
+import javaCode.User;
 
 public class DataAdaptor {
 	private InterfaceData dataProvider; 
@@ -46,5 +47,10 @@ public class DataAdaptor {
 	public ArrayList<Lesson> getOwnedLessons(String name)
 	{
 		return this.getOwnedLessons(name);
+	}
+	
+	public void saveUser(User user)
+	{
+		this.dataProvider.saveUser(user);
 	}
 }

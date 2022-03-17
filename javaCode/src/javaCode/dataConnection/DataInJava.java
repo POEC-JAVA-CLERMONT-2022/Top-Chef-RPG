@@ -6,6 +6,7 @@ import javaCode.Cook;
 import javaCode.Ingredient;
 import javaCode.Lesson;
 import javaCode.Recipe;
+import javaCode.User;
 
 public class DataInJava implements InterfaceData {
 	
@@ -57,18 +58,19 @@ public class DataInJava implements InterfaceData {
 	public ArrayList<Lesson> getOwnedLessons(String nameCook) {
 		// TODO Auto-generated method stub
 		ArrayList<Lesson> lessons = new ArrayList<Lesson>();
-		String nomLesson = "cuisinner les pommes";
-		int dI = 10;
-		int sI = 10;
-		int cI = 5;
-		int lI = 20;
-		int eC = 300;
-		Lesson lesson = new Lesson(nomLesson, dI, sI, cI, lI, eC);
+
+		Lesson lesson = new Lesson("Cuisinner les pommes", 10, 10, 5, 20, 300);
 		
 		lessons.add(lesson);
 		
 		return lessons;
 
+	}
+
+	@Override
+	public void saveUser(User user) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

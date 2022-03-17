@@ -1,5 +1,7 @@
 package javaCode;
 
+import javaCode.dataConnection.DataAdaptor;
+
 public class User {
 	private String name;
 	private String mail;
@@ -32,5 +34,13 @@ public class User {
 	{
 		this.cook = this.cook.loadCook(name);
 	}
+	
+	// fonction de sauvegarde du User en BDD
+	public void saveUser()
+	{
+		DataAdaptor DA = new DataAdaptor();
+		DA.saveUser(this);
+	}
+	
 	
 }
