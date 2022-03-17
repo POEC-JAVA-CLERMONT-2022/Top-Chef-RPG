@@ -13,15 +13,8 @@ public class Lesson {
 	
 	
 	// généteur de lesson va chercher les données d'une leçon en base
-	public Lesson ()
+	public Lesson (String nomLesson, int dI, int sI, int cI, int lI, int eC)
 	{
-		// exemple de code en dur à placer dans la classe qui va chercher les données
-		String nomLesson = "tarte au pommes";
-		int dI = 10;
-		int sI = 10;
-		int cI = 5;
-		int lI = 20;
-		int eC = 300;
 		
 		this.name = nomLesson;
 		this.creativityIncrease = cI;
