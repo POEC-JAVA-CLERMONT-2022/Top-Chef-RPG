@@ -103,4 +103,6 @@ public class Recipe {
 		int chanceOfSuccess = 50+ cookLuck;
 		return chanceOfSuccess ;
 	}
+	
+	
 }

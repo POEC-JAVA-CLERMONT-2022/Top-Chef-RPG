@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javaCode.Cook;
 import javaCode.Ingredient;
+import javaCode.Recipe;
 
 public class DataInJava implements InterfaceData {
 	
@@ -43,5 +44,13 @@ public class DataInJava implements InterfaceData {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<Recipe> getRecipe() {
+		Recipe recette1 = new Recipe()
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
