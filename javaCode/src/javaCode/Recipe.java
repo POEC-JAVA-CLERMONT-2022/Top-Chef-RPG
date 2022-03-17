@@ -83,8 +83,24 @@ public class Recipe {
 	// méthode qui calcule la réalisation de la recette, et le gain obtenu
 	public boolean doRecipe (int cookLuck)
 	{
-		boolean succes = false;
-		float rd = Random
+		boolean success = false;
+		int tryRecipe = getChanceOfSuccess(cookLuck);
+		// on test si un tirage aléatoire est inferieur au chances de succès
+		if (tryRecipe > (int)Math.random()*100)
+		{
+			success = true;
+		}
+
 		
+		return success;
+	}
+	
+	// fonction qui retourne la chance de succès d'une recette
+	public int getChanceOfSuccess (int cookLuck)
+	{
+		
+		// par défaut on prend une valeur de 50 de base qui pourra être différent ultérieurement selon les recettes
+		int chanceOfSuccess = 50+ cookLuck;
+		return chanceOfSuccess ;
 	}
 }
