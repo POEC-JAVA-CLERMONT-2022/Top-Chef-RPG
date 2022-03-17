@@ -1,6 +1,9 @@
 package javaCode.dataConnection;
 
+import java.util.ArrayList;
+
 import javaCode.Cook;
+import javaCode.Recipe;
 
 public interface InterfaceData {
 	
@@ -10,6 +13,8 @@ public interface InterfaceData {
 	public Cook loadCook(String nameCook);
 	// fonction de chargement de cuisinnier par id de cuisinier
 	public Cook loadCook(int  idCook);
-	
+	//fonction de get recettes
+	public ArrayList<Recipe> getRecipe();
+
 
 }
