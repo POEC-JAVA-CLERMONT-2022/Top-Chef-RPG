@@ -20,8 +20,17 @@ public class User {
 	{
 		// tant que le user n'a qu'un seul cuisinier à chaque appel de la fonction qui réécrase l'existant si il existe déjà.
 		Cook cook = new Cook(name);
-		this.cook = cook;
-		
+		this.cook = cook;		
+	}
+	//sauvegarde du cuisinnier
+	public void saveCook()
+	{
+		this.cook.SaveCook();
+	}
+	// chargement du cuisinnier
+	public void loadCook(String name)
+	{
+		this.cook = this.cook.loadCook(name);
 	}
 	
 }

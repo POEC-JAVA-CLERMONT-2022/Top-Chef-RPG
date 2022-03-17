@@ -2,6 +2,8 @@ package javaCode;
 
 import java.util.ArrayList;
 
+import javaCode.dataConnection.DataAdaptor;
+
 public class Cook {
 	//déclaration des variables de cook
 	private String name;
@@ -14,23 +16,100 @@ public class Cook {
 	private ArrayList<Lesson> lessons;
 	private ArrayList<Ingredient> ingredients;
 	//private ArrayList<Tool> tools;
+
 	
 	
 	// methode de création du joueur avec ses variables à 0
 	public Cook (String name)
 	{
 		this.name = name;
-		this.experience= 0;
-		this.creativity=0;
-		this.dexterity=0;
-		this.strength=0;
-		this.luck=0;
+		this.setExperience(0);
+		this.setCreativity(0);
+		this.setDexterity(0);
+		this.setStrength(0);
+		this.setLuck(0);
+		
 		//rajouter appel vers méthodde instanciation listes. 
 	}
 	
 	public void SaveCook ()
 	{
-		
+		DataAdaptor DA = new DataAdaptor();
+		DA.SaveCook(this);
+	}
+	// classe de chargement d'un cook
+	public Cook loadCook(String name)
+	{
+		DataAdaptor DA = new DataAdaptor();
+		return DA.loadCook(name);
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
+	}
+
+	public Character getGender() {
+		return gender;
+	}
+
+	public void setGender(Character gender) {
+		this.gender = gender;
+	}
+
+	public int getDexterity() {
+		return dexterity;
+	}
+
+	public void setDexterity(int dexterity) {
+		this.dexterity = dexterity;
+	}
+
+	public int getStrength() {
+		return strength;
+	}
+
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+
+	public int getCreativity() {
+		return creativity;
+	}
+
+	public void setCreativity(int creativity) {
+		this.creativity = creativity;
+	}
+
+	public int getLuck() {
+		return luck;
+	}
+
+	public void setLuck(int luck) {
+		this.luck = luck;
+	}
+
+	public ArrayList<Lesson> getLessons() {
+		return lessons;
+	}
+
+	public void setLessons(ArrayList<Lesson> lessons) {
+		this.lessons = lessons;
+	}
+
+	public ArrayList<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(ArrayList<Ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
+
+	public String getName() {
+		return name;
 	}
 	
 }
