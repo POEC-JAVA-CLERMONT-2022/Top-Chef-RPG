@@ -99,7 +99,7 @@ public class Recipe {
 	public int getChanceOfSuccess (int cookLuck)
 	{
 		
-		// par défaut on prend une valeur de 50 de base qui pourra être différent ultérieurement selon les recettes
+		// par défaut on prend une valeur de 50 de base qui pourra être différente ultérieurement selon les caracteristiques du cook
 		int chanceOfSuccess = 50+ cookLuck;
 		return chanceOfSuccess ;
 	}

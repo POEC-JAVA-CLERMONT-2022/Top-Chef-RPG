@@ -28,4 +28,9 @@ public class Cook {
 		//rajouter appel vers méthodde instanciation listes. 
 	}
 	
+	public void SaveCook ()
+	{
+		
+	}
+	
 }
