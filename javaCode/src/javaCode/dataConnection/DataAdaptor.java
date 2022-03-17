@@ -32,4 +32,10 @@ public class DataAdaptor {
 	{
 		return this.dataProvider.loadCook(name);
 	}
+	
+	// fonction de chargement des recettes
+	public ArrayList<Recipe> getRecipe()
+	{
+		return this.dataProvider.getRecipe();
+	}
 }
