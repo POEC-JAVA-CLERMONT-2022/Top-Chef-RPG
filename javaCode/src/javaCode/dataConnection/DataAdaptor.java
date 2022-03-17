@@ -3,26 +3,26 @@ package javaCode.dataConnection;
 import javaCode.Cook;
 
 public class DataAdaptor {
-	private DataInJava DataJ;
-	private DataInBDD DataB;
+	private InterfaceData dataProvider; 
 
 	public DataAdaptor()
 	{
 		// variable que l'on pourrait récupérer dans un fichier de config
-		/*String env = "dev";
+		String env = "dev";
 		if (env.equals("dev"))
 		{
-			DataInJava DataJ = new DataInJava();
+			 dataProvider = new DataInJava();
 		}
 		else
 		{
-			DataInBDD DataB = new DataInBDD();
-		}*/
-		DataInJava DataJ = new DataInJava();
+			 dataProvider = new DataInBDD();
+		}
+		//data = new DataInJava();
+		
 	}
 	
 	public void SaveCook (Cook cook)
 	{
-		this.DataJ.saveCook(cook);
+		this.dataProvider.saveCook(cook);
 	}
 }
