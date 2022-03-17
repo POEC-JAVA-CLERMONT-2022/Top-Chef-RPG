@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javaCode.Cook;
 import javaCode.Lesson;
 import javaCode.Recipe;
+import javaCode.User;
 
 public class DataInBDD implements InterfaceData {
 
@@ -36,6 +37,12 @@ public class DataInBDD implements InterfaceData {
 	public ArrayList<Lesson> getOwnedLessons(String nameCook) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void saveUser(User user) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
