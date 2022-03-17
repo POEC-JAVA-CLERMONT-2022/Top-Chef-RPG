@@ -1,6 +1,9 @@
 package javaCode.dataConnection;
 
+import java.util.ArrayList;
+
 import javaCode.Cook;
+import javaCode.Recipe;
 
 public class DataAdaptor {
 	private InterfaceData dataProvider; 
