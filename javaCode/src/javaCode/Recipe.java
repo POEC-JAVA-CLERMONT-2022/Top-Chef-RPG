@@ -13,8 +13,9 @@ public class Recipe {
 	private int creativityRequired;
 	
 	
-	public Recipe()
+	public Recipe(String recipeName,int eG, int sR, int dR, int cR, ArrayList<Ingredient> rI, ArrayList<Ingredient> lI)
 	{
+		/*
 		// code à remplacer par le service de connexion aux données
 		String recipeName = "eplucher pommes";
 		int eG = 30;
@@ -34,7 +35,7 @@ public class Recipe {
 		lI.add(loot1);
 		
 		// fin de l'exemple de code service connexion aux données
-		
+		*/
 		this.name = recipeName;
 		this.creativityRequired =cR;
 		this.dexterityRequired =dR;
