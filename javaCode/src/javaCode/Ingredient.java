@@ -22,6 +22,8 @@ public class Ingredient {
 	// fonction pour changer la quantité de l'ingrédient
 	public void setQuantity (int quantityUpdate)
 	{
+		if (this.quantity == -1 && quantityUpdate>0)
+			this.quantity =0;
 		if ((this.quantity + quantityUpdate)>=0)
 			this.quantity += quantityUpdate;
 		else 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javaCode.Cook;
 import javaCode.Ingredient;
+import javaCode.Lesson;
 import javaCode.Recipe;
 
 public class DataInJava implements InterfaceData {
@@ -49,6 +50,7 @@ public class DataInJava implements InterfaceData {
 	
 	@Override
 	public ArrayList<Recipe> getRecipe() {
+
 		ArrayList<Recipe> recipes = new ArrayList<Recipe>(); 
 		Ingredient pommes = new Ingredient("pomme");
 		Ingredient pommeLoots = new Ingredient("pomme");
@@ -84,11 +86,31 @@ public class DataInJava implements InterfaceData {
 		Recipe recette1 = new Recipe("tourte", 10, 10, 10, 5, listeIngredient , listeIngredientLoot); 
 		Recipe recette2 = new Recipe("frites", 12, 12, 12, 2, listeIngredient2, listeIngredientLoot2);
 		Recipe recette3 = new Recipe("cake", 15, 15, 16, 9, listeIngredient3, listeIngredientLoot3);
+
+	
 		// TODO Auto-generated method stub
 		recipes.add(recette1);
 		recipes.add(recette2);
 		recipes.add(recette3);
 		return recipes ;
+	}
+
+	@Override
+	public ArrayList<Lesson> getOwnedLessons(String nameCook) {
+		// TODO Auto-generated method stub
+		ArrayList<Lesson> lessons = new ArrayList<Lesson>();
+		String nomLesson = "cuisinner les pommes";
+		int dI = 10;
+		int sI = 10;
+		int cI = 5;
+		int lI = 20;
+		int eC = 300;
+		Lesson lesson = new Lesson(nomLesson, dI, sI, cI, lI, eC);
+		
+		lessons.add(lesson);
+		
+		return lessons;
+
 	}
 
 

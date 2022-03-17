@@ -1,6 +1,10 @@
 package javaCode.dataConnection;
 
+import java.util.ArrayList;
+
 import javaCode.Cook;
+import javaCode.Lesson;
+import javaCode.Recipe;
 
 public class DataAdaptor {
 	private InterfaceData dataProvider; 
@@ -37,5 +41,10 @@ public class DataAdaptor {
 	public ArrayList<Recipe> getRecipe()
 	{
 		return this.dataProvider.getRecipe();
+	}
+	
+	public ArrayList<Lesson> getOwnedLessons(String name)
+	{
+		return this.getOwnedLessons(name);
 	}
 }
