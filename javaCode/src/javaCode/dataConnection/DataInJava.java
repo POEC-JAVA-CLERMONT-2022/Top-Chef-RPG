@@ -52,6 +52,7 @@ public class DataInJava implements InterfaceData {
 	@Override
 	public ArrayList<Recipe> getRecipe() {
 
+<<<<<<< Updated upstream
 		ArrayList<Recipe> recipes = new ArrayList<Recipe>(); 
 		Ingredient pommes = new Ingredient("pomme");
 		Ingredient pommeLoots = new Ingredient("pomme");
@@ -89,6 +90,8 @@ public class DataInJava implements InterfaceData {
 		Recipe recette3 = new Recipe("cake", 15, 15, 16, 9, listeIngredient3, listeIngredientLoot3);
 
 	
+=======
+>>>>>>> Stashed changes
 		// TODO Auto-generated method stub
 		recipes.add(recette1);
 		recipes.add(recette2);
