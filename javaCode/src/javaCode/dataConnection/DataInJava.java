@@ -49,7 +49,7 @@ public class DataInJava implements InterfaceData {
 
 	@Override
 	public ArrayList<Recipe> getRecipe() {
-		Recipe recette1 = new Recipe();
+
 		// TODO Auto-generated method stub
 		return null;
 	}
