@@ -51,7 +51,6 @@ public class DataInJava implements InterfaceData {
 
 	@Override
 	public ArrayList<Recipe> getRecipe() {
-
 		ArrayList<Recipe> recipes = new ArrayList<Recipe>(); 
 		Ingredient pommes = new Ingredient("pomme");
 		Ingredient pommeLoots = new Ingredient("pomme");
@@ -87,7 +86,6 @@ public class DataInJava implements InterfaceData {
 		Recipe recette1 = new Recipe("tourte", 10, 10, 10, 5, listeIngredient , listeIngredientLoot); 
 		Recipe recette2 = new Recipe("frites", 12, 12, 12, 2, listeIngredient2, listeIngredientLoot2);
 		Recipe recette3 = new Recipe("cake", 15, 15, 16, 9, listeIngredient3, listeIngredientLoot3);
-
 
 		// TODO Auto-generated method stub
 		recipes.add(recette1);
