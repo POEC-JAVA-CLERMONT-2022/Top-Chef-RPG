@@ -29,7 +29,7 @@ public class User {
 	{
 		this.cook.SaveCook();
 	}
-	// chargement du cuisinnier
+	// chargement du cuisinier
 	public void loadCook(String name)
 	{
 		this.cook = this.cook.loadCook(name);
