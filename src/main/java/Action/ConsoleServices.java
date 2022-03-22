@@ -12,7 +12,7 @@ public class ConsoleServices implements InterfaceActionHandler{
 		actionAdaptor = new ActionAdaptor();
 	}
 
-	// prend les param�tre transmis par la console et app�le le action provider
+	// prend les parametre transmis par la console et appele le action provider
 	@Override
 	public void logIn(String nameUser, String password) {
 		// TODO Auto-generated method stub
