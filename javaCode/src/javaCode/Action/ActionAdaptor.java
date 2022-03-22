@@ -22,6 +22,15 @@ public class ActionAdaptor {
 		}	
 	}
 	
+	public void logIn(String nameUser, String password)
+	{
+		
+	}
 	
+	
+	public void showWelcomeMenu()
+	{
+		interfaceProvider.showWelcomeMenu();
+	}
 
 }

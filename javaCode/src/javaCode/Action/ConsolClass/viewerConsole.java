@@ -35,10 +35,10 @@ public class viewerConsole {
 		imp("creer un compte     2");
 		imp(" quitter  3");
 		int choice = sc.nextInt();
-		sc.nextLine();
-		
+		sc.nextLine();		
 		return choice;
 	}
+	
 	
 	
 }

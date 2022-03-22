@@ -13,4 +13,7 @@ public interface InterfaceActionHandler {
 	
 	// utiliser un cuisinnier existant
 	public void loadCook();
+	
+	// fonction d'appel pour afficher le menu d'acceuil du site ( peut être pas utile pour le web ?)
+	public void showWelcomeMenu();
 }
