@@ -1,6 +1,14 @@
 package javaCode.Action;
 
+import javaCode.Action.ConsolClass.viewerConsole;
+
 public class ConsoleServices implements InterfaceActionHandler{
+	viewerConsole view ;
+	
+	public ConsoleServices()
+	{
+		view = new viewerConsole();
+	}
 
 	@Override
 	public void logIn(String nameUser, String password) {
