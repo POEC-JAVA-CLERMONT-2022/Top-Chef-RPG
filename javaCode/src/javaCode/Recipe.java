@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Recipe {
+	//definition de la classe recette
 	private String name;
 	private ArrayList<Ingredient> requiredIngredient;
 	private int experienceGain;
@@ -12,7 +13,7 @@ public class Recipe {
 	private int dexterityRequired;
 	private int creativityRequired;
 	
-	
+	//constructeur de recette
 	public Recipe(String recipeName,int eG, int sR, int dR, int cR, ArrayList<Ingredient> rI, ArrayList<Ingredient> lI)
 	{
 		this.name = recipeName;
