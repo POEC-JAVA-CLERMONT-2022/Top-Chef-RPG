@@ -1,21 +1,21 @@
-package javaCode.dataConnection;
+package dataConnection;
 
 import java.util.ArrayList;
 
-import javaCode.Cook;
-import javaCode.Lesson;
-import javaCode.Recipe;
-import javaCode.User;
+import models.Cook;
+import models.Lesson;
+import models.Recipe;
+import models.User;
 
 public class DataAdaptor {
 	private InterfaceData dataProvider; 
 
 	public DataAdaptor()
 	{
-		// variable que l'on pourrait récupérer dans un fichier de config
+		// variable que l'on pourrait rï¿½cupï¿½rer dans un fichier de config
 		String env = "dev";
-		// selon l'environnement le dataprovider va chercher et instancier soit la classe qui charge les données en java ou en BDD
-		// l'objet dataProvider fera appel aux même fonctions chez les deux classes 
+		// selon l'environnement le dataprovider va chercher et instancier soit la classe qui charge les donnï¿½es en java ou en BDD
+		// l'objet dataProvider fera appel aux mï¿½me fonctions chez les deux classes 
 		if (env.equals("dev"))
 		{
 			 dataProvider = new DataInJava();
@@ -43,7 +43,7 @@ public class DataAdaptor {
 	{
 		return this.dataProvider.getRecipe();
 	}
-	// fonction de chargement des leçons
+	// fonction de chargement des leï¿½ons
 	public ArrayList<Lesson> getOwnedLessons(String name)
 	{
 		return this.getOwnedLessons(name);
