@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author dev
- *
- */
-module javaCode {
-}
