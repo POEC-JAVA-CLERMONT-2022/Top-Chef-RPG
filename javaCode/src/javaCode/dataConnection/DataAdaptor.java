@@ -49,6 +49,7 @@ public class DataAdaptor {
 		return this.getOwnedLessons(name);
 	}
 	
+	//sauvegarde de l'utilisateur
 	public void saveUser(User user)
 	{
 		this.dataProvider.saveUser(user);
