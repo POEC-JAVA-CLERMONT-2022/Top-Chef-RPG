@@ -9,7 +9,7 @@ public class ConsoleServices implements InterfaceActionHandler{
 	public ConsoleServices()
 	{
 		view = new viewerConsole();
-		actionAdaptor = new ActionAdaptor();
+		//actionAdaptor = new ActionAdaptor();
 	}
 
 	// prend les parametre transmis par la console et appele le action provider
