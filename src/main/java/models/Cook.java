@@ -1,11 +1,20 @@
 package models;
 
 import java.util.ArrayList;
-
 import dataConnection.DataAdaptor;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
+import javax.persistence.*;
+
+@Entity
 public class Cook {
 	//d�claration des variables de cook
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name ="id")
+	private int id;
+
+	@Column (name = "name", length = 100)
 	private String name;
 	private Character gender;
 	private int experience;
