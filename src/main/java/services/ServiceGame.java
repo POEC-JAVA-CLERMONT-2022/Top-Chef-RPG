@@ -20,7 +20,7 @@ public class ServiceGame {
 		
 	}
 	
-	// fonction de base qui g�re la boucle de jeu : tout doit s'executer � partir de cette instance de cette classe et g�rer les 
+	// fonction de base qui gère le jeu : elle doit implémenter un event handler qui reçoit les demande en provenance de l'affichage
 	public void run()
 	{
 		boolean exit = false;

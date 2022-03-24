@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 public class Recipe {
 	//definition de la classe recette
 	private String name;
@@ -60,7 +61,8 @@ public class Recipe {
 	public ArrayList<Ingredient> getLootedIngredients() {
 		return lootedIngredients;
 	}
-	
+
+	/*
 	// m�thode qui calcule la r�alisation de la recette, et le gain obtenu
 	public boolean doRecipe (int cookLuck)
 	{
@@ -84,6 +86,6 @@ public class Recipe {
 		int chanceOfSuccess = 50+ cookLuck;
 		return chanceOfSuccess ;
 	}
-	
+	*/
 	
 }
