@@ -16,12 +16,25 @@ public class Cook {
 
 	@Column (name = "name", length = 100)
 	private String name;
+
+	@Column (name= "gender", length = 1)
 	private Character gender;
+
+	@Column (name="experience")
 	private int experience;
+
+	@Column (name="dexterity")
 	private int dexterity;
+
+	@Column (name="strength")
 	private int strength;
+
+	@Column (name="creativty")
 	private int creativity;
+
+	@Column (name="luck")
 	private int luck;
+
 	private ArrayList<Lesson> lessons;
 	private ArrayList<Ingredient> ingredients;
 	//private ArrayList<Tool> tools;
@@ -37,10 +50,16 @@ public class Cook {
 		this.setDexterity(0);
 		this.setStrength(0);
 		this.setLuck(0);
+		this.lessons = new ArrayList<Lesson>();
+		this.ingredients =new ArrayList<Ingredient>();
 		
 		//rajouter appel vers m�thodde instanciation listes. 
 	}
-	
+
+	public Cook() {
+
+	}
+
 	public void SaveCook ()
 	{
 		DataAdaptor DA = new DataAdaptor();
