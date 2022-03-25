@@ -27,19 +27,19 @@ public class User {
 	//sauvegarde du cuisinnier
 	public void saveCook()
 	{
-		this.cook.SaveCook();
+		//this.cook.SaveCook();
 	}
 	// chargement du cuisinier
-	public void loadCook(String name)
+	/*public void loadCook(String name)
 	{
 		this.cook = this.cook.loadCook(name);
-	}
+	}*/
 	
 	// fonction de sauvegarde du User en BDD
 	public void saveUser()
 	{
-		DataAdaptor DA = new DataAdaptor();
-		DA.saveUser(this);
+		//DataAdaptor DA = new DataAdaptor();
+		//DA.saveUser(this);
 	}
 	
 	

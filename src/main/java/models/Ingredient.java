@@ -1,12 +1,34 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
 public class Ingredient {
 	// d�claration des variables
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name ="id")
+	private int id;
+
+	@Column(name = "IngredientName")
 	private String name;
+
+	@Column(name ="ingredienQuantity")
 	private int quantity;
+
+	/*
+	@JoinColumn (name ="IdCook")
+
+	private int idCook;
+*/
+	// constructeur par défaut
+	public Ingredient()
+	{
+		this.quantity = -1;
+	}
 	
-	
-	// constructeur par d�faut mets la quantit� �-1 pour les ingredients non encore d�bloqu�s
+	// surchage du constructeur par défaut avec passage du nom de l'ingredient
 	public Ingredient(String ingredientName)
 	{
 		this.name = ingredientName;
@@ -14,7 +36,7 @@ public class Ingredient {
 	}
 	
 	// fonction pour obtenir la quantit� d'ingredient 
-	public int ingredientQuantity ()
+	public int getIngredientQuantity ()
 	{
 		return this.quantity;
 	}
@@ -32,11 +54,6 @@ public class Ingredient {
 			System.out.println("erreur de quantit�, la quantit� deviendrait n�gative");
 		}
 	}
-	
-	
-	
-	
-	
 	
 
 }
