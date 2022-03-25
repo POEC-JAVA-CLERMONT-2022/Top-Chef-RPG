@@ -54,6 +54,16 @@ public class Ingredient {
 			System.out.println("erreur de quantit�, la quantit� deviendrait n�gative");
 		}
 	}
-	
 
+
+	@ManyToOne(optional = false)
+	private Cook cooks;
+
+	public Cook getCooks() {
+		return cooks;
+	}
+
+	public void setCooks(Cook cooks) {
+		this.cooks = cooks;
+	}
 }
