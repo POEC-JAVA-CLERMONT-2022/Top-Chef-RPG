@@ -16,12 +16,25 @@ public class Cook {
 
 	@Column (name = "name", length = 100)
 	private String name;
+
+	@Column (name= "gender", length = 1)
 	private Character gender;
+
+	@Column (name="experience")
 	private int experience;
+
+	@Column (name="dexterity")
 	private int dexterity;
+
+	@Column (name="strength")
 	private int strength;
+
+	@Column (name="creativty")
 	private int creativity;
+
+	@Column (name="luck")
 	private int luck;
+
 	private ArrayList<Lesson> lessons;
 	private ArrayList<Ingredient> ingredients;
 	//private ArrayList<Tool> tools;
@@ -29,6 +42,7 @@ public class Cook {
 	
 	
 	// methode de cr�ation du joueur avec ses variables � 0
+	// les lessons et ingredients sont des listes vides initialement
 	public Cook (String name)
 	{
 		this.name = name;
@@ -37,21 +51,14 @@ public class Cook {
 		this.setDexterity(0);
 		this.setStrength(0);
 		this.setLuck(0);
+		this.lessons = new ArrayList<Lesson>();
+		this.ingredients =new ArrayList<Ingredient>();
 		
-		//rajouter appel vers m�thodde instanciation listes. 
+		//rajouter appel vers m�thodde instanciation listes.
+		// il faudra créer en base les 20 items ingredients liés au cook
+		// aucune lesson n'est dispo au départ => la liste peut rester vide
 	}
-	
-	public void SaveCook ()
-	{
-		DataAdaptor DA = new DataAdaptor();
-		DA.SaveCook(this);
-	}
-	// classe de chargement d'un cook
-	public Cook loadCook(String name)
-	{
-		DataAdaptor DA = new DataAdaptor();
-		return DA.loadCook(name);
-	}
+
 
 	public int getExperience() {
 		return experience;
