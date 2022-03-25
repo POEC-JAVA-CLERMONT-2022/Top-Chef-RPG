@@ -1,12 +1,17 @@
 package TopChefRPG.model;
 
+import org.aspectj.weaver.loadtime.Agent;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Cook {
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long idCook;
 
 
     @Column(name="name")
@@ -30,6 +35,9 @@ public class Cook {
     @Column (name="experience")
     private int experience;
 
+    @OneToMany( targetEntity=Ingredient.class, mappedBy="cook" )
+    private List<Ingredient> ingredients;
+
     public Cook(String name) {
         this.name = name;
     }
@@ -40,10 +48,8 @@ public class Cook {
     }
 
     public Long getId() {
-        return id;
+        return idCook;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 }
