@@ -35,11 +35,21 @@ public class Cook {
 	@Column (name="luck")
 	private int luck;
 
-	private ArrayList<Lesson> lessons;
+	//@OneToMany( targetEntity=Lesson.class, mappedBy="cook" )
+	//private ArrayList<Lesson> lessons ;
+
+	@OneToMany( targetEntity=Ingredient.class, mappedBy= "cooks")
 	private ArrayList<Ingredient> ingredients;
 	//private ArrayList<Tool> tools;
 
-	
+	public Cook() {
+		this.name = "";
+		this.setExperience(0);
+		this.setCreativity(0);
+		this.setDexterity(0);
+		this.setStrength(0);
+		this.setLuck(0);
+	}
 	
 	// methode de cr�ation du joueur avec ses variables � 0
 	// les lessons et ingredients sont des listes vides initialement
@@ -51,13 +61,15 @@ public class Cook {
 		this.setDexterity(0);
 		this.setStrength(0);
 		this.setLuck(0);
-		this.lessons = new ArrayList<Lesson>();
+		//this.lessons = new ArrayList<Lesson>();
 		this.ingredients =new ArrayList<Ingredient>();
 		
 		//rajouter appel vers m�thodde instanciation listes.
 		// il faudra créer en base les 20 items ingredients liés au cook
 		// aucune lesson n'est dispo au départ => la liste peut rester vide
 	}
+
+
 
 
 	public int getExperience() {
@@ -108,13 +120,14 @@ public class Cook {
 		this.luck = luck;
 	}
 
+	/*
 	public ArrayList<Lesson> getLessons() {
 		return lessons;
 	}
 
 	public void setLessons(ArrayList<Lesson> lessons) {
 		this.lessons = lessons;
-	}
+	} */
 
 	public ArrayList<Ingredient> getIngredients() {
 		return ingredients;
