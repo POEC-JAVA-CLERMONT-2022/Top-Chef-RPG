@@ -15,6 +15,21 @@ public class Cook {
     @Column(name="dexterity")
     private int dexterity;
 
+    @Column (name="strength")
+    private int strength;
+
+    @Column (name="creativity")
+    private int creativity;
+
+    @Column (name="luck")
+    private int luck;
+
+    @Column (name="gender")
+    private Character gender;
+
+    @Column (name="experience")
+    private int experience;
+
     public Cook(String name) {
         this.name = name;
     }
