@@ -1,4 +1,4 @@
-package TopChefRPG.TopChef.model;
+package TopChefRPG.model;
 
 import javax.persistence.*;
 
@@ -12,9 +12,13 @@ public class Cook {
     @Column(name="name")
     private String name;
 
+    @Column(name="dexterity")
+    private int dexterity;
+
     public Cook(String name) {
         this.name = name;
     }
+
 
     public Cook() {
 
