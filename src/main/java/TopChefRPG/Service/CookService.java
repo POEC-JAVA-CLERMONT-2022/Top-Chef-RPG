@@ -24,6 +24,12 @@ public class CookService {
 
         return cook;
     }
+    public Cook changeName(Cook cook,String newName)
+    {
+        cook.setName(newName);
+        cookRepository.save(cook);
+        return cook;
+    }
 
     public void tryRecipe()
     {
