@@ -43,11 +43,14 @@ public class TopChefApplication {
 		{
 			System.out.println(user.getName());
 		}
+		Long id = Long.valueOf(1);
 		String userName = "user4";
 		userService.create(userName);
-		User testUser = userService.findByName(userName);
+		User testUser = userService.findById(id);
 		String CookName =userName+"Cook";
 		Cook cook = cookService.createCook(CookName, 'M', testUser);
+
+
 
 
 	}

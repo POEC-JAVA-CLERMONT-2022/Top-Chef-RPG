@@ -26,4 +26,11 @@ public class Lesson {
     @JoinColumn(name="idCook", nullable=false)
     private Cook cook;
 
+    public Lesson(Long id) {
+        this.idLesson = id;
+    }
+
+    public Lesson() {
+
+    }
 }
