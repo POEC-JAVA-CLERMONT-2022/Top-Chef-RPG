@@ -22,15 +22,19 @@ public class Lesson {
     @Column(name = "creativityIncrease")
     private Integer creativityIncrease;
 
-    @ManyToOne
-    @JoinColumn(name="idCook", nullable=false)
-    private Cook cook;
 
-    public Lesson(Long id) {
-        this.idLesson = id;
-    }
+
+
 
     public Lesson() {
 
+    }
+
+    public Lesson(String name, Integer strengthIncrease, Integer dexterityIncrease, Integer creativityIncrease) {
+
+        this.name = name;
+        this.strengthIncrease = strengthIncrease;
+        this.dexterityIncrease = dexterityIncrease;
+        this.creativityIncrease = creativityIncrease;
     }
 }

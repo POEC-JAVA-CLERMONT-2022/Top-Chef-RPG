@@ -2,10 +2,17 @@ package TopChefRPG;
 
 import TopChefRPG.Repository.UserRepository;
 import TopChefRPG.Service.CookService;
-import TopChefRPG.Service.RecipeService;
+
+import TopChefRPG.Service.LessonService;
 import TopChefRPG.Service.UserService;
 import TopChefRPG.model.Cook;
+import TopChefRPG.model.Lesson;
+
+import TopChefRPG.Service.RecipeService;
+
+
 import TopChefRPG.model.Recipe;
+
 import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -31,7 +38,12 @@ public class TopChefApplication {
 	private CookService cookService;
 
 	@Autowired
+
+	private LessonService lessonService;
+
+  @Autowired
 	private RecipeService recipeService;
+
 
 
 	public static void main(String[] args)
@@ -67,7 +79,7 @@ public class TopChefApplication {
 
 
 
-
+		lessonService.initializeLesson();
 
 
 	}
