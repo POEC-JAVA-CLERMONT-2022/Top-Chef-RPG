@@ -30,6 +30,14 @@ public class Ingredient {
         this.cook=cook;
     }
 
+    // constructeur specifique pour les recettes ou les ingredients ne sont pas propres à un user
+    // et e seront jamais en BDD
+    public Ingredient(String name, int quantity)
+    {
+        this.name= name;
+        this.quantity = quantity;
+    }
+
     public int getIngredientQuantity()
     {
         return this.quantity;
@@ -47,6 +55,26 @@ public class Ingredient {
         }
     }
 
+    public String getName()
+    {
+        return this.name;
+    }
+
+    @Override
+    public String toString()
+    {
+        String retour ="";
+        if (this.name.length()>0 )
+        {
+            retour+= "Ingredient : " +this.name;
+        }
+        // si la quantité à une valeur d'au moins -1
+        if (this.quantity >= -2)
+        {
+            retour+= " Quantité : "+ this.quantity;
+        }
+        return retour;
+    }
 
     public Long getId() {
         return id;
