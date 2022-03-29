@@ -65,5 +65,20 @@ public class Cook {
         return idCook;
     }
 
+    public void setName(String newName)
+    {
+        this.name = newName;
+    }
+
+    @Override
+    public String toString()
+    {
+        String retour ="";
+        if (this.name.length()>0)
+            retour+= "nom : "+ this.name;
+        retour += " ,experience : "+ this.experience;
+
+        return retour;
+    }
 
 }

@@ -55,6 +55,10 @@ public class TopChefApplication {
 		String CookName =userName+"Cook";
 		Cook cook = cookService.createCook(CookName, 'M', testUser);
 		recipeService.createRecipes();
+		System.out.println(cook.toString());
+		cookService.changeName(cook, "El gringo");
+		System.out.println("après changement du cook par update (save)");
+		System.out.println(cook.toString());
 		List<Recipe> recettes = recipeService.getRecipes();
 		for (Recipe re : recettes)
 		{
