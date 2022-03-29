@@ -56,9 +56,6 @@ public class Recipe {
     @Column(name = "creativityRequired")
     private Integer creativityRequired;
 
-    @ManyToOne
-    @JoinColumn(name="idCook", nullable=false)
-    private Cook cook;
 
     public Recipe(Long id) {
         this.idRecipe = id;
