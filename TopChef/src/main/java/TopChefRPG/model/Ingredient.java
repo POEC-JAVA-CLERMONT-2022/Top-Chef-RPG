@@ -20,19 +20,36 @@ public class Ingredient {
     private Cook cook;
 
 
-    public Ingredient(Long id) {
-        this.id = id;
-    }
-
     public Ingredient() {
-
     }
+
+    public Ingredient(String name, Cook cook)
+    {
+        this.name=name;
+        this.quantity=-1;
+        this.cook=cook;
+    }
+
+    public int getIngredientQuantity()
+    {
+        return this.quantity;
+    }
+
+    public void setIngredientQuantity(int quantitychange)
+    {
+        if (this.quantity+quantitychange >=0)
+        {
+            this.quantity+=quantitychange;
+        }
+        else
+        {
+            System.out.println("modification de la quantité impossible car inférieure à 0 pour "+this.name);
+        }
+    }
+
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

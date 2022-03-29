@@ -1,7 +1,9 @@
 package TopChefRPG;
 
 import TopChefRPG.Repository.UserRepository;
+import TopChefRPG.Service.CookService;
 import TopChefRPG.Service.UserService;
+import TopChefRPG.model.Cook;
 import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +25,9 @@ public class TopChefApplication {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private CookService cookService;
+
 
 	public static void main(String[] args)
 	{
@@ -38,6 +43,13 @@ public class TopChefApplication {
 		{
 			System.out.println(user.getName());
 		}
+		String userName = "user4";
+		userService.create(userName);
+		User testUser = userService.findByName(userName);
+		String CookName =userName+"Cook";
+		Cook cook = cookService.createCook(CookName, 'M', testUser);
+
+
 	}
 
 }
