@@ -13,36 +13,17 @@ public class Lesson {
     @Column(name = "name")
     private String name;
 
-    @Column(firstIngredient = "firstIngredient")
-    private String firstIngredient;
+    @Column(name = "strengthIncrease")
+    private Integer strengthIncrease;
 
-    @Column(firstQty = "firstQty")
-    private Integer firstQty;
+    @Column(name = "dexterityIncrease")
+    private Integer dexterityIncrease;
 
-    @Column(secondIngredient = "secondIngredient")
-    private String thirdIngredient;
+    @Column(name = "creativityIncrease")
+    private Integer creativityIncrease;
 
-    @Column(secondQty = "secondQty")
-    private Integer secondQty;
+    @ManyToOne
+    @JoinColumn(name="idCook", nullable=false)
+    private Cook cook;
 
-    @Column(thirdIngredient = "thirdIngredient")
-    private String thirdIngredient;
-
-    @Column(thirdQty = "thirdQty")
-    private Integer thirdQty;
-
-    @Column(experience = "experience")
-    private Integer experience;
-
-    @Column(looting1Name = "looting1Name")
-    private String looting1Name;
-
-    @Column(looting1Qty = "looting1Qty")
-    private Integer looting1Qty;
-
-    @Column(looting2Name = "looting2Name")
-    private String looting2Name;
-
-    @Column(looting2Qty = "looting2Qty")
-    private Integer looting2Qty;
 }

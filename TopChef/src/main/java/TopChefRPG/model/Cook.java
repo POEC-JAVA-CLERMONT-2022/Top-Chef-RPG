@@ -38,6 +38,9 @@ public class Cook {
     @OneToMany( targetEntity=Ingredient.class, mappedBy="cook" )
     private List<Ingredient> ingredients;
 
+    @OneToMany(targetEntity = Lesson.class, mappedBy = "cook")
+    private List<Lesson> lessons;
+
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)
     private User user;

@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @Entity
 public class Recipe {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -13,36 +14,58 @@ public class Recipe {
     @Column(name = "name")
     private String name;
 
-    @Column(firstIngredient = "firstIngredient")
+    @Column(name = "firstIngredient")
     private String firstIngredient;
 
-    @Column(firstQty = "firstQty")
+    @Column(name = "firstQty")
     private Integer firstQty;
 
-    @Column(secondIngredient = "secondIngredient")
-    private String thirdIngredient;
+    @Column(name = "secondIngredient")
+    private String secondIngredient;
 
-    @Column(secondQty = "secondQty")
+    @Column(name = "secondQty")
     private Integer secondQty;
 
-    @Column(thirdIngredient = "thirdIngredient")
+    @Column(name = "thirdIngredient")
     private String thirdIngredient;
 
-    @Column(thirdQty = "thirdQty")
+    @Column(name = "thirdQty")
     private Integer thirdQty;
 
-    @Column(experience = "experience")
+    @Column(name = "experience")
     private Integer experience;
 
-    @Column(looting1Name = "looting1Name")
+    @Column(name = "looting1Name")
     private String looting1Name;
 
-    @Column(looting1Qty = "looting1Qty")
+    @Column(name = "looting1Qty")
     private Integer looting1Qty;
 
-    @Column(looting2Name = "looting2Name")
+    @Column(name = "looting2Name")
     private String looting2Name;
 
-    @Column(looting2Qty = "looting2Qty")
+    @Column(name = "looting2Qty")
     private Integer looting2Qty;
+
+    @Column(name = "strengthRequired")
+    private Integer strengthRequired;
+
+    @Column(name = "dexterityRequired")
+    private Integer dexterityRequired;
+
+    @Column(name = "creativityRequired")
+    private Integer creativityRequired;
+
+    @ManyToOne
+    @JoinColumn(name="idCook", nullable=false)
+    private Cook cook;
+
+    public Recipe(Long id) {
+        this.idRecipe = id;
+    }
+
+    public Recipe() {
+
+    }
+
 }
