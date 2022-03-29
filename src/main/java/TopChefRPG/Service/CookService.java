@@ -24,4 +24,10 @@ public class CookService {
 
         return cook;
     }
+
+    public void tryRecipe()
+    {
+
+    }
+
 }
