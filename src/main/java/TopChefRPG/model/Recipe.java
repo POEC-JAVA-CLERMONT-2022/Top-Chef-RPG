@@ -57,10 +57,6 @@ public class Recipe {
     private Integer creativityRequired;
 
 
-    public Recipe(Long id) {
-        this.idRecipe = id;
-    }
-
     public Recipe() {
 
     }
