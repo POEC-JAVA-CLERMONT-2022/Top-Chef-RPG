@@ -3,8 +3,7 @@ package TopChefRPG.model;
 import org.aspectj.weaver.loadtime.Agent;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Cook {
@@ -42,13 +41,21 @@ public class Cook {
     @JoinColumn(name="idUser", nullable=false)
     private User user;
 
-    public Cook(String name) {
+    public Cook(String name, Character gender, User user )
+    {
         this.name = name;
+        this.creativity=0;
+        this.dexterity=0;
+        this.strength=0;
+        this.luck=0;
+        this.experience=0;
+        this.gender= gender;
+        this.ingredients=new ArrayList<Ingredient>() ;
+        this.user= user;
     }
 
 
     public Cook() {
-
     }
 
     public Long getId() {
