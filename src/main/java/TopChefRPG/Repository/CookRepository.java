@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CookRepository extends JpaRepository<Cook,Long> {
+public interface CookRepository extends JpaRepository<Cook,Integer> {
 
 }

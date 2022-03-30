@@ -51,7 +51,7 @@ public class CookService {
         cookRepository.deleteById(cook.getId());
     }
 
-    public void tryRecipe(Long idRecipe, Cook cook)
+    public void tryRecipe(int idRecipe, Cook cook)
     {
         Recipe recipe = recipeService.getRecipe(idRecipe);
 
@@ -59,5 +59,10 @@ public class CookService {
 
         //
     }
+    public Cook getCookById(int id)
+    {
+        return cookRepository.getById(id);
+    }
+
 
 }

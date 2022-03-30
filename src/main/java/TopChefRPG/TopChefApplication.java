@@ -60,7 +60,7 @@ public class TopChefApplication {
 		{
 			System.out.println(user.getName());
 		}
-		Long id = Long.valueOf(1);
+		int id =1;
 		String userName = "user6";
 		userService.create(userName);
 		User testUser = userService.findById(id);

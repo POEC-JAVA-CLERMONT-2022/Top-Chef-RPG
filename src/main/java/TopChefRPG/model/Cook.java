@@ -10,7 +10,7 @@ public class Cook {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long idCook;
+    private int idCook;
 
 
     @Column(name="name")
@@ -78,7 +78,7 @@ public class Cook {
     public Cook() {
     }
 
-    public Long getId() {
+    public int getId() {
         return idCook;
     }
 

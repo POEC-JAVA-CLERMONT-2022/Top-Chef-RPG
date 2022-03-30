@@ -7,7 +7,7 @@ public class Ingredient {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
 
     @Column (name="IngredientName")
     private String name;
@@ -76,7 +76,7 @@ public class Ingredient {
         return retour;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 

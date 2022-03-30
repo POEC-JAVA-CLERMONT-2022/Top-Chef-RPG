@@ -56,7 +56,7 @@ public class RecipeService {
         return recipes;
     }
 
-    public Recipe getRecipe(Long id)
+    public Recipe getRecipe(int id)
     {
         Recipe recipe = recipeRepository.getById(id);
 
@@ -107,6 +107,7 @@ public class RecipeService {
         return chanceSucces;
     }
 
+    // fonction appelée lorsqu'un cook effectue une recette (après avoir vérifié qu'elle est faisable pour les ressources)
     public void tryRecipe(Cook cook, Recipe recipe)
     {
 
