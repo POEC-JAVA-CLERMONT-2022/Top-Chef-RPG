@@ -24,18 +24,11 @@ public class UserService {
         return this.userRepository.save(user);
     }
 
-    public User findById(Long id)
-    {
-        Optional< User>  findUser= userRepository.findById(id);
-        if (findUser.isPresent())
-            return findUser.get();
-        else {
-            System.out.println("user non trouvé en base de données");
-            User emptyUser = new User();
-            return emptyUser;
-        }
-
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(new User());
     }
+
+
 
     public User findByName(String name)
     {
