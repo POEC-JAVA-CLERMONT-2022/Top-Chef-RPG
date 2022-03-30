@@ -77,6 +77,18 @@ public class TopChefApplication {
 			System.out.println(re.getName()+" "+ re.getLooting1Name()+ " "+ re.lootIngredient.toString());
 		}
 
+		// code de test de suppression en cascade
+		User adieu = userService.create("Adieu");
+
+		Cook goodBye = cookService.createCook("goodbye", 'F', adieu);
+
+		userService.deleteUser(adieu);
+
+
+
+
+
+
 
 
 		lessonService.initializeLesson();
