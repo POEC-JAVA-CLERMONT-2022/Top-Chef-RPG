@@ -107,6 +107,7 @@ public class RecipeService {
         return chanceSucces;
     }
 
+    // fonction appelée lorsqu'un cook effectue une recette (après avoir vérifié qu'elle est faisable pour les ressources)
     public void tryRecipe(Cook cook, Recipe recipe)
     {
 
