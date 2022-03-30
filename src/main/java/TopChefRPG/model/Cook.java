@@ -34,7 +34,7 @@ public class Cook {
     @Column (name="experience")
     private int experience;
 
-    @OneToMany( targetEntity=Ingredient.class, mappedBy="cook" )
+    @OneToMany( targetEntity=Ingredient.class, mappedBy="cook" , cascade = CascadeType.REMOVE)
     private List<Ingredient> ingredients;
 
     /*
@@ -44,6 +44,22 @@ public class Cook {
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)
     private User user;
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getCreativity() {
+        return creativity;
+    }
+
+    public int getLuck() {
+        return luck;
+    }
 
     public Cook(String name, Character gender, User user )
     {
@@ -80,6 +96,11 @@ public class Cook {
         retour += " ,experience : "+ this.experience;
 
         return retour;
+    }
+
+    public List<Ingredient> getIngredients()
+    {
+        return this.ingredients;
     }
 
 }

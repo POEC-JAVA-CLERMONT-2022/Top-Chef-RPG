@@ -28,12 +28,20 @@ public class UserService {
         return userRepository.findById(id).orElse(new User());
     }
 
-
+    public void saveUser(User user)
+    {
+        userRepository.save(user);
+    }
 
     public User findByName(String name)
     {
         User user =  userRepository.findByName(name);
         return user;
+    }
+
+    public void deleteUser(User userToDelete)
+    {
+        userRepository.deleteById(userToDelete.getId());
     }
 
 }

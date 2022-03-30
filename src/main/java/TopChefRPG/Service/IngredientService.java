@@ -32,5 +32,14 @@ public class IngredientService {
 
     }
 
+    // mise à jour de la liste d'ingredients d'un user
+    public void saveIngredients(List<Ingredient> ingredients)
+    {
+        for (Ingredient ing :ingredients)
+        {
+            ingredientRepository.save(ing);
+        }
+    }
+
 
 }
