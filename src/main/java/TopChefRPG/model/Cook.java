@@ -45,6 +45,22 @@ public class Cook {
     @JoinColumn(name="idUser", nullable=false)
     private User user;
 
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getCreativity() {
+        return creativity;
+    }
+
+    public int getLuck() {
+        return luck;
+    }
+
     public Cook(String name, Character gender, User user )
     {
         this.name = name;
@@ -80,6 +96,11 @@ public class Cook {
         retour += " ,experience : "+ this.experience;
 
         return retour;
+    }
+
+    public List<Ingredient> getIngredients()
+    {
+        return this.ingredients;
     }
 
 }
