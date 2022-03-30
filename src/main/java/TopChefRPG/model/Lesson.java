@@ -22,6 +22,10 @@ public class Lesson {
     @Column(name = "creativityIncrease")
     private Integer creativityIncrease;
 
+    private Integer luckIncrease;
+
+    private Integer experienceCost;
+
 
 
 
@@ -30,11 +34,13 @@ public class Lesson {
 
     }
 
-    public Lesson(String name, Integer strengthIncrease, Integer dexterityIncrease, Integer creativityIncrease) {
+    public Lesson(String name, Integer strengthIncrease, Integer dexterityIncrease, Integer creativityIncrease, Integer luckIncrease, Integer experienceCost) {
 
         this.name = name;
         this.strengthIncrease = strengthIncrease;
         this.dexterityIncrease = dexterityIncrease;
         this.creativityIncrease = creativityIncrease;
+        this.luckIncrease = luckIncrease;
+        this.experienceCost = experienceCost;
     }
 }

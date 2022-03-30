@@ -13,13 +13,13 @@ public class LessonService {
     LessonRepository lessonRepository;
 
 public void initializeLesson(){
-    Lesson lesson1 = new Lesson("tarte aux pommes", 10, 10, 10);
+    Lesson lesson1 = new Lesson("tarte aux pommes", 10, 10, 10, 10, 100);
     lessonRepository.save(lesson1);
 
-    Lesson lesson2 = new Lesson("poulet fermier", 20, 25, 30);
+    Lesson lesson2 = new Lesson("poulet fermier", 20, 25, 30, 30, 300);
     lessonRepository.save(lesson2);
 
-    Lesson lesson3 = new Lesson("boeuf stroganoff", 30, 30, 3);
+    Lesson lesson3 = new Lesson("boeuf stroganoff", 30, 30, 3, 2, 3000);
     lessonRepository.save(lesson3);
 
 }
