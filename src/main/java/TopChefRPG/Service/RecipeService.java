@@ -56,7 +56,7 @@ public class RecipeService {
         return recipes;
     }
 
-    public Recipe getRecipe(Long id)
+    public Recipe getRecipe(int id)
     {
         Recipe recipe = recipeRepository.getById(id);
 
