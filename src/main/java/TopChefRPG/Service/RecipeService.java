@@ -74,6 +74,7 @@ public class RecipeService {
 
         int chanceSucces =0;
 
+
         // on augmente la chance de réussite de la chance du cuisinnier (en théorie ajout entre 0 et 50)
         if (cook.getLuck()<=50)
             chanceSucces += Math.random()*cook.getLuck();
@@ -107,12 +108,5 @@ public class RecipeService {
         return chanceSucces;
     }
 
-    // fonction appelée lorsqu'un cook effectue une recette (après avoir vérifié qu'elle est faisable pour les ressources)
-    public void tryRecipe(Cook cook, Recipe recipe)
-    {
-
-
-
-    }
 
 }

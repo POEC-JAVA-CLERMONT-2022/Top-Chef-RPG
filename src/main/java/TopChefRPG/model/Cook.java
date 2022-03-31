@@ -103,4 +103,15 @@ public class Cook {
         return this.ingredients;
     }
 
+    public void changeExperience ( int changeValue)
+    {
+        // si on est dans une valeur acceptable de changement (l'expe ne peut être inferieur à 0)
+        if (this.experience + changeValue >= 0)
+            this.experience += changeValue;
+        else
+        {
+            System.out.println("impossible de mettre à jour l'expérience car résultat final inférieur à 0 !");
+        }
+    }
+
 }
