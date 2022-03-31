@@ -4,21 +4,21 @@ import javax.persistence.*;
 
 
 @Entity
-
-
-
 public class CookLesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private int id;
 
     private Integer countUse;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name="idCook", nullable=false)
     private Cook cook;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name="idLesson", nullable=false)
     private Lesson lesson;
 
     public CookLesson(){}
