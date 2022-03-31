@@ -61,6 +61,9 @@ public class Cook {
         return luck;
     }
 
+    public String getName(){
+        return this.name;
+    }
     public Cook(String name, Character gender, User user )
     {
         this.name = name;
