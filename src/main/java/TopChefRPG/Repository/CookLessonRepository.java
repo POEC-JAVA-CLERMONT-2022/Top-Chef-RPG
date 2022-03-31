@@ -4,6 +4,8 @@ package TopChefRPG.Repository;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.CookLesson;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 public interface CookLessonRepository extends JpaRepository<CookLesson, Integer> {
 
 
+    List<CookLesson> findCookLessonByCook(Cook cook);
     }
 
 
