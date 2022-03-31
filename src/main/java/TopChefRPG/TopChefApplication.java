@@ -83,7 +83,7 @@ private CookLessonService cookLessonService;
 
 
 
-		cookLessonService.buyLesson(cookService.getCookById(1), cooklessonService.getLesson());
+		cookLessonService.buyLesson(cookService.getCookById(1), lessonService.getLessonById(1));
 
 
 
