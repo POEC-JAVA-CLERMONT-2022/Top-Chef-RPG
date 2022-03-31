@@ -2,6 +2,7 @@ package TopChefRPG.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Lesson {
@@ -25,6 +26,9 @@ public class Lesson {
     private Integer luckIncrease;
 
     private Integer experienceCost;
+
+    @OneToMany(targetEntity = CookLesson.class, mappedBy = "lesson")
+    private List<CookLesson> cookLessons;
 
 
 
