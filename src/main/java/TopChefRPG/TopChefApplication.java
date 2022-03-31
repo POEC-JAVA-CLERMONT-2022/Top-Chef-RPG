@@ -73,15 +73,14 @@ public class TopChefApplication {
         Cook goodBye = cookService.createCook("goodbye", 'F', adieu);
 
         userService.deleteUser(adieu);
-
-
-        cookLessonService.buyLesson(cookService.getCookById(1), lessonService.getLessonById(1));
-        List<CookLesson> toto = cookLessonService.getCookLesson(cookService.getCookById(1));
-
-        System.out.println(toto.get(0).toString());
-
         lessonService.initializeLesson();
 
+        cookLessonService.buyLesson(cookService.getCookById(1), lessonService.getLessonById(1));
+        cookLessonService.buyLesson(cookService.getCookById(1), lessonService.getLessonById(2));
+        List<CookLesson> toto = cookLessonService.getCookLesson(cookService.getCookById(1));
+
+        for (CookLesson cl : toto)
+            System.out.println(cl.toString());
 
     }
 

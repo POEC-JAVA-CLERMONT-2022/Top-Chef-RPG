@@ -15,6 +15,9 @@ import java.util.List;
 public interface CookLessonRepository extends JpaRepository<CookLesson, Integer> {
 
 
+
+
+    @Query("select c from CookLesson c where c.cook = ?1")
     List<CookLesson> findCookLessonByCook(Cook cook);
     }
 
