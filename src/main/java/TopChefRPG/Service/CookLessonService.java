@@ -28,4 +28,9 @@ public class CookLessonService {
     public List<CookLesson> getCookLesson(Cook cook){
         return cookLessonRepository.findCookLessonByCook (cook);
     }
+
+    public void doLesson (CookLesson cookLesson)
+    {
+        cookLesson.incrementCountUse();
+    }
 }
