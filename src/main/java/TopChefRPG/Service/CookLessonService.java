@@ -21,12 +21,11 @@ public class CookLessonService {
     private CookRepository cookRepository;
 
     public void buyLesson(Cook cook, Lesson lesson){
-        CookLesson cookLesson = new CookLesson();
-        cook.addLesson(cookLesson);
-        cookRepository.save(cook);
+        CookLesson cookLesson = new CookLesson(cook, lesson);
+        cookLessonRepository.save(cookLesson);
     }
 
     public List<CookLesson> getCookLesson(Cook cook){
-        return cookLessonRepository.findAllByCooklessons_Cook(cook);
+        return cookLessonRepository.findCookLessonByCook (cook);
     }
 }

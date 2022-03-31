@@ -45,6 +45,9 @@ public class Ingredient {
 
     public void setIngredientQuantity(int quantitychange)
     {
+        // si on modifie pour la première fois l'ingrédient on doit l'initialiser
+        if (this.quantity == -1 )
+            this.quantity =0;
         if (this.quantity+quantitychange >=0)
         {
             this.quantity+=quantitychange;

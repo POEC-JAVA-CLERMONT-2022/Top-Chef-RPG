@@ -9,23 +9,23 @@ public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long idLesson;
+    private int idLesson;
 
     @Column(name = "name")
     private String name;
 
     @Column(name = "strengthIncrease")
-    private Integer strengthIncrease;
+    private int strengthIncrease;
 
     @Column(name = "dexterityIncrease")
-    private Integer dexterityIncrease;
+    private int dexterityIncrease;
 
     @Column(name = "creativityIncrease")
-    private Integer creativityIncrease;
+    private int creativityIncrease;
 
-    private Integer luckIncrease;
+    private int luckIncrease;
 
-    private Integer experienceCost;
+    private int experienceCost;
 
     @OneToMany(targetEntity = CookLesson.class, mappedBy = "lesson")
     private List<CookLesson> cookLessons;
@@ -46,5 +46,33 @@ public class Lesson {
         this.creativityIncrease = creativityIncrease;
         this.luckIncrease = luckIncrease;
         this.experienceCost = experienceCost;
+    }
+
+    public int getIdLesson() {
+        return idLesson;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getStrengthIncrease() {
+        return strengthIncrease;
+    }
+
+    public int getDexterityIncrease() {
+        return dexterityIncrease;
+    }
+
+    public int getCreativityIncrease() {
+        return creativityIncrease;
+    }
+
+    public int getLuckIncrease() {
+        return luckIncrease;
+    }
+
+    public int getExperienceCost() {
+        return experienceCost;
     }
 }

@@ -38,7 +38,7 @@ public class Cook {
     private List<Ingredient> ingredients;
 
 
-    @OneToMany(targetEntity = CookLesson.class, mappedBy = "cook")
+    @OneToMany(targetEntity = CookLesson.class, mappedBy = "cook", cascade = CascadeType.REMOVE)
     private List<CookLesson> cookLessons;
 
     @ManyToOne
