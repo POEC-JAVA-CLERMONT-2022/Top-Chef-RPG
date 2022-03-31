@@ -19,14 +19,13 @@ public class CookLessonService {
 
     @Autowired
     private CookRepository cookRepository;
-/*
+
     public void buyLesson(Cook cook, Lesson lesson){
-        CookLesson cookLesson = new CookLesson();
-        cook.addLesson(cookLesson);
-        //cookRepository.save(cook);
+        CookLesson cookLesson = new CookLesson(cook, lesson);
+        cookLessonRepository.save(cookLesson);
     }
 
     public List<CookLesson> getCookLesson(Cook cook){
-        return cookLessonRepository.findAllByIdCook(cook);
-    }*/
+        return cookLessonRepository.findCookLessonByCook (cook);
+    }
 }

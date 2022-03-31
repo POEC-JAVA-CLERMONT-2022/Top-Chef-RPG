@@ -17,11 +17,18 @@ public class CookLesson {
     @JoinColumn(name="idCook", nullable=false)
     private Cook cook;
 
-    @ManyToOne
-    @JoinColumn(name="idLesson", nullable=false)
-    private Lesson lesson;
+
+    @Column(name="idLesson", nullable=false)
+    private int idlesson;
 
     public CookLesson(){}
+
+    public CookLesson(Cook cook, Lesson lesson)
+    {
+        this.cook = cook;
+        this.idlesson =lesson.getIdLesson();
+        this.countUse = 0;
+    }
 
 
 
