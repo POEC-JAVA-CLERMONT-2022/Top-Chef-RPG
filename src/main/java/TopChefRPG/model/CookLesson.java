@@ -17,16 +17,16 @@ public class CookLesson {
     @JoinColumn(name="idCook", nullable=false)
     private Cook cook;
 
-
-    @Column(name="idLesson", nullable=false)
-    private int idlesson;
+    @ManyToOne
+    @JoinColumn(name="idLesson", nullable=false)
+    private Lesson lesson;
 
     public CookLesson(){}
 
     public CookLesson(Cook cook, Lesson lesson)
     {
         this.cook = cook;
-        this.idlesson =lesson.getIdLesson();
+        this.lesson =lesson;
         this.countUse = 0;
     }
 
