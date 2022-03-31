@@ -1,34 +1,38 @@
 package TopChefRPG.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 
 @Entity
 
 @AssociationOverrides( {
-        @AssociationOverride(name = "cooklessons.cook", joinColumns = @JoinColumn(name = "id_cook")),
-        @AssociationOverride(name = "cooklessons.lesson", joinColumns = @JoinColumn(name = "id_lesson")),
+        @AssociationOverride(name = "cooklessonsPK.cook", joinColumns = @JoinColumn(name = "id_cook")),
+        @AssociationOverride(name = "cooklessonsPK.lesson", joinColumns = @JoinColumn(name = "id_lesson")),
 })
 
 public class CookLesson {
 
     @EmbeddedId
-    private CookLessonPK cooklessons;
+    private CookLessonPK cooklessonsPK;
 
-    private Integer CountUse;
+    private Integer countUse;
+
+
 
     public CookLesson(){}
 
-public CookLesson(CookLessonPK cooklessons) { this.cooklessons = cooklessons;}
+public CookLesson(CookLessonPK cooklessonsPK) {
+        this.cooklessonsPK = cooklessonsPK;
+        this.countUse = 0;
+    }
 
 
     public Integer getCountUse() {
-        return CountUse;
+        return countUse;
     }
 
     public void incrementCountUse(){
-        this.CountUse+=1;
+        this.countUse +=1;
     }
 
 

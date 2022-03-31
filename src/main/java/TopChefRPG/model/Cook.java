@@ -37,10 +37,10 @@ public class Cook {
     @OneToMany( targetEntity=Ingredient.class, mappedBy="cook" , cascade = CascadeType.REMOVE)
     private List<Ingredient> ingredients;
 
-    /*
-    @OneToMany(targetEntity = Lesson.class, mappedBy = "cook")
-    private List<Lesson> lessons;
-*/
+
+    @OneToMany(targetEntity = CookLesson.class, mappedBy = "cooklessons.cook")
+    private List<CookLesson> cookLessons;
+
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)
     private User user;
@@ -101,6 +101,10 @@ public class Cook {
     public List<Ingredient> getIngredients()
     {
         return this.ingredients;
+    }
+
+    public void addLesson(CookLesson cookLesson){
+        this.cookLessons.add(cookLesson);
     }
 
 }
