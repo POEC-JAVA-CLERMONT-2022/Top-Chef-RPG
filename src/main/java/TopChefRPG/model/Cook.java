@@ -37,10 +37,10 @@ public class Cook {
     @OneToMany( targetEntity=Ingredient.class, mappedBy="cook" , cascade = CascadeType.REMOVE)
     private List<Ingredient> ingredients;
 
-    /*
-    @OneToMany(targetEntity = Lesson.class, mappedBy = "cook")
-    private List<Lesson> lessons;
-*/
+
+    @OneToMany(targetEntity = CookLesson.class, mappedBy = "cooklessons.cook")
+    private List<CookLesson> cookLessons;
+
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)
     private User user;
@@ -103,6 +103,10 @@ public class Cook {
         return this.ingredients;
     }
 
+
+    public void addLesson(CookLesson cookLesson){
+        this.cookLessons.add(cookLesson);
+    }
     public void changeExperience ( int changeValue)
     {
         // si on est dans une valeur acceptable de changement (l'expe ne peut être inferieur à 0)
@@ -112,6 +116,7 @@ public class Cook {
         {
             System.out.println("impossible de mettre à jour l'expérience car résultat final inférieur à 0 !");
         }
+
     }
 
 }

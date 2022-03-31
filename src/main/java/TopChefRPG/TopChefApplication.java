@@ -1,14 +1,10 @@
 package TopChefRPG;
 
 import TopChefRPG.Repository.UserRepository;
-import TopChefRPG.Service.CookService;
+import TopChefRPG.Service.*;
 
-import TopChefRPG.Service.LessonService;
-import TopChefRPG.Service.UserService;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Lesson;
-
-import TopChefRPG.Service.RecipeService;
 
 
 import TopChefRPG.model.Recipe;
@@ -44,7 +40,8 @@ public class TopChefApplication {
   @Autowired
 	private RecipeService recipeService;
 
-
+@Autowired
+private CookLessonService cookLessonService;
 
 	public static void main(String[] args)
 	{
@@ -86,6 +83,7 @@ public class TopChefApplication {
 
 
 
+		cookLessonService.buyLesson(cookService.getCookById(1), cooklessonService.getLesson());
 
 
 
