@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface CookRepository extends JpaRepository<Cook,Integer> {
 
+
+
 }
