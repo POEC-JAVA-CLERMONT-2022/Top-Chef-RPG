@@ -13,4 +13,7 @@ import java.util.List;
 public interface CookRepository extends JpaRepository<Cook,Integer> {
 
 
+Cook getCookByName(String name);
+
+
 }
