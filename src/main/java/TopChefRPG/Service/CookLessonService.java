@@ -21,7 +21,7 @@ public class CookLessonService {
     private CookRepository cookRepository;
 
     public void buyLesson(Cook cook, Lesson lesson){
-        CookLesson cookLesson = new CookLesson()
+        CookLesson cookLesson = new CookLesson();
         cook.addLesson(cookLesson);
         cookRepository.save(cook);
     }

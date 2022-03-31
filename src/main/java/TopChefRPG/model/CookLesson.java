@@ -5,26 +5,25 @@ import javax.persistence.*;
 
 @Entity
 
-@AssociationOverrides( {
-        @AssociationOverride(name = "cooklessonsPK.cook", joinColumns = @JoinColumn(name = "id_cook")),
-        @AssociationOverride(name = "cooklessonsPK.lesson", joinColumns = @JoinColumn(name = "id_lesson")),
-})
+
 
 public class CookLesson {
 
-    @EmbeddedId
-    private CookLessonPK cooklessonsPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private Integer countUse;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Cook cook;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Lesson lesson;
 
     public CookLesson(){}
 
-public CookLesson(CookLessonPK cooklessonsPK) {
-        this.cooklessonsPK = cooklessonsPK;
-        this.countUse = 0;
-    }
+
 
 
     public Integer getCountUse() {
