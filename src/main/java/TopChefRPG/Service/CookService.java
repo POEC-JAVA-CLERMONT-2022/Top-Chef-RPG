@@ -38,8 +38,8 @@ public class CookService {
         return cook;
     }
 
-    public void saveCook(Cook cook) {
-        cookRepository.save(cook);
+    public Cook saveCook(Cook cook) {
+        return cookRepository.save(cook);
     }
 
     // fonction de sauvegarde des ingredients du cook. Appel la fonction de sauvegarde des ingredients

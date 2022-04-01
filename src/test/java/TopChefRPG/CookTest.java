@@ -36,6 +36,9 @@ public class CookTest {
     CookService cookService;
 
     @Autowired
+    CookRepository cookRepository;
+
+    @Autowired
     RecipeService recipeService;
 
     @Test
@@ -54,17 +57,25 @@ public class CookTest {
         //appel de la méthode à tester
 
 
-        cookService.saveCook(cook1);
+        cook1 = cookService.saveCook(cook1);
         cookService.saveCook(cook2);
+        Integer test = cook1.getId();
+        System.out.println("test= " + test);
+
         cook1.setName("boris");
-        cookService.saveCook(cook1);
+
+
         //LinkedList<Cook> cookList = new LinkedList<Cook>();
 
         //Cook cook3 = cookRepository.getCookByName("boris");
         //test des valeurs après execution du code
 
         Assertions.assertNotNull(cook1);
-        Assertions.assertEquals("boris", cook1.getName());
+        //Assertions.assertEquals("boris", cook1.getName());
+        Assertions.assertEquals("boris", cookService.getCookById(cook1.getId()).getName());
+
+        Assertions.assertNotEquals(1, cookRepository.findAll().size());
+
         //Assertions.assertEquals(2, cookList.size() );
 
         //Assertions.assertEquals("toto", "toto");
