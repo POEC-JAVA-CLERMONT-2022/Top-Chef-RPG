@@ -127,7 +127,7 @@ public class CookService {
     }
 
     public Cook getCookById(int id) {
-        return cookRepository.getById(id);
+        return cookRepository.getCookById(id);
     }
 
 

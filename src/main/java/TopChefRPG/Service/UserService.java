@@ -30,9 +30,10 @@ public class UserService {
         return userRepository.findById(id).orElse(new User());
     }
 
-    public void saveUser(User user)
+    public User saveUser(User user)
     {
-        userRepository.save(user);
+        User userSaved =userRepository.save(user);
+        return userSaved;
     }
 
     public User findByName(String name)
