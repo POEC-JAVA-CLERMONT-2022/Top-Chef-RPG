@@ -4,6 +4,7 @@ import TopChefRPG.Repository.UserRepository;
 import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,10 +19,11 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    @Transactional
     public User create(String name)
     {
         User user = new User(name, "mail", "password");
-        return this.userRepository.save(user);
+        return userRepository.save(user);
     }
 
     public User findById(int id) {
