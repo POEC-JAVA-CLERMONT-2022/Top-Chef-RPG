@@ -1,6 +1,6 @@
 package TopChefRPG;
 
-import TopChefRPG.Repository.UserRepository;
+
 import TopChefRPG.Service.*;
 
 import TopChefRPG.model.*;
@@ -11,15 +11,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery;
+
 
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+
 
 @SpringBootApplication
 public class TopChefApplication {
@@ -59,6 +54,8 @@ public class TopChefApplication {
         String CookName = userName + "Cook";
         Cook cook = cookService.createCook(CookName, 'M', testUser);
         recipeService.createRecipes();
+        Cook test = cookService.getCookById(1);
+
         System.out.println(cook.toString());
         cookService.changeName(cook, "El gringo");
         System.out.println("après changement du cook par update (save)");
