@@ -28,8 +28,6 @@ public class IngredientService {
             Ingredient ingredient = new Ingredient(ing, cook);
             ingredientRepository.save(ingredient);
         }
-
-
     }
 
     // mise à jour de la liste d'ingredients d'un user
