@@ -57,6 +57,8 @@ public class Cook {
         return creativity;
     }
 
+    public int getExperience() { return experience; }
+
     public int getLuck() {
         return luck;
     }
