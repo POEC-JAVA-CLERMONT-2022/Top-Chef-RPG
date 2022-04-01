@@ -39,6 +39,12 @@ public class UserService {
         return user;
     }
 
+    public Optional<User> findUserByMailAndPassword (String mail, String password)
+    {
+        Optional<User> userFinded = userRepository.findUserByMailAndPassword(mail, password);
+        return userFinded;
+    }
+
     public void deleteUser(User userToDelete)
     {
         userRepository.deleteById(userToDelete.getId());
