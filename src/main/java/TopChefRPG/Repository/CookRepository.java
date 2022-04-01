@@ -15,5 +15,8 @@ public interface CookRepository extends JpaRepository<Cook,Integer> {
 
 Cook getCookByName(String name);
 
+@Query("select c from Cook c where c.id = ?1")
+Cook getCookById(int id);
+
 
 }
