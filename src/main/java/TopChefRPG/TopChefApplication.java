@@ -45,7 +45,7 @@ public class TopChefApplication {
 
     @EventListener(classes = {ApplicationStartedEvent.class})
     public void applicationStarted() {
-
+        /*
         List<User> users = userService.findAll();
         System.out.println("passe ici");
         for (User user : users) {
@@ -104,8 +104,11 @@ public class TopChefApplication {
         List<CookLesson> toto = cookLessonService.getCookLesson(cookService.getCookById(1));
 
         for (CookLesson cl : toto)
+
             System.out.println(cl.toString());*/
 
+            System.out.println(cl.toString());
+        */
     }
 
 }
