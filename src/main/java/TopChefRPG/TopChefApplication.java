@@ -3,6 +3,7 @@ package TopChefRPG;
 
 import TopChefRPG.Service.*;
 
+import TopChefRPG.Service.DTO.ResultRecipeDTO;
 import TopChefRPG.model.*;
 
 
@@ -69,7 +70,9 @@ public class TopChefApplication {
         System.out.println("après changement du cook par update (save)");
         System.out.println(cook.toString());
 
-        List<Ingredient> ingred = test.getIngredients();
+        ResultRecipeDTO RRDTO = cookService.tryRecipe(1,test);
+
+        List<Ingredient> ingred = test.getIngredients();/*
         for (Ingredient ing : ingred)
         {
             ing.setIngredientQuantity(20);

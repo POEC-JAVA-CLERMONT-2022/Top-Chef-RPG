@@ -31,6 +31,16 @@ public class RecipeController {
 
 
 
+    //localhost:8080/recipe/getProbability?idCook=1&idRecipe=1
+    @GetMapping("/getProbability")
+    public int getProbabilityOfSucces(@RequestParam int idCook, @RequestParam int idRecipe)
+    {
+        Cook cook = cookService.getCookById(idCook);
+        Recipe recipe = recipeService.getRecipe(idRecipe);
+        int chance = recipeService.getProbabilityOfSucces(recipe,cook);
+        return chance;
+    }
+
     //localhost:8080/recipe/getsucces?idCook=1&idRecipe=1
     @GetMapping("/getsucces")
     public int getChanceSucces(@RequestParam int idCook, @RequestParam int idRecipe)
@@ -41,7 +51,7 @@ public class RecipeController {
         return chance;
     }
 
-    //localhost:8080/recipe/doRecipe?idCook=1&idRecipe=1
+    //localhost:8080/recipe/doRecipe?idCook=1&idRecipe=2
     @GetMapping("/doRecipe")
     public ResultRecipeDTO doRecipe(@RequestParam int idCook, @RequestParam int idRecipe)
     {

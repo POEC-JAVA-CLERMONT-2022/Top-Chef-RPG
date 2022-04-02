@@ -19,7 +19,7 @@ public class LessonService {
         Lesson lesson2 = new Lesson("cuisson à la poele", 20, 25, 30, 30, 300);
         lessonRepository.save(lesson2);
 
-        Lesson lesson3 = new Lesson("cuisson au four", 30, 30, 3, 2, 3000);
+        Lesson lesson3 = new Lesson("cuisson au four", 30, 20, 40, 20, 600);
         lessonRepository.save(lesson3);
 
     }
