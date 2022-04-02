@@ -89,6 +89,9 @@ public class CookService {
                     }
                 }
             }
+            // sauvegarde en base des ingredients utilisés par la recette
+            ingredientService.saveIngredients(cook.getIngredients());
+
             RRDTO.addIngredientUsed(recipe.requiredIngredients);
 
             // on test la réussite de la recette, si le score est supperieur à 100
@@ -104,6 +107,9 @@ public class CookService {
                         }
                     }
                 }
+                // sauvegarde en base des ingrédients
+                ingredientService.saveIngredients(cook.getIngredients());
+
                 // mise à jour de l'expérience du cook
                 cook.changeExperience(recipe.getExperience());
                 // on nourrit l'objet du message de retour

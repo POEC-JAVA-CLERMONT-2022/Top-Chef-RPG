@@ -10,7 +10,7 @@ public class Cook {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int idCook;
+    private int id;
 
 
     @Column(name="name")
@@ -69,9 +69,9 @@ public class Cook {
     public Cook(String name, Character gender, User user )
     {
         this.name = name;
-        this.creativity=0;
-        this.dexterity=0;
-        this.strength=0;
+        this.creativity=1;
+        this.dexterity=1;
+        this.strength=1;
         this.luck=0;
         this.experience=0;
         this.gender= gender;
@@ -84,7 +84,7 @@ public class Cook {
     }
 
     public int getId() {
-        return idCook;
+        return id;
     }
 
     public void setName(String newName)

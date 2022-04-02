@@ -11,7 +11,7 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long idRecipe;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -101,8 +101,8 @@ public class Recipe {
     }
 
 
-    public Long getIdRecipe() {
-        return idRecipe;
+    public int getIdRecipe() {
+        return id;
     }
 
     public String getName() {

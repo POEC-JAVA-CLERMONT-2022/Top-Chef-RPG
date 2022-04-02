@@ -9,7 +9,7 @@ public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int idLesson;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -49,7 +49,7 @@ public class Lesson {
     }
 
     public int getIdLesson() {
-        return idLesson;
+        return id;
     }
 
     public String getName() {

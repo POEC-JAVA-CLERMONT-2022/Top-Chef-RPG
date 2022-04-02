@@ -14,18 +14,21 @@ public class CookController {
     @Autowired
     CookService cookService;
 
+    //http://localhost:8080/cook/
     @GetMapping()
     public String returnTest ()
     {
         return "ca marche";
     }
-/*
-    @GetMapping()
-    public String getCookById(@PathVariable int id)
+
+    //http://localhost:8080/cook/id?id=1
+    @GetMapping("/id")
+    public Cook getCookById(@RequestParam int id)
     {
-        return "ca marche avec :"+ id;
+        Cook cookFind = cookService.getCookById(id);
+        return cookFind;
         //return cookService.getCookById(id);
     }
 
-*/
+
 }
