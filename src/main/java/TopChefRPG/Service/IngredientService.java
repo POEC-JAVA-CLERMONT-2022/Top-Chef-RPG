@@ -1,5 +1,6 @@
 package TopChefRPG.Service;
 
+import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Repository.IngredientRepository;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Ingredient;
@@ -15,6 +16,9 @@ public class IngredientService {
     @Autowired
     IngredientRepository ingredientRepository;
 
+    @Autowired
+    CookRepository cookRepository;
+
     public void initializeIngredient(Cook cook)
     {
         ArrayList<String> ingredients = new ArrayList<String>();
@@ -26,8 +30,11 @@ public class IngredientService {
         for (String ing : ingredients)
         {
             Ingredient ingredient = new Ingredient(ing, cook);
-            ingredientRepository.save(ingredient);
+            cook.getIngredients().add(ingredient);
+
+            //ingredientRepository.save(ingredient);
         }
+        cookRepository.save(cook);
     }
 
     // mise à jour de la liste d'ingredients d'un user

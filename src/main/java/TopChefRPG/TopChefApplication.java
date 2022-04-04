@@ -45,70 +45,47 @@ public class TopChefApplication {
 
     @EventListener(classes = {ApplicationStartedEvent.class})
     public void applicationStarted() {
-        /*
+
         List<User> users = userService.findAll();
-        System.out.println("passe ici");
-        for (User user : users) {
-            System.out.println(user.getName());
-        }
-        int id = 1;
-        String userName = "user6";
-        userService.create(userName);
-        User testUser = userService.findById(id);
-        String CookName = userName + "Cook";
-        Cook cook = cookService.createCook(CookName, 'M', testUser);
-        recipeService.createRecipes();
-
-        for (Ingredient in : cook.getIngredients())
+        int idUser ;
+        if (users.size() == 0)
         {
-            System.out.println("ingredient "+ in.getName() + " quantité après :"+ in.getIngredientQuantity());
+            User newUser = userService.create("userTest", "mymail@mail.com", "mdp");
+            idUser = newUser.getId();
         }
-        Cook test = cookService.getCookById(1);
-
-        System.out.println(cook.toString());
-        cookService.changeName(cook, "El gringo");
-        System.out.println("après changement du cook par update (save)");
-        System.out.println(cook.toString());
-
-        ResultRecipeDTO RRDTO = cookService.tryRecipe(1,test);
-
-        List<Ingredient> ingred = test.getIngredients();/*
-        for (Ingredient ing : ingred)
+        else
         {
-            ing.setIngredientQuantity(20);
+            idUser = users.get(0).getId();
         }
-        ingredientService.saveIngredients(ingred);
-        Cook test2 = cookService.getCookById(1);
-
-
-        for (Ingredient in : test2.getIngredients())
+        User user = userService.findById(idUser);
+        List<Cook> cooks = userService.getAllCooks(user);
+        Cook cook;
+        if (cooks.size() == 0)
         {
-            System.out.println("ingredient "+ in.getName() + " quantité après :"+ in.getIngredientQuantity());
+            cook = cookService.createCook("superCook",'M', user );
         }
-
-        /*List<Recipe> recettes = recipeService.getRecipes();
-        for (Recipe re : recettes) {
-            System.out.println(re.getName() + " " + re.getLooting1Name() + " " + re.lootIngredient.toString());
+        else
+        {
+            cook = cooks.get(0);
         }
+        if (recipeService.getRecipes().size()==0) {
+            recipeService.createRecipes();
+        }
+        while (cook.getIngredients().get(0).getIngredientQuantity() < 30)
+        {
+            ResultRecipeDTO rr = cookService.tryRecipe(1, cook);
+        }
+        /*
+        while (cook.getIngredients().get(1).getIngredientQuantity() < 30)
+        {
+            ResultRecipeDTO rr = cookService.tryRecipe(2, cook);
+        }*/
 
-        // code de test de suppression en cascade
-        User adieu = userService.create("Adieu");
 
-        Cook goodBye = cookService.createCook("goodbye", 'F', adieu);
-
-        userService.deleteUser(adieu);
         lessonService.initializeLesson();
 
-        cookLessonService.buyLesson(cookService.getCookById(1), lessonService.getLessonById(1));
-        cookLessonService.buyLesson(cookService.getCookById(1), lessonService.getLessonById(2));
-        List<CookLesson> toto = cookLessonService.getCookLesson(cookService.getCookById(1));
+        System.out.println(cook.getIngredients().get(0).getName()+" " +cook.getIngredients().get(0).getIngredientQuantity());
 
-        for (CookLesson cl : toto)
-
-            System.out.println(cl.toString());*/
-
-            System.out.println(cl.toString());
-        */
     }
 
 }
