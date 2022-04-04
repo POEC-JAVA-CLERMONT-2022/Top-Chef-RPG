@@ -8,22 +8,15 @@ import TopChefRPG.Service.UserService;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Recipe;
 import TopChefRPG.model.User;
-import org.assertj.core.internal.bytebuddy.dynamic.scaffold.MethodGraph;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
+
 
 @SpringBootTest
 
@@ -47,7 +40,7 @@ public class CookTest {
         //instantiation donnée
 
 
-        User paulo = userService.create("paulo");
+        User paulo = userService.create("paulo", "mail", "password");
 
 
 

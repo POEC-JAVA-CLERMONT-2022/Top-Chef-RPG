@@ -1,6 +1,8 @@
 package TopChefRPG.model;
 
 import org.aspectj.weaver.loadtime.Agent;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.*;
@@ -34,11 +36,12 @@ public class Cook {
     @Column (name="experience")
     private int experience;
 
-    @OneToMany( targetEntity=Ingredient.class, mappedBy="cook" , cascade = CascadeType.REMOVE)
+    @OneToMany( targetEntity=Ingredient.class, mappedBy="cook" , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Ingredient> ingredients;
 
 
-    @OneToMany(targetEntity = CookLesson.class, mappedBy = "cook", cascade = CascadeType.REMOVE)
+    @OneToMany(targetEntity = CookLesson.class, mappedBy = "cook", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<CookLesson> cookLessons;
 
     @ManyToOne

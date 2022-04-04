@@ -1,6 +1,8 @@
 package TopChefRPG.Service;
 
+import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Repository.UserRepository;
+import TopChefRPG.model.Cook;
 import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,14 +17,17 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CookRepository cookRepository;
+
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
     @Transactional
-    public User create(String name)
+    public User create(String name, String mail, String password)
     {
-        User user = new User(name, "mail", "password");
+        User user = new User(name, mail, password);
         return userRepository.save(user);
     }
 
@@ -46,6 +51,12 @@ public class UserService {
     {
         Optional<User> userFinded = userRepository.findUserByMailAndPassword(mail, password);
         return userFinded;
+    }
+
+    // fonction non utile si l'on garde le fetch EAGER dans l'entity
+    public List<Cook> getAllCooks (User user)
+    {
+        return cookRepository.getCooksByUser(user);
     }
 
     public void deleteUser(User userToDelete)

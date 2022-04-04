@@ -28,6 +28,7 @@ public class CookService {
         cook = this.cookRepository.save(cook);
         // instancier la liste d'ingredients
         ingredientService.initializeIngredient(cook);
+        //cook = this.cookRepository.save(cook);
 
         return cook;
     }
