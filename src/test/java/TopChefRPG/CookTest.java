@@ -8,15 +8,23 @@ import TopChefRPG.Service.UserService;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Recipe;
 import TopChefRPG.model.User;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import org.aspectj.lang.annotation.Before;
+import org.assertj.core.internal.bytebuddy.dynamic.scaffold.MethodGraph;
+import org.junit.jupiter.api.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Optional;
 
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 
 @SpringBootTest
 
@@ -34,11 +42,13 @@ public class CookTest {
     @Autowired
     RecipeService recipeService;
 
+
     @Test
-    public void testCreateCook() {
+
+    @DisplayName("Save Cook")
+    public void testSaveCook() {
 
         //instantiation donnée
-
 
         User paulo = userService.create("paulo", "mail", "password");
 
@@ -47,31 +57,70 @@ public class CookTest {
         Cook cook1 = new Cook("alexandre", 'M', paulo);
         Cook cook2 = new Cook("alexandra", 'F', paulo);
 
+
         //appel de la méthode à tester
 
 
         cook1 = cookService.saveCook(cook1);
-        cookService.saveCook(cook2);
-        Integer test = cook1.getId();
-        System.out.println("test= " + test);
-
-        cook1.setName("boris");
-
-
-        //LinkedList<Cook> cookList = new LinkedList<Cook>();
-
-        //Cook cook3 = cookRepository.getCookByName("boris");
+        //cookService.saveCook(cook2);
+        System.out.println("toto)");
         //test des valeurs après execution du code
+        //test si l'id de cook 1 = 1'
+        Assertions.assertEquals("alexandre", cookRepository.getCookById(cook1.getId()).getName());
+        //test du nombre de cook créés
+        //Assertions.assertEquals(2, cookRepository.findAll().size());
+
+    }
+
+    @Test
+    @DisplayName("test create cook")
+    public void testCreateCook(){
+
+        User paulo = userService.create("paulo");
+
+
+        Cook cook1 = cookService.createCook("alexandre", 'M', paulo);
 
         Assertions.assertNotNull(cook1);
-        //Assertions.assertEquals("boris", cook1.getName());
-        Assertions.assertEquals("boris", cookService.getCookById(cook1.getId()).getName());
 
-        Assertions.assertNotEquals(1, cookRepository.findAll().size());
+    }
 
-        //Assertions.assertEquals(2, cookList.size() );
 
-        //Assertions.assertEquals("toto", "toto");
-        //Assertions.assertEquals(2, recettes.size());
+    @Test
+    @DisplayName("changement de nom du cook")
+    public void TestChangeName() {
+
+        //instantiation donnée
+        User paulo = userService.create("paulo");
+
+
+        Cook cook1 = new Cook("alexandre", 'M', paulo);
+
+        Cook cookenbase = cookService.saveCook(cook1);
+
+
+        //methode à tester
+        cookService.changeName(cookenbase, "stephane");
+
+
+        Assertions.assertEquals("stephane", cookService.getCookById(cookenbase.getId()).getName());
+
+    }
+        @Test
+        @DisplayName("changement d'XP")
+        public void testChangeXPCook()
+        {
+            User paulo = userService.create("paulo");
+            Cook cook1 = new Cook("alexandre", 'M', paulo);
+
+            cookRepository.save(cook1);
+
+            cook1.changeExperience(3);
+
+            cookRepository.save(cook1);
+
+            Assertions.assertEquals(3, cookService.getCookById(cook1.getId()).getExperience());
+
     }
 }
+
