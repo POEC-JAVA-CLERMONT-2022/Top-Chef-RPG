@@ -2,10 +2,7 @@ package TopChefRPG.Service;
 
 import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Service.DTO.ResultRecipeDTO;
-import TopChefRPG.model.Cook;
-import TopChefRPG.model.Ingredient;
-import TopChefRPG.model.Recipe;
-import TopChefRPG.model.User;
+import TopChefRPG.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +18,10 @@ public class CookService {
     private IngredientService ingredientService;
 
     @Autowired
-    RecipeService recipeService;
+    private RecipeService recipeService;
+
+    @Autowired
+    private LessonService lessonService;
 
     public Cook createCook(String name, Character gender, User user) {
         Cook cook = new Cook(name, gender, user);
@@ -39,15 +39,10 @@ public class CookService {
         return cook;
     }
 
-    public Cook saveCook(Cook cook) {
-        return cookRepository.save(cook);
-    }
+    // la fonction save cook permet de sauvegarder étagalement les ingredients associés au cook et ses cooklecons.
+    public Cook saveCook(Cook cook) {  return cookRepository.save(cook);}
 
-    // fonction de sauvegarde des ingredients du cook. Appel la fonction de sauvegarde des ingredients
-    // en passant une liste d'ingredients
-    public void saveCookIngredients(Cook cook) {
-        ingredientService.saveIngredients(cook.getIngredients());
-    }
+
 
     public void deleteCook(Cook cook) {
         cookRepository.deleteById(cook.getId());
@@ -131,6 +126,22 @@ public class CookService {
             cookRepository.save(cook);
         }
         return RRDTO;
+    }
+
+    public Cook doLesson (int idLesson, Cook cook)
+    {
+        // récupérer la lesson en base
+        Lesson lesson = lessonService.getLessonById(idLesson);
+
+        // Vérification que l'expérience est suffisante et
+        // mAJ de l'expérience
+
+
+        //Amélioration des stats du cook
+
+        // incrémentation de cooklesson
+
+        return cookRepository.save(cook);
     }
 
     public Cook getCookById(int id) {

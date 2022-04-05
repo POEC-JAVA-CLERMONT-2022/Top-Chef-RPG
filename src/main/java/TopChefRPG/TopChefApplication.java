@@ -82,7 +82,16 @@ public class TopChefApplication {
         }*/
 
 
-        lessonService.initializeLesson();
+
+        List<Lesson> lessons = lessonService.getAllLessons();
+        if (lessons.size() == 0)
+        {
+            lessonService.initializeLesson();
+        }
+
+        Lesson lesson = lessonService.getLessonById(1);
+
+        cook = cookLessonService.buyLesson(cook, lesson);
 
         System.out.println(cook.getIngredients().get(0).getName()+" " +cook.getIngredients().get(0).getIngredientQuantity());
 

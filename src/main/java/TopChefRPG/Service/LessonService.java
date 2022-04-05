@@ -6,6 +6,8 @@ import TopChefRPG.model.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LessonService {
 
@@ -25,6 +27,11 @@ public class LessonService {
     }
 
     public Lesson getLessonById(int Id) {
-        return lessonRepository.getById(Id);
+        return lessonRepository.getLessonById(Id);
+    }
+
+    public List<Lesson> getAllLessons()
+    {
+        return lessonRepository.findAll();
     }
 }

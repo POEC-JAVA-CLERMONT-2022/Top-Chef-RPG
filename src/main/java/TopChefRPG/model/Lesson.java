@@ -27,6 +27,11 @@ public class Lesson {
 
     private int experienceCost;
 
+    // variables pour l'achat
+    private String ingredientName ;
+
+    private String ingredientQuantity;
+
     @OneToMany(targetEntity = CookLesson.class, mappedBy = "lesson")
     private List<CookLesson> cookLessons;
 

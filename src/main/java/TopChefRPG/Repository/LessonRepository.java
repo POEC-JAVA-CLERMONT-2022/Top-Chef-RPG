@@ -14,5 +14,7 @@ public interface LessonRepository extends JpaRepository<Lesson,Integer> {
 
     Lesson findByName(String name);
 
+    Lesson getLessonById(int id);
+
 
 }
