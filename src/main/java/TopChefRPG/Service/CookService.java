@@ -85,8 +85,7 @@ public class CookService {
                     }
                 }
             }
-            // sauvegarde en base des ingredients utilisés par la recette
-            ingredientService.saveIngredients(cook.getIngredients());
+
 
             RRDTO.addIngredientUsed(recipe.requiredIngredients);
 
@@ -103,8 +102,6 @@ public class CookService {
                         }
                     }
                 }
-                // sauvegarde en base des ingrédients
-                ingredientService.saveIngredients(cook.getIngredients());
 
                 // mise à jour de l'expérience du cook
                 cook.changeExperience(recipe.getExperience());
@@ -130,17 +127,42 @@ public class CookService {
 
     public Cook doLesson (int idLesson, Cook cook)
     {
-        // récupérer la lesson en base
-        Lesson lesson = lessonService.getLessonById(idLesson);
+        boolean haveBuyLesson = false;
+        // on parcourt les cooklessons possedées par le cook pour voir si il possède la bonne leçon.
+        for (CookLesson cl : cook.getCookLessons())
+        {
+            if (cl.getLesson().getIdLesson() == idLesson) {
+                haveBuyLesson = true;
+                Lesson lesson = cl.getLesson();
+                // Vérification que l'expérience est suffisante
+                if (cook.getExperience() > lesson.getExperienceCost())
+                {
+                    // MAJ de l'expérience
+                    cook.changeExperience(- lesson.getExperienceCost());
+                    //Amélioration des stats du cook
 
-        // Vérification que l'expérience est suffisante et
-        // mAJ de l'expérience
+                    int strengthIncrease = (lesson.getStrengthIncrease() - cook.getStrength()+1)/2;
+                    if (strengthIncrease <0) {strengthIncrease =0;}
+                    int dexterityIncrease = (lesson.getDexterityIncrease() - cook.getDexterity()+1)/2;
+                    if (dexterityIncrease<0){dexterityIncrease=0;}
+                    int creativityIncrease = (lesson.getCreativityIncrease() - cook.getCreativity()+1)/2;
+                    if (creativityIncrease < 0) { creativityIncrease =0;}
+                    int luckIncrease = (lesson.getLuckIncrease() - cook.getLuck()+1)/2;
+                    if (luckIncrease <0 ) { luckIncrease = 0 ;}
 
-
-        //Amélioration des stats du cook
-
-        // incrémentation de cooklesson
-
+                    cook.changeCaracteristique(strengthIncrease, dexterityIncrease, creativityIncrease, luckIncrease);
+                    // incrémentation de cooklesson
+                    cl.incrementCountUse();
+                }
+                else{
+                    // message erreur cook pas assez d'expérience
+                }
+            }
+        }
+        if (haveBuyLesson == false)
+        {
+            //message erreur lesson pas possedée par le cook;+
+        }
         return cookRepository.save(cook);
     }
 

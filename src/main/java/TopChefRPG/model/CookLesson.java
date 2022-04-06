@@ -42,5 +42,12 @@ public class CookLesson {
     }
 
 
+    public Cook getCook() {
+        return cook;
+    }
+
+    public Lesson getLesson() {
+        return lesson;
+    }
 }
 

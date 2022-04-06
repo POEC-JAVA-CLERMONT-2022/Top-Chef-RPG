@@ -27,16 +27,14 @@ public class Lesson {
 
     private int experienceCost;
 
+
     // variables pour l'achat
-    private String ingredientName ;
+    private String ingredientName;
 
     private String ingredientQuantity;
 
     @OneToMany(targetEntity = CookLesson.class, mappedBy = "lesson")
     private List<CookLesson> cookLessons;
-
-
-
 
 
     public Lesson() {
@@ -80,4 +78,8 @@ public class Lesson {
     public int getExperienceCost() {
         return experienceCost;
     }
+
+    public String getIngredientName() { return ingredientName; }
+
+    public String getIngredientQuantity() { return ingredientQuantity; }
 }

@@ -111,6 +111,7 @@ public class Cook {
         return this.ingredients;
     }
 
+    public List<CookLesson> getCookLessons() { return this.cookLessons;}
 
     public void addLesson(CookLesson cookLesson){
         this.cookLessons.add(cookLesson);
@@ -124,7 +125,13 @@ public class Cook {
         {
             System.out.println("impossible de mettre à jour l'expérience car résultat final inférieur à 0 !");
         }
-
+    }
+    public void changeCaracteristique(int strengthIncrease, int dexterityIncrease, int creativityIncrease, int luckIncrease)
+    {
+        this.strength+=strengthIncrease;
+        this.dexterity += dexterityIncrease;
+        this.creativity += creativityIncrease;
+        this.luck += luckIncrease;
     }
 
 }
