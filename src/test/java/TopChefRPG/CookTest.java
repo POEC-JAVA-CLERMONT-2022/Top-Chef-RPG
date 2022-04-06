@@ -76,7 +76,7 @@ public class CookTest {
     @DisplayName("test create cook")
     public void testCreateCook(){
 
-        User paulo = userService.create("paulo");
+        User paulo = userService.create("paulo", "mail","password");
 
 
         Cook cook1 = cookService.createCook("alexandre", 'M', paulo);
@@ -91,7 +91,7 @@ public class CookTest {
     public void TestChangeName() {
 
         //instantiation donnée
-        User paulo = userService.create("paulo");
+        User paulo = userService.create("paulo","mail", "pass");
 
 
         Cook cook1 = new Cook("alexandre", 'M', paulo);
@@ -110,7 +110,7 @@ public class CookTest {
         @DisplayName("changement d'XP")
         public void testChangeXPCook()
         {
-            User paulo = userService.create("paulo");
+            User paulo = userService.create("paulo", "mail", "password");
             Cook cook1 = new Cook("alexandre", 'M', paulo);
 
             cookRepository.save(cook1);

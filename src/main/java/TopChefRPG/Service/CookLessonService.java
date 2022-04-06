@@ -20,9 +20,12 @@ public class CookLessonService {
     @Autowired
     private CookRepository cookRepository;
 
-    public void buyLesson(Cook cook, Lesson lesson){
+    public Cook buyLesson(Cook cook, Lesson lesson){
+        // tester si l'achat est possible en checkant la quantité d'ingrédients;
+
         CookLesson cookLesson = new CookLesson(cook, lesson);
-        cookLessonRepository.save(cookLesson);
+        cook.addLesson(cookLesson);
+        return cookRepository.save(cook);
     }
 
     public List<CookLesson> getCookLesson(Cook cook){

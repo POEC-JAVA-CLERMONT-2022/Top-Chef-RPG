@@ -71,6 +71,8 @@ public class TopChefApplication {
         if (recipeService.getRecipes().size()==0) {
             recipeService.createRecipes();
         }
+        cook = cookService.getCookById(cook.getId());
+
         while (cook.getIngredients().get(0).getIngredientQuantity() < 30)
         {
             ResultRecipeDTO rr = cookService.tryRecipe(1, cook);
@@ -82,7 +84,18 @@ public class TopChefApplication {
         }*/
 
 
-        lessonService.initializeLesson();
+
+        List<Lesson> lessons = lessonService.getAllLessons();
+        if (lessons.size() == 0)
+        {
+            lessonService.initializeLesson();
+        }
+
+        Lesson lesson = lessonService.getLessonById(1);
+
+        // ajouter contrôle si lecon n'est pas déjà achetée
+        cook = cookLessonService.buyLesson(cook, lesson);
+         cook = cookService.doLesson(lesson.getIdLesson(), cook);
 
         System.out.println(cook.getIngredients().get(0).getName()+" " +cook.getIngredients().get(0).getIngredientQuantity());
 

@@ -37,7 +37,7 @@ public class IngredientService {
         cookRepository.save(cook);
     }
 
-    // mise à jour de la liste d'ingredients d'un user
+    // mise à jour de la liste d'ingredients d'un cook !! Attention innutile avec la mise à jour en direct de la bdd par hibernate
     public void saveIngredients(List<Ingredient> ingredients)
     {
         for (Ingredient ing :ingredients)

@@ -2,10 +2,7 @@ package TopChefRPG.Service;
 
 import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Service.DTO.ResultRecipeDTO;
-import TopChefRPG.model.Cook;
-import TopChefRPG.model.Ingredient;
-import TopChefRPG.model.Recipe;
-import TopChefRPG.model.User;
+import TopChefRPG.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +18,10 @@ public class CookService {
     private IngredientService ingredientService;
 
     @Autowired
-    RecipeService recipeService;
+    private RecipeService recipeService;
+
+    @Autowired
+    private LessonService lessonService;
 
     public Cook createCook(String name, Character gender, User user) {
         Cook cook = new Cook(name, gender, user);
@@ -39,15 +39,10 @@ public class CookService {
         return cook;
     }
 
-    public Cook saveCook(Cook cook) {
-        return cookRepository.save(cook);
-    }
+    // la fonction save cook permet de sauvegarder étagalement les ingredients associés au cook et ses cooklecons.
+    public Cook saveCook(Cook cook) {  return cookRepository.save(cook);}
 
-    // fonction de sauvegarde des ingredients du cook. Appel la fonction de sauvegarde des ingredients
-    // en passant une liste d'ingredients
-    public void saveCookIngredients(Cook cook) {
-        ingredientService.saveIngredients(cook.getIngredients());
-    }
+
 
     public void deleteCook(Cook cook) {
         cookRepository.deleteById(cook.getId());
@@ -90,8 +85,7 @@ public class CookService {
                     }
                 }
             }
-            // sauvegarde en base des ingredients utilisés par la recette
-            ingredientService.saveIngredients(cook.getIngredients());
+
 
             RRDTO.addIngredientUsed(recipe.requiredIngredients);
 
@@ -108,8 +102,6 @@ public class CookService {
                         }
                     }
                 }
-                // sauvegarde en base des ingrédients
-                ingredientService.saveIngredients(cook.getIngredients());
 
                 // mise à jour de l'expérience du cook
                 cook.changeExperience(recipe.getExperience());
@@ -131,6 +123,47 @@ public class CookService {
             cookRepository.save(cook);
         }
         return RRDTO;
+    }
+
+    public Cook doLesson (int idLesson, Cook cook)
+    {
+        boolean haveBuyLesson = false;
+        // on parcourt les cooklessons possedées par le cook pour voir si il possède la bonne leçon.
+        for (CookLesson cl : cook.getCookLessons())
+        {
+            if (cl.getLesson().getIdLesson() == idLesson) {
+                haveBuyLesson = true;
+                Lesson lesson = cl.getLesson();
+                // Vérification que l'expérience est suffisante
+                if (cook.getExperience() > lesson.getExperienceCost())
+                {
+                    // MAJ de l'expérience
+                    cook.changeExperience(- lesson.getExperienceCost());
+                    //Amélioration des stats du cook
+
+                    int strengthIncrease = (lesson.getStrengthIncrease() - cook.getStrength()+1)/2;
+                    if (strengthIncrease <0) {strengthIncrease =0;}
+                    int dexterityIncrease = (lesson.getDexterityIncrease() - cook.getDexterity()+1)/2;
+                    if (dexterityIncrease<0){dexterityIncrease=0;}
+                    int creativityIncrease = (lesson.getCreativityIncrease() - cook.getCreativity()+1)/2;
+                    if (creativityIncrease < 0) { creativityIncrease =0;}
+                    int luckIncrease = (lesson.getLuckIncrease() - cook.getLuck()+1)/2;
+                    if (luckIncrease <0 ) { luckIncrease = 0 ;}
+
+                    cook.changeCaracteristique(strengthIncrease, dexterityIncrease, creativityIncrease, luckIncrease);
+                    // incrémentation de cooklesson
+                    cl.incrementCountUse();
+                }
+                else{
+                    // message erreur cook pas assez d'expérience
+                }
+            }
+        }
+        if (haveBuyLesson == false)
+        {
+            //message erreur lesson pas possedée par le cook;+
+        }
+        return cookRepository.save(cook);
     }
 
     public Cook getCookById(int id) {
