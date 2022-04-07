@@ -30,6 +30,8 @@ public class Cook {
     @Column (name="luck")
     private int luck;
 
+
+
     @Column (name="gender")
     private Character gender;
 
@@ -65,6 +67,10 @@ public class Cook {
     public int getLuck() {
         return luck;
     }
+
+    public Character getGender() { return gender;}
+
+    public User getUser() { return user; }
 
     public String getName(){
         return this.name;
