@@ -135,7 +135,7 @@ public class CookService {
                 haveBuyLesson = true;
                 Lesson lesson = cl.getLesson();
                 // Vérification que l'expérience est suffisante
-                if (cook.getExperience() > lesson.getExperienceCost())
+                if (cook.getExperience() >= lesson.getExperienceCost())
                 {
                     // MAJ de l'expérience
                     cook.changeExperience(- lesson.getExperienceCost());

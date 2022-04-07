@@ -47,34 +47,27 @@ public class TopChefApplication {
     public void applicationStarted() {
 
         List<User> users = userService.findAll();
-        int idUser ;
-        if (users.size() == 0)
-        {
+        int idUser;
+        if (users.size() == 0) {
             User newUser = userService.create("userTest", "mymail@mail.com", "mdp");
             idUser = newUser.getId();
-        }
-        else
-        {
+        } else {
             idUser = users.get(0).getId();
         }
         User user = userService.findById(idUser);
         List<Cook> cooks = userService.getAllCooks(user);
         Cook cook;
-        if (cooks.size() == 0)
-        {
-            cook = cookService.createCook("superCook",'M', user );
-        }
-        else
-        {
+        if (cooks.size() == 0) {
+            cook = cookService.createCook("superCook", 'M', user);
+        } else {
             cook = cooks.get(0);
         }
-        if (recipeService.getRecipes().size()==0) {
+        if (recipeService.getRecipes().size() == 0) {
             recipeService.createRecipes();
         }
         cook = cookService.getCookById(cook.getId());
 
-        while (cook.getIngredients().get(0).getIngredientQuantity() < 30)
-        {
+        while (cook.getIngredients().get(0).getIngredientQuantity() < 30) {
             ResultRecipeDTO rr = cookService.tryRecipe(1, cook);
         }
         /*
@@ -84,20 +77,17 @@ public class TopChefApplication {
         }*/
 
 
-
         List<Lesson> lessons = lessonService.getAllLessons();
-        if (lessons.size() == 0)
-        {
+        if (lessons.size() == 0) {
             lessonService.initializeLesson();
         }
 
         Lesson lesson = lessonService.getLessonById(1);
 
-        // ajouter contrôle si lecon n'est pas déjà achetée
         cook = cookLessonService.buyLesson(cook, lesson);
-         cook = cookService.doLesson(lesson.getIdLesson(), cook);
+        cook = cookService.doLesson(lesson.getIdLesson(), cook);
 
-        System.out.println(cook.getIngredients().get(0).getName()+" " +cook.getIngredients().get(0).getIngredientQuantity());
+        System.out.println(cook.getIngredients().get(0).getName() + " " + cook.getIngredients().get(0).getIngredientQuantity());
 
     }
 

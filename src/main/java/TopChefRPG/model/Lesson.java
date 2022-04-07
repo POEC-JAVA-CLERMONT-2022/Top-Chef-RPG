@@ -31,7 +31,7 @@ public class Lesson {
     // variables pour l'achat
     private String ingredientName;
 
-    private String ingredientQuantity;
+    private int ingredientQuantity;
 
     @OneToMany(targetEntity = CookLesson.class, mappedBy = "lesson")
     private List<CookLesson> cookLessons;
@@ -41,7 +41,7 @@ public class Lesson {
 
     }
 
-    public Lesson(String name, Integer strengthIncrease, Integer dexterityIncrease, Integer creativityIncrease, Integer luckIncrease, Integer experienceCost) {
+    public Lesson(String name, Integer strengthIncrease, Integer dexterityIncrease, Integer creativityIncrease, Integer luckIncrease, Integer experienceCost, String ingredientName, int ingredientQuantity) {
 
         this.name = name;
         this.strengthIncrease = strengthIncrease;
@@ -49,6 +49,8 @@ public class Lesson {
         this.creativityIncrease = creativityIncrease;
         this.luckIncrease = luckIncrease;
         this.experienceCost = experienceCost;
+        this.ingredientName = ingredientName;
+        this.ingredientQuantity = ingredientQuantity;
     }
 
     public int getIdLesson() {
@@ -81,5 +83,5 @@ public class Lesson {
 
     public String getIngredientName() { return ingredientName; }
 
-    public String getIngredientQuantity() { return ingredientQuantity; }
+    public int getIngredientQuantity() { return ingredientQuantity; }
 }
