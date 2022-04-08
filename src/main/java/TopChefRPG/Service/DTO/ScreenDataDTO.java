@@ -1,14 +1,11 @@
 package TopChefRPG.Service.DTO;
-
 import TopChefRPG.Service.RecipeService;
 import TopChefRPG.model.*;
-import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Component;
 import java.util.*;
 
+@Component
 public class ScreenDataDTO {
-    @Autowired
-    RecipeService recipeService;
 
     public int idCook;
     public String cookName;
@@ -24,8 +21,13 @@ public class ScreenDataDTO {
     public int userId;
     public List<RecipeDTO> recipes;
 
-    public ScreenDataDTO(Cook cook )
+    public ScreenDataDTO()
     {
+    }
+
+    public ScreenDataDTO(Cook cook)
+    {
+        RecipeService recipeService = new RecipeService();
         this.cookName = cook.getName();
         this.idCook = cook.getId();
         this.experience = cook.getExperience();

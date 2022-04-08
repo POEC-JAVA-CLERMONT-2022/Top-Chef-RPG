@@ -16,6 +16,7 @@ public class ScreenController {
     @Autowired
     CookService cookService;
 
+    //http://localhost:8080/screenData?idCook=1
     @GetMapping()
     public ScreenDataDTO getDataForScreen(@RequestParam int idCook)
     {
