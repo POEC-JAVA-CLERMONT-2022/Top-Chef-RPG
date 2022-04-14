@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 @SpringBootTest
-@ExtendWith(MockitoExtension.class)
 public class IngredientTest {
 
     User userTest;
@@ -41,7 +40,7 @@ public class IngredientTest {
     }
     @Test
     @DisplayName("Set Ingredient Quantity")
-    public void SetIngredientQuantity()
+    public void setIngredientQuantity()
     {
         Ingredient ingredientTest = new Ingredient("ingredientName", cook);
         // la valeur initiale doit être -1
