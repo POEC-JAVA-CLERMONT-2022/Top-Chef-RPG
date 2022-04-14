@@ -85,6 +85,7 @@ public class Cook {
         this.experience=0;
         this.gender= gender;
         this.ingredients=new ArrayList<Ingredient>() ;
+        this.cookLessons=new ArrayList<CookLesson>() ;
         this.user= user;
     }
 
