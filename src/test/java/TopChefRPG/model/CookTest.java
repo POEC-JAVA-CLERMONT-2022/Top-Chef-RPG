@@ -1,4 +1,5 @@
 package TopChefRPG.model;
+
 import TopChefRPG.Service.CookService;
 import TopChefRPG.Service.RecipeService;
 import TopChefRPG.Service.UserService;
@@ -30,13 +31,12 @@ public class CookTest {
     RecipeService recipeService;
 
 
-
-@BeforeEach
-public void varInitialize(){
-    paulo = userService.create("paulo", "mail", "password");
-    cook1 = new Cook("alexandre", 'M', paulo);
-    cook2 = new Cook("alexandra", 'F', paulo);
-}
+    @BeforeEach
+    public void varInitialize() {
+        paulo = userService.create("paulo", "mail", "password");
+        cook1 = new Cook("alexandre", 'M', paulo);
+        cook2 = new Cook("alexandra", 'F', paulo);
+    }
 
 
     @Test
@@ -48,14 +48,13 @@ public void varInitialize(){
         Assertions.assertEquals("stephane", cook1.getName());
     }
 
-        @Test
-        @DisplayName("changement d'XP")
-        public void testChangeXPCook()
-        {
-            Assertions.assertNotNull(cook1.getExperience());
-            Assertions.assertEquals(0, cook1.getExperience());
-            cook1.changeExperience(3);
-            Assertions.assertEquals(3, cook1.getExperience());
+    @Test
+    @DisplayName("changement d'XP")
+    public void testChangeXPCook() {
+        Assertions.assertNotNull(cook1.getExperience());
+        Assertions.assertEquals(0, cook1.getExperience());
+        cook1.changeExperience(3);
+        Assertions.assertEquals(3, cook1.getExperience());
 
     }
 
