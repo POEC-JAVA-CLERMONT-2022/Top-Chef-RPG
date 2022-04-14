@@ -42,5 +42,7 @@ public class User {
         return id;
     }
 
+    public String getMail() { return mail; }
+
 
 }
