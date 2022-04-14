@@ -66,7 +66,7 @@ public void varInitialize(){
         //appel de la méthode à tester
 
 
-        cook1 = cookService.saveCook(cook1);
+        //cook1 = cookService.saveCook(cook1);
         //cookService.saveCook(cook2);
         System.out.println("toto)");
         //test des valeurs après execution du code
