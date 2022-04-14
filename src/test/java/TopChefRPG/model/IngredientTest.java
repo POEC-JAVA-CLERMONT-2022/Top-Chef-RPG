@@ -1,4 +1,4 @@
-package TopChefRPG;
+package TopChefRPG.model;
 
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Ingredient;
