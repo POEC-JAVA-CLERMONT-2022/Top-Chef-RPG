@@ -4,19 +4,21 @@ import TopChefRPG.model.Cook;
 import TopChefRPG.model.Ingredient;
 import TopChefRPG.model.User;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+
 @SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class IngredientTest {
 
     User userTest;
     Cook cook;
 
-   @BeforeAll
-    public void contentInitilizing()
+   @BeforeEach
+    public void contentInitializing()
     {
-        System.out.println("totoé");
         userTest= new User("userForIngredientTest", "mail", "password");
         cook = new Cook("cookTestIngredient", 'F', userTest);
     }
