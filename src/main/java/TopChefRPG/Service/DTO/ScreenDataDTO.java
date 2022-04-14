@@ -1,7 +1,9 @@
 package TopChefRPG.Service.DTO;
+
 import TopChefRPG.Service.RecipeService;
 import TopChefRPG.model.*;
 import org.springframework.stereotype.Component;
+
 import java.util.*;
 
 @Component
@@ -20,46 +22,38 @@ public class ScreenDataDTO {
     public String userName;
     public int userId;
     public List<RecipeDTO> recipes;
+    public String errorMessage;
 
-    public ScreenDataDTO()
-    {
+    public ScreenDataDTO() {
     }
 
-    public ScreenDataDTO(Cook cook)
+    public ScreenDataDTO(String errorMessage)
     {
-        RecipeService recipeService = new RecipeService();
+        this.errorMessage = errorMessage;
+    }
+
+    public ScreenDataDTO(Cook cook, ArrayList<RecipeDTO> recipeDTOs) {
         this.cookName = cook.getName();
         this.idCook = cook.getId();
         this.experience = cook.getExperience();
-        this.creativity =cook.getCreativity();
+        this.creativity = cook.getCreativity();
         this.dexterity = cook.getDexterity();
         this.strength = cook.getStrength();
         this.luck = cook.getLuck();
         this.gender = cook.getGender();
         this.ingredients = cook.getIngredients();
         this.lessons = new ArrayList<Lesson>();
-        for (CookLesson cl : cook.getCookLessons())
-        {
+        for (CookLesson cl : cook.getCookLessons()) {
             this.lessons.add(cl.getLesson());
         }
         this.userId = cook.getUser().getId();
         this.userName = cook.getUser().getName();
-        this.recipes = new ArrayList<RecipeDTO>();
-        for (Recipe recipe : recipeService.getRecipes())
-        {
-            RecipeDTO recipeDTO = new RecipeDTO(recipe, cook);
-            this.recipes.add(recipeDTO);
-        }
+        this.recipes = recipeDTOs;
         this.lessons = new ArrayList<Lesson>();
-        for (CookLesson cl : cook.getCookLessons())
-        {
+        for (CookLesson cl : cook.getCookLessons()) {
             this.lessons.add(cl.getLesson());
         }
     }
-
-
-
-
 
 
 }
