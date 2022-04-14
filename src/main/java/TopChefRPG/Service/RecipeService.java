@@ -12,7 +12,6 @@ import java.util.List;
 
 @Service
 public class RecipeService {
-
     @Autowired
     RecipeRepository recipeRepository;
 
@@ -93,9 +92,9 @@ public class RecipeService {
         // on calcul ensuite l'apport des niveaux requis (value max 50 %)
         int sumRequis = recipe.getCreativityRequired() + recipe.getStrengthRequired() + recipe.getDexterityRequired();
         // calcul de chaque apport de caracteristique : si la carac est au dessus du niveau requis elle ne compense pas une autre carac
-        double strengthGain = 0D;
-        double dexterityGain = 0D;
-        double creativityGain = 0D;
+        double strengthGain ;
+        double dexterityGain ;
+        double creativityGain ;
         double strengthRequired = recipe.getStrengthRequired();
         double dexterityRequired = recipe.getDexterityRequired();
         double creativityRequired = recipe.getCreativityRequired();
@@ -149,9 +148,9 @@ public class RecipeService {
         // on calcul ensuite l'apport des niveaux requis (value max 50 %)
         int sumRequis = recipe.getCreativityRequired() + recipe.getStrengthRequired() + recipe.getDexterityRequired();
         // calcul de chaque apport de caracteristique : si la carac est au dessus du niveau requis elle ne compense pas une autre carac
-        double strengthGain = 0D;
-        double dexterityGain = 0D;
-        double creativityGain = 0D;
+        double strengthGain ;
+        double dexterityGain ;
+        double creativityGain ;
         double strengthRequired = recipe.getStrengthRequired();
         double dexterityRequired = recipe.getDexterityRequired();
         double creativityRequired = recipe.getCreativityRequired();
