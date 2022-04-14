@@ -1,4 +1,4 @@
-package TopChefRPG;
+package TopChefRPG.model;
 
 import TopChefRPG.Repository.CookRepository;
 
@@ -15,27 +15,42 @@ import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.*;
 
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
 
+@ExtendWith(MockitoExtension.class)
+
 public class CookTest {
 
+    
     @Autowired
     UserService userService;
 
     @Autowired
     CookService cookService;
 
-    @Autowired
-    CookRepository cookRepository;
+    @Mock
+    CookRepository mockcookRepository;
 
     @Autowired
     RecipeService recipeService;
 
+
+@BeforeEach
+public void varInitialize(){
+    User paulo = userService.create("paulo", "mail", "password");
+    Cook cook1 = new Cook("alexandre", 'M', paulo);
+    Cook cook2 = new Cook("alexandra", 'F', paulo);
+}
 
     @Test
 
@@ -44,12 +59,8 @@ public class CookTest {
 
         //instantiation donnée
 
-        User paulo = userService.create("paulo", "mail", "password");
-
-
-
-        Cook cook1 = new Cook("alexandre", 'M', paulo);
-        Cook cook2 = new Cook("alexandra", 'F', paulo);
+        
+       
 
 
         //appel de la méthode à tester
@@ -60,7 +71,7 @@ public class CookTest {
         System.out.println("toto)");
         //test des valeurs après execution du code
         //test si l'id de cook 1 = 1'
-        Assertions.assertEquals("alexandre", cookRepository.getCookById(cook1.getId()).getName());
+        Assertions.assertEquals("alexandre", mockcookRepository.getCookById(cook1.getId()).getName());
         //test du nombre de cook créés
         //Assertions.assertEquals(2, cookRepository.findAll().size());
 
@@ -104,17 +115,20 @@ public class CookTest {
         @DisplayName("changement d'XP")
         public void testChangeXPCook()
         {
-            User paulo = userService.create("paulo", "mail", "password");
-            Cook cook1 = new Cook("alexandre", 'M', paulo);
+            
 
-            cookRepository.save(cook1);
+
+
 
             cook1.changeExperience(3);
 
-            cookRepository.save(cook1);
+            mockcookRepository.save(cook1);
 
             Assertions.assertEquals(3, cookService.getCookById(cook1.getId()).getExperience());
 
     }
+
+
+
 }
 
