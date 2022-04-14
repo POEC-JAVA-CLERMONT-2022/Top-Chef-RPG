@@ -1,30 +1,24 @@
 package TopChefRPG;
 
 import TopChefRPG.Repository.CookRepository;
-import TopChefRPG.Repository.UserRepository;
+
 import TopChefRPG.Service.CookService;
 import TopChefRPG.Service.RecipeService;
 import TopChefRPG.Service.UserService;
 import TopChefRPG.model.Cook;
-import TopChefRPG.model.Recipe;
+
 import TopChefRPG.model.User;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 
-import org.aspectj.lang.annotation.Before;
-import org.assertj.core.internal.bytebuddy.dynamic.scaffold.MethodGraph;
 import org.junit.jupiter.api.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-import java.util.Optional;
 
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
 
 @SpringBootTest
 
