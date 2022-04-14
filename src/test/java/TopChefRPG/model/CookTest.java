@@ -41,8 +41,6 @@ public class CookTest {
     @Autowired
     CookService cookService;
 
-
-
     @Autowired
     RecipeService recipeService;
 
@@ -53,10 +51,6 @@ public void varInitialize(){
     cook1 = new Cook("alexandre", 'M', paulo);
     cook2 = new Cook("alexandra", 'F', paulo);
 }
-
-
-
-
 
     @Test
     @DisplayName("changement de nom du cook")
@@ -74,13 +68,10 @@ public void varInitialize(){
         @DisplayName("changement d'XP")
         public void testChangeXPCook()
         {
-
+            Assertions.assertNotNull(cook1.getExperience());
+            Assertions.assertEquals(0, cook1.getExperience());
             cook1.changeExperience(3);
-
-
-
             Assertions.assertEquals(3, cook1.getExperience());
-
     }
 
 
