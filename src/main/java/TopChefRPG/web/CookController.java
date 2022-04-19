@@ -3,7 +3,6 @@ package TopChefRPG.web;
 
 import TopChefRPG.Service.CookService;
 import TopChefRPG.model.Cook;
-import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +26,12 @@ public class CookController {
         //return cookService.getCookById(id);
     }
 
+    @GetMapping("/{id}/delete")
+    public void delCookById(@PathVariable int id)
+    {
+        Cook cookDel = cookService.delCookById(id);
+    }
+    
    /* @PostMapping("/{id}")
     public Cook getCookById(@PathVariable int id)
     {
