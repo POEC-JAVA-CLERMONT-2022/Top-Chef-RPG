@@ -31,7 +31,7 @@ public class CookController {
     {
         Cook cookDel = cookService.delCookById(id);
     }
-    
+
    /* @PostMapping("/{id}")
     public Cook getCookById(@PathVariable int id)
     {
