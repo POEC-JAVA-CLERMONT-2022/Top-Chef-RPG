@@ -19,8 +19,8 @@ public class CookLessonTest {
         Lesson patate = new Lesson("patate", 3, 3, 3, 3, 3, "patate", 3);
         CookLesson cookLesson = new CookLesson(cook2, patate);
         assertNotNull(cookLesson);
-        assertEquals("paulo", cookLesson.getCook());
-        assertEquals("patate", cookLesson.getLesson());
+        assertEquals("alexandra", cookLesson.getCook().getName());
+        assertEquals("patate", cookLesson.getLesson().getName());
         assertEquals(0, cookLesson.getCountUse());
     }
 
