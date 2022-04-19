@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/recipe")
+@RequestMapping("/recipes")
 public class RecipeController {
 
     @Autowired
@@ -21,8 +21,8 @@ public class RecipeController {
     CookService cookService;
 
 
-    //localhost:8080/recipe/recipes/1
-    @GetMapping("/recipes/{idCook}")
+    //localhost:8080/recipes/1
+    @GetMapping("/{idCook}")
     public List<RecipeDTO> getRecipe(@PathVariable int idCook)
     {
         return recipeService.getRecipesDTO(idCook);

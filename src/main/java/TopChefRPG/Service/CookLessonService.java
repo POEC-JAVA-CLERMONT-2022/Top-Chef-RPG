@@ -9,6 +9,7 @@ import TopChefRPG.model.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -60,6 +61,16 @@ public class CookLessonService {
 
     public List<CookLesson> getCookLesson(Cook cook){
         return cookLessonRepository.findCookLessonByCook (cook);
+    }
+
+    public List<Lesson> getLessonsOfCook(Cook cook)
+    {
+        List<Lesson> lessons = new ArrayList<>();
+        for (CookLesson cl : cook.getCookLessons())
+        {
+            lessons.add(cl.getLesson());
+        }
+        return lessons;
     }
 
     public void doLesson (CookLesson cookLesson)
