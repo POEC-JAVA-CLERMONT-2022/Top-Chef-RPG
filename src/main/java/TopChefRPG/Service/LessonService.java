@@ -2,10 +2,14 @@ package TopChefRPG.Service;
 
 
 import TopChefRPG.Repository.LessonRepository;
+import TopChefRPG.Service.DTO.LessonDTO;
+import TopChefRPG.model.Cook;
+import TopChefRPG.model.CookLesson;
 import TopChefRPG.model.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,6 +17,11 @@ public class LessonService {
 
     @Autowired
     LessonRepository lessonRepository;
+    @Autowired
+    CookService cookService;
+
+    @Autowired
+    CookLessonService cookLessonService;
 
     public void initializeLesson() {
         Lesson lesson1 = new Lesson("couteaux japonais", 10, 10, 10, 10, 100, "pomme", 20);
@@ -33,5 +42,43 @@ public class LessonService {
     public List<Lesson> getAllLessons()
     {
         return lessonRepository.findAll();
+    }
+
+    public List<LessonDTO> getLessonsBuyed (int idCook)
+    {
+        List<LessonDTO> lessonDTOS = new ArrayList<>();
+        Cook cook = cookService.getCookById(idCook);
+        for (Lesson lesson : cookLessonService.getLessonsOfCook(cook))
+        {
+            LessonDTO lessonDTO = new LessonDTO(lesson);
+            lessonDTOS.add(lessonDTO);
+        }
+        return lessonDTOS;
+    }
+
+    public List<LessonDTO> getLessonsNotOwned (int idCook)
+    {
+        List<Lesson> lessons = getAllLessons();
+        Cook cook = cookService.getCookById(idCook);
+        List<Lesson> ownedLessons = cookLessonService.getLessonsOfCook(cook);
+        List<LessonDTO> notOwnedLessons =new ArrayList<>();
+
+        // on parcourt la liste des lessons achetées et on les retire de la liste générale de leçons.
+        for (Lesson lessonowned : ownedLessons)
+        {
+            for (Lesson lesson : lessons)
+            {
+                if (lessonowned == lesson)
+                {
+                    lessons.remove(lesson);
+                }
+            }
+        }
+        // on rempli la liste de lessons non achetées
+        for(Lesson notOwnedLesson : lessons)
+        {
+            notOwnedLessons.add(new LessonDTO(notOwnedLesson));
+        }
+        return notOwnedLessons;
     }
 }

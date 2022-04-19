@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Ingredient/")
+@RequestMapping("/Ingredients")
 public class IngredientController {
 
     @Autowired
@@ -20,6 +20,4 @@ public class IngredientController {
     public List<IngredientDTO> getIngredients(@PathVariable int idCook) {
         return ingredientService.getIngredientOfCook(idCook);
     }
-
-
 }
