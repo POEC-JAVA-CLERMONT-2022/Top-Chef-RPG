@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecipeDTO {
     @Autowired
@@ -25,7 +26,7 @@ public class RecipeDTO {
     public int experienceGain;
     public boolean doable ;
 
-    public RecipeDTO (Recipe recipe, Cook cook)
+    public RecipeDTO (Recipe recipe, int chanceOfSucces, List<Ingredient> ingredients)
     {
         this.idRecipe = recipe.getIdRecipe();
         this.name = recipe.getName();
@@ -34,12 +35,12 @@ public class RecipeDTO {
         this.strengthRequired = recipe.getStrengthRequired();
         this.creativityRequired = recipe.getCreativityRequired();
         this.dexterityRequired = recipe.getDexterityRequired();
-        this.chanceOfSucces = recipeService.getProbabilityOfSucces(recipe, cook);
+        this.chanceOfSucces = chanceOfSucces;
         this.experienceGain = recipe.getExperience();
         this.doable = true;
         for (Ingredient ingRequired : recipe.requiredIngredients)
         {
-            for (Ingredient ingStock : cook.getIngredients())
+            for (Ingredient ingStock : ingredients)
             {
                 if (ingRequired.getName().equals(ingStock.getName()))
                 {
