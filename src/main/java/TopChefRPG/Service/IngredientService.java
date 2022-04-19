@@ -2,6 +2,7 @@ package TopChefRPG.Service;
 
 import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Repository.IngredientRepository;
+import TopChefRPG.Service.DTO.IngredientDTO;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,22 @@ public class IngredientService {
             ingredientRepository.save(ing);
         }
     }
+
+    // retourne une liste d'ingrédients (nom quantité) qui ont été initialisés (quantité >-1)
+    public List<IngredientDTO> getIngredientOfCook (int idCook){
+        Cook cook = cookRepository.getCookById(idCook);
+        List<IngredientDTO> ingredientDTOS = new ArrayList<>();
+        for (Ingredient ingredient : cook.getIngredients())
+        {
+            if (ingredient.getIngredientQuantity()>-1)
+            {
+                IngredientDTO ingredientDTO = new IngredientDTO(ingredient);
+                ingredientDTOS.add(ingredientDTO);
+            }
+        }
+        return ingredientDTOS;
+    }
+
 
 
 }

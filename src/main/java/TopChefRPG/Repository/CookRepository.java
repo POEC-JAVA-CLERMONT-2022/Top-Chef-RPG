@@ -22,5 +22,4 @@ Cook getCookById(int id);
 @Query("select c from Cook c where c.user = ?1")
 List<Cook> getCooksByUser(User user);
 
-
 }
