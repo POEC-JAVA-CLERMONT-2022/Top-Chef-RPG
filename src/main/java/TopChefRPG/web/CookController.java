@@ -29,7 +29,7 @@ public class CookController {
     @GetMapping("/{id}/delete")
     public void delCookById(@PathVariable int id)
     {
-        Cook cookDel = cookService.delCookById(id);
+        cookService.delCookById(id);
     }
 
    /* @PostMapping("/{id}")
