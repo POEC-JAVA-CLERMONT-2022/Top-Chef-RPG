@@ -56,9 +56,11 @@ public class RecipeService {
         List<Recipe> recipes = getRecipes();
         Cook cook = cookService.getCookById(idCook);
         List<RecipeDTO> recipeDTOS = new ArrayList<>();
+        int chanceOfSuccess ;
         for (Recipe recipe : recipes)
         {
-            recipeDTOS.add(new RecipeDTO(recipe,cook));
+            chanceOfSuccess = getChanceSucces(recipe, cook);
+            recipeDTOS.add(new RecipeDTO(recipe, chanceOfSuccess, cook.getIngredients()));
         }
         return recipeDTOS;
     }
