@@ -59,9 +59,10 @@ public class UserService {
         return cookRepository.getCooksByUser(user);
     }
 
-    public void deleteUser(User userToDelete)
+    public void deleteUser(int id)
     {
-        userRepository.deleteById(userToDelete.getId());
+        userRepository.deleteById(id);
+
     }
 
 }
