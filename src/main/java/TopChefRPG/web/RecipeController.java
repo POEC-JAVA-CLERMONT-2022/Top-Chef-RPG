@@ -20,6 +20,8 @@ public class RecipeController {
     @Autowired
     CookService cookService;
 
+
+    //localhost:8080/recipe/recipes/1
     @GetMapping("/recipes/{idCook}")
     public List<RecipeDTO> getRecipe(@PathVariable int idCook)
     {
