@@ -1,6 +1,7 @@
 package TopChefRPG.Service;
 
 import TopChefRPG.Repository.RecipeRepository;
+import TopChefRPG.Service.DTO.RecipeDTO;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Ingredient;
 import TopChefRPG.model.Recipe;
@@ -14,6 +15,9 @@ import java.util.List;
 public class RecipeService {
     @Autowired
     RecipeRepository recipeRepository;
+
+    @Autowired
+    CookService cookService;
 
 
     public void createRecipes() {
@@ -46,6 +50,17 @@ public class RecipeService {
             }
         }
         return recipes;
+    }
+
+    public List<RecipeDTO> getRecipesDTO (int idCook){
+        List<Recipe> recipes = getRecipes();
+        Cook cook = cookService.getCookById(idCook);
+        List<RecipeDTO> recipeDTOS = new ArrayList<>();
+        for (Recipe recipe : recipes)
+        {
+            recipeDTOS.add(new RecipeDTO(recipe,cook));
+        }
+        return recipeDTOS;
     }
 
     public Recipe getRecipe(int id) {

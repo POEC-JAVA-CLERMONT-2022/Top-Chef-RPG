@@ -1,15 +1,13 @@
 package TopChefRPG.web;
-
 import TopChefRPG.Service.CookService;
+import TopChefRPG.Service.DTO.RecipeDTO;
 import TopChefRPG.Service.DTO.ResultRecipeDTO;
 import TopChefRPG.Service.RecipeService;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 
 @RestController
@@ -22,37 +20,16 @@ public class RecipeController {
     @Autowired
     CookService cookService;
 
-    @GetMapping()
-    public String getRecipe()
+    @GetMapping("/recipes/{idCook}")
+    public List<RecipeDTO> getRecipe(@PathVariable int idCook)
     {
-        return "toto";
+        return recipeService.getRecipesDTO(idCook);
     }
 
 
-
-    //localhost:8080/recipe/getProbability?idCook=1&idRecipe=1
-    @GetMapping("/getProbability")
-    public int getProbabilityOfSucces(@RequestParam int idCook, @RequestParam int idRecipe)
-    {
-        Cook cook = cookService.getCookById(idCook);
-        Recipe recipe = recipeService.getRecipe(idRecipe);
-        int chance = recipeService.getProbabilityOfSucces(recipe,cook);
-        return chance;
-    }
-
-    //localhost:8080/recipe/getsucces?idCook=1&idRecipe=1
-    @GetMapping("/getsucces")
-    public int getChanceSucces(@RequestParam int idCook, @RequestParam int idRecipe)
-    {
-        Cook cook = cookService.getCookById(idCook);
-        Recipe recipe = recipeService.getRecipe(idRecipe);
-        int chance = recipeService.getChanceSucces(recipe,cook);
-        return chance;
-    }
-
-    //localhost:8080/recipe/doRecipe?idCook=1&idRecipe=2
-    @GetMapping("/doRecipe")
-    public ResultRecipeDTO doRecipe(@RequestParam int idCook, @RequestParam int idRecipe)
+    //localhost:8080/recipe/doRecipe/1/2
+    @GetMapping("/doRecipe/{idCook}/{idRecipe}")
+    public ResultRecipeDTO doRecipe(@PathVariable int idCook, @PathVariable int idRecipe)
     {
         Cook cook = cookService.getCookById(idCook);
         Recipe recipe = recipeService.getRecipe(idRecipe);
