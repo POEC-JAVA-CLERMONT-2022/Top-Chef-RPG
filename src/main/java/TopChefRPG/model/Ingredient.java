@@ -56,6 +56,7 @@ public class Ingredient {
         {
             //message erreur
             System.out.println("modification de la quantité impossible car inférieure à 0 pour "+this.name);
+            
         }
     }
 
