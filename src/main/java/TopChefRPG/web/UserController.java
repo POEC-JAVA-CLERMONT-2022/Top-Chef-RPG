@@ -20,11 +20,12 @@ public class UserController {
 
     }
 
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable int id) {
+    @GetMapping("/{id}/name")
+    public String getUserById(@PathVariable int id) {
         User userFind = userService.findById(id);
-        return userFind;
+        return userFind.getName();
     }
+
 
     @GetMapping("/{id}/delete")
     public void delUserById(@PathVariable int id) {
