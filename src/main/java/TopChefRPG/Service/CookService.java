@@ -1,6 +1,7 @@
 package TopChefRPG.Service;
 
 import TopChefRPG.Repository.CookRepository;
+import TopChefRPG.Service.DTO.ResultLessonDTO;
 import TopChefRPG.Service.DTO.ResultRecipeDTO;
 import TopChefRPG.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,8 +126,9 @@ public class CookService {
         return RRDTO;
     }
 
-    public Cook doLesson (int idLesson, Cook cook)
+    public ResultLessonDTO doLesson (int idLesson, Cook cook)
     {
+        ResultLessonDTO resultLessonDTO = new ResultLessonDTO(-1,-1,-1,-1,-1);
         boolean haveBuyLesson = false;
         // on parcourt les cooklessons possedées par le cook pour voir si il possède la bonne leçon.
         for (CookLesson cl : cook.getCookLessons())
@@ -139,7 +141,7 @@ public class CookService {
                 {
                     // MAJ de l'expérience
                     cook.changeExperience(- lesson.getExperienceCost());
-                    //Amélioration des stats du cook
+                    //Amélioration des stats du cook de moitié de l'écart entre la valeur max et le niveau actuel jusqu'au max de la lesson
 
                     int strengthIncrease = (lesson.getStrengthIncrease() - cook.getStrength()+1)/2;
                     if (strengthIncrease <0) {strengthIncrease =0;}
@@ -153,6 +155,7 @@ public class CookService {
                     cook.changeCaracteristique(strengthIncrease, dexterityIncrease, creativityIncrease, luckIncrease);
                     // incrémentation de cooklesson
                     cl.incrementCountUse();
+                    resultLessonDTO = new ResultLessonDTO(dexterityIncrease, creativityIncrease, strengthIncrease, luckIncrease,lesson.getExperienceCost());
                 }
                 else{
                     // message erreur cook pas assez d'expérience
@@ -163,7 +166,8 @@ public class CookService {
         {
             //message erreur lesson pas possedée par le cook;+
         }
-        return cookRepository.save(cook);
+        cookRepository.save(cook);
+        return resultLessonDTO ;
     }
 
     public Cook getCookById(int id) {

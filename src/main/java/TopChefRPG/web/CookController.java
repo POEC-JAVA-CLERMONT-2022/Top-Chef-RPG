@@ -2,6 +2,7 @@ package TopChefRPG.web;
 
 
 import TopChefRPG.Service.CookService;
+import TopChefRPG.Service.DTO.CookDTO;
 import TopChefRPG.model.Cook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,17 +14,12 @@ public class CookController {
     @Autowired
     CookService cookService;
 
-    //http://localhost:8080/cook/
 
-
-
-    //http://localhost:8080/cook/id?id=1
+    //http://localhost:8080/cook/1
     @GetMapping("/{id}")
     public Cook getCookById(@PathVariable int id)
     {
-        Cook cookFind = cookService.getCookById(id);
-        return cookFind;
-        //return cookService.getCookById(id);
+        return cookService.getCookById(id);
     }
 
     @GetMapping("/{id}/delete")
@@ -31,12 +27,9 @@ public class CookController {
     {
         cookService.delCookById(id);
     }
-
-   /* @PostMapping("/{id}")
-    public Cook getCookById(@PathVariable int id)
-    {
-        Cook cookFind = cookService.getCookById();
-        cookFind.setName();
-
-    }*/
+    @PostMapping(path = "/changeName/{idCook}")
+    public void changeName(@RequestBody CookDTO cookDTO, @PathVariable int idCook) {
+        Cook cook = cookService.getCookById(idCook);
+        cookService.changeName(cook, cookDTO.newName);
+    }
 }
