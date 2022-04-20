@@ -1,6 +1,8 @@
 package TopChefRPG;
 
 
+import TopChefRPG.Repository.IngredientListRepository;
+import TopChefRPG.Repository.IngredientRepository;
 import TopChefRPG.Service.*;
 
 import TopChefRPG.Service.DTO.ResultRecipeDTO;
@@ -38,6 +40,9 @@ public class TopChefApplication {
     @Autowired
     private IngredientService ingredientService;
 
+    @Autowired
+    private IngredientListRepository ingredientListRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(TopChefApplication.class, args);
 
@@ -45,6 +50,10 @@ public class TopChefApplication {
 
     @EventListener(classes = {ApplicationStartedEvent.class})
     public void applicationStarted() {
+        if (ingredientListRepository.findAll().size()==0)
+        {
+            ingredientService.initializeIngredientListInBDD();
+        }
 
         List<User> users = userService.findAll();
         int idUser;
@@ -66,6 +75,7 @@ public class TopChefApplication {
             recipeService.createRecipes();
         }
         cook = cookService.getCookById(cook.getId());
+
 
         while (cook.getIngredients().get(0).getIngredientQuantity() < 30) {
             ResultRecipeDTO rr = cookService.tryRecipe(1, cook);

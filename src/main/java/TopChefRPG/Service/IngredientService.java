@@ -27,17 +27,10 @@ public class IngredientService {
 
     public void initializeIngredient(Cook cook)
     {
-
-
-
-
-
         for (IngredientList ingredientList : ingredientListRepository.findAll())
         {
             Ingredient ingredient = new Ingredient(ingredientList.getName(), cook);
             cook.getIngredients().add(ingredient);
-
-
         }
         cookRepository.save(cook);
     }
@@ -64,6 +57,19 @@ public class IngredientService {
             }
         }
         return ingredientDTOS;
+    }
+
+    public void initializeIngredientListInBDD()
+    {
+        IngredientList ing = new IngredientList("pomme");
+        ingredientListRepository.save(ing);
+        ing = new IngredientList("patate");
+        ingredientListRepository.save(ing);
+        ing = new IngredientList("steak");
+        ingredientListRepository.save(ing);
+        ing = new IngredientList("chou");
+        ingredientListRepository.save(ing);
+
     }
 
 
