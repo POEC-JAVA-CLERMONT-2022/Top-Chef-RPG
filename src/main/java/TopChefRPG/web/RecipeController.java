@@ -25,7 +25,8 @@ public class RecipeController {
     @GetMapping("/{idCook}")
     public List<RecipeDTO> getRecipe(@PathVariable int idCook)
     {
-        return recipeService.getRecipesDTO(idCook);
+        Cook cook = cookService.getCookById(idCook);
+        return recipeService.getRecipesDTO(cook);
     }
 
 

@@ -31,12 +31,14 @@ public class LessonController {
 
     @GetMapping("/ownedByCook/{idCook}")
     public List<LessonDTO> getLessonsOwned(@PathVariable int idCook) {
-        return lessonService.getLessonsBuyed(idCook);
+        Cook cook = cookService.getCookById(idCook);
+        return lessonService.getLessonsBuyed(cook);
     }
 
     @GetMapping("/tobuy/{idCook}")
     public List<LessonDTO> getLessonToBuy(@PathVariable int idCook) {
-        return lessonService.getLessonsNotOwned(idCook);
+        Cook cook = cookService.getCookById(idCook);
+        return lessonService.getLessonsNotOwned(cook);
     }
 
     @GetMapping("/buyLesson/{idCook}/{idLesson}")
