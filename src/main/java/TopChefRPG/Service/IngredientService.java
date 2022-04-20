@@ -1,10 +1,12 @@
 package TopChefRPG.Service;
 
 import TopChefRPG.Repository.CookRepository;
+import TopChefRPG.Repository.IngredientListRepository;
 import TopChefRPG.Repository.IngredientRepository;
 import TopChefRPG.Service.DTO.IngredientDTO;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Ingredient;
+import TopChefRPG.model.IngredientList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,20 +22,22 @@ public class IngredientService {
     @Autowired
     CookRepository cookRepository;
 
+    @Autowired
+    IngredientListRepository ingredientListRepository;
+
     public void initializeIngredient(Cook cook)
     {
-        ArrayList<String> ingredients = new ArrayList<String>();
-        ingredients.add("pomme");
-        ingredients.add("patate");
-        ingredients.add("steak");
-        ingredients.add("farine");
 
-        for (String ing : ingredients)
+
+
+
+
+        for (IngredientList ingredientList : ingredientListRepository.findAll())
         {
-            Ingredient ingredient = new Ingredient(ing, cook);
+            Ingredient ingredient = new Ingredient(ingredientList.getName(), cook);
             cook.getIngredients().add(ingredient);
 
-            //ingredientRepository.save(ingredient);
+
         }
         cookRepository.save(cook);
     }
