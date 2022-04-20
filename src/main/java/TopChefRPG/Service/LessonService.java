@@ -17,8 +17,7 @@ public class LessonService {
 
     @Autowired
     LessonRepository lessonRepository;
-    @Autowired
-    CookService cookService;
+
 
     @Autowired
     CookLessonService cookLessonService;
@@ -44,10 +43,9 @@ public class LessonService {
         return lessonRepository.findAll();
     }
 
-    public List<LessonDTO> getLessonsBuyed (int idCook)
+    public List<LessonDTO> getLessonsBuyed (Cook cook)
     {
         List<LessonDTO> lessonDTOS = new ArrayList<>();
-        Cook cook = cookService.getCookById(idCook);
         for (Lesson lesson : cookLessonService.getLessonsOfCook(cook))
         {
             LessonDTO lessonDTO = new LessonDTO(lesson);
@@ -56,10 +54,9 @@ public class LessonService {
         return lessonDTOS;
     }
 
-    public List<LessonDTO> getLessonsNotOwned (int idCook)
+    public List<LessonDTO> getLessonsNotOwned (Cook cook)
     {
         List<Lesson> lessons = getAllLessons();
-        Cook cook = cookService.getCookById(idCook);
         List<Lesson> ownedLessons = cookLessonService.getLessonsOfCook(cook);
         List<LessonDTO> notOwnedLessons =new ArrayList<>();
 

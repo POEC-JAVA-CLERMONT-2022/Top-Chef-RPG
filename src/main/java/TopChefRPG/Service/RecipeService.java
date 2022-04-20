@@ -16,9 +16,6 @@ public class RecipeService {
     @Autowired
     RecipeRepository recipeRepository;
 
-    @Autowired
-    CookService cookService;
-
 
     public void createRecipes() {
 
@@ -52,9 +49,9 @@ public class RecipeService {
         return recipes;
     }
 
-    public List<RecipeDTO> getRecipesDTO (int idCook){
+    public List<RecipeDTO> getRecipesDTO (Cook cook){
         List<Recipe> recipes = getRecipes();
-        Cook cook = cookService.getCookById(idCook);
+
         List<RecipeDTO> recipeDTOS = new ArrayList<>();
         int chanceOfSuccess ;
         for (Recipe recipe : recipes)
