@@ -22,4 +22,11 @@ public class IngredientList {
 
     public IngredientList()
     {}
+
+    public IngredientList(String name)
+    {
+        this.name = name;
+    }
+
+
 }
