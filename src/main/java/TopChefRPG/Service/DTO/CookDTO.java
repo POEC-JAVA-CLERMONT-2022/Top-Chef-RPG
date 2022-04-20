@@ -4,6 +4,15 @@ import TopChefRPG.model.Cook;
 import org.springframework.beans.BeanUtils;
 
 public class CookDTO {
+    private String name;
+    private String newName;
+    private int id;
+    private int dexterity;
+    private int strength;
+    private int creativity;
+    private int luck;
+    private Character gender;
+    private int experience;
 
     public String getName() {
         return name;
@@ -17,12 +26,12 @@ public class CookDTO {
         return newName;
     }
 
-    public int getIdCook() {
-        return idCook;
+    public int getId() {
+        return id;
     }
 
-    public void setIdCook(int idCook) {
-        this.idCook = idCook;
+    public void setId(int idCook) {
+        this.id = idCook;
     }
 
     public int getDexterity() {
@@ -73,21 +82,13 @@ public class CookDTO {
         this.experience = experience;
     }
 
-    private String name;
-    private String newName;
-    private int idCook;
-    private int dexterity;
-    private int strength;
-    private int creativity;
-    private int luck;
-    private Character gender;
-    private int experience;
+
 
 
 
     public CookDTO(String name, int idCook) {
         this.name = name;
-        this.idCook = idCook;
+        this.id = idCook;
     }
 
     public CookDTO() {
@@ -95,6 +96,7 @@ public class CookDTO {
 
     public void setCookDTO(Cook cook) {
         BeanUtils.copyProperties(cook, this);
+
     }
 
 
