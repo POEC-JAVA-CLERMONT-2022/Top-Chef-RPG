@@ -17,9 +17,11 @@ public class CookController {
 
     //http://localhost:8080/cook/1
     @GetMapping("/{id}")
-    public Cook getCookById(@PathVariable int id)
+    public CookDTO getCookById(@PathVariable int id)
     {
-        return cookService.getCookById(id);
+        CookDTO cookDTO = new CookDTO();
+        cookDTO.setCookDTO(cookService.getCookById(id));
+        return cookDTO;
     }
 
     @GetMapping("/{id}/delete")
@@ -30,6 +32,6 @@ public class CookController {
     @PostMapping(path = "/changeName/{idCook}")
     public void changeName(@RequestBody CookDTO cookDTO, @PathVariable int idCook) {
         Cook cook = cookService.getCookById(idCook);
-        cookService.changeName(cook, cookDTO.newName);
+        cookService.changeName(cook, cookDTO.getNewName());
     }
 }
