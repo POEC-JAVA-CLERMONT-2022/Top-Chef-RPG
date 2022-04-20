@@ -84,11 +84,6 @@ public class TopChefApplication {
 
         Lesson lesson = lessonService.getLessonById(1);
 
-
-
-
-        System.out.println(cook.getIngredients().get(0).getName() + " " + cook.getIngredients().get(0).getIngredientQuantity());
-
     }
 
 }
