@@ -44,6 +44,6 @@ public class CookController {
     public void createCook(@RequestBody CookDTO cookDTO, @PathVariable int idUser)
     {
         User user = userService.findById(idUser);
-        cookService.createCook();
+        cookService.createCook(cookDTO.getName(), cookDTO.getGender(), user);
     }
 }
