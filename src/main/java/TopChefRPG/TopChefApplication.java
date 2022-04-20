@@ -85,7 +85,7 @@ public class TopChefApplication {
         Lesson lesson = lessonService.getLessonById(1);
 
         cook = cookLessonService.buyLesson(cook, lesson);
-        cook = cookService.doLesson(lesson.getIdLesson(), cook);
+
 
         System.out.println(cook.getIngredients().get(0).getName() + " " + cook.getIngredients().get(0).getIngredientQuantity());
 
