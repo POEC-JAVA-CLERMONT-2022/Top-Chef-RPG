@@ -14,13 +14,15 @@ import java.util.List;
 
 @Service
 public class CookLessonService {
-
-
-    @Autowired
     private CookLessonRepository cookLessonRepository;
+    private CookRepository cookRepository;
 
     @Autowired
-    private CookRepository cookRepository;
+    public CookLessonService(CookLessonRepository cookLessonRepository, CookRepository cookRepository)
+    {
+        this.cookLessonRepository = cookLessonRepository;
+        this.cookRepository = cookRepository;
+    }
 
     public Cook buyLesson(Cook cook, Lesson lesson){
 
@@ -31,6 +33,7 @@ public class CookLessonService {
             if (cl.getLesson().getIdLesson() == lesson.getIdLesson())
             {
                 alreadyBuyedLesson = true;
+                break;
                 // message erreur leçon déjà achetée
             }
         }
@@ -73,10 +76,5 @@ public class CookLessonService {
             lessons.add(cl.getLesson());
         }
         return lessons;
-    }
-
-    public void doLesson (CookLesson cookLesson)
-    {
-        cookLesson.incrementCountUse();
     }
 }

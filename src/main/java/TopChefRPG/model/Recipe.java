@@ -89,17 +89,7 @@ public class Recipe {
         this.strengthRequired = strengthRequired;
         this.dexterityRequired = dexterityRequired;
         this.creativityRequired = creativityRequired;
-
-
-
-
-
-
-
-
-
     }
-
 
     public int getIdRecipe() {
         return id;

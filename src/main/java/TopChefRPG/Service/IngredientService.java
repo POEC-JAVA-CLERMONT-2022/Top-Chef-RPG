@@ -69,9 +69,13 @@ public class IngredientService {
         ingredientListRepository.save(ing);
         ing = new IngredientList("chou");
         ingredientListRepository.save(ing);
-
     }
-
-
-
+/*
+    public void deleteIngredients(List<Ingredient> ingredients)
+    {
+        for (Ingredient ing : ingredients)
+        {
+            ingredientRepository.delete(ing);
+        }
+    }*/
 }

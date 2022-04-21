@@ -25,7 +25,7 @@ public class CookController {
     public CookDTO getCookById(@PathVariable int id)
     {
         CookDTO cookDTO = new CookDTO();
-        cookDTO.setCookDTO(cookService.getCookById(id));
+        cookDTO.initialiseCookDTO(cookService.getCookById(id));
         return cookDTO;
     }
 
