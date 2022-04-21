@@ -52,4 +52,36 @@ public class ResultRecipeDTO {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
+    public ArrayList<Ingredient> getIngredientLoot() {
+        return ingredientLoot;
+    }
+
+    public void setIngredientLoot(ArrayList<Ingredient> ingredientLoot) {
+        this.ingredientLoot = ingredientLoot;
+    }
+
+    public ArrayList<Ingredient> getIngredientUsed() {
+        return ingredientUsed;
+    }
+
+    public void setIngredientUsed(ArrayList<Ingredient> ingredientUsed) {
+        this.ingredientUsed = ingredientUsed;
+    }
+
+    public int getExperienceGain() {
+        return experienceGain;
+    }
+
+    public String getTextRetour() {
+        return textRetour;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public boolean isSucces() {
+        return succes;
+    }
 }

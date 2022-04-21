@@ -19,8 +19,10 @@ public class User {
     @Column(name="password")
     private String password;
 
+
+
     // en prévision de la possibilité d'avoir plusieurs cuistots par user, on stock les users sous forme de liste
-    @OneToMany( targetEntity=Cook.class, mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany( targetEntity=Cook.class, mappedBy="user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<Cook> cooks;
 
     public User(String name, String mail, String password) {
@@ -29,7 +31,9 @@ public class User {
         this.mail =mail;
 
     }
-
+    public List<Cook> getCooks() {
+        return cooks;
+    }
     public User() {
 
     }

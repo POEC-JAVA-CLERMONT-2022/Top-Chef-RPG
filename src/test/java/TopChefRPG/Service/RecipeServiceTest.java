@@ -3,17 +3,10 @@ package TopChefRPG.Service;
 import TopChefRPG.Repository.RecipeRepository;
 import TopChefRPG.model.Recipe;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +44,4 @@ public class RecipeServiceTest {
         assertEquals(3,lastRecipe.requiredIngredients.size());
         assertEquals(2,lastRecipe.lootIngredient.size());
     }
-
-
-
 }

@@ -173,8 +173,8 @@ public class CookService {
         return cookRepository.getCookById(id);
     }
 
-    public void delCookById(int id)
+    public void delCookById(int idCook)
     {
-        cookRepository.deleteById(id);
+        cookRepository.removeCookById(idCook);
     }
 }
