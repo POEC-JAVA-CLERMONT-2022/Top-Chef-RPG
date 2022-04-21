@@ -6,17 +6,11 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 
 public class ResultRecipeDTO {
-
     private ArrayList<Ingredient> ingredientLoot;
-
     private ArrayList<Ingredient> ingredientUsed;
-
     private int experienceGain;
-
     private String textRetour;
-
     private String errorMessage;
-
     private boolean succes;
 
     public ResultRecipeDTO()
@@ -35,7 +29,6 @@ public class ResultRecipeDTO {
         for (Ingredient i : ingredients)
             this.ingredientUsed.add(i);
     }
-
 
     public void setExperienceGain(int experienceGain) {
         this.experienceGain = experienceGain;

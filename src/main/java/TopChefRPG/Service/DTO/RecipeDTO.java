@@ -11,10 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeDTO {
-
-
-
     public int idRecipe;
+
     public String name;
     public ArrayList<Ingredient> ingredientsRequired;
     public ArrayList<Ingredient> lootIngredient;

@@ -82,10 +82,6 @@ public class CookDTO {
         this.experience = experience;
     }
 
-
-
-
-
     public CookDTO(String name, int idCook) {
         this.name = name;
         this.id = idCook;
@@ -94,10 +90,9 @@ public class CookDTO {
     public CookDTO() {
     }
 
-    public void setCookDTO(Cook cook) {
+    public void initialiseCookDTO(Cook cook) {
         BeanUtils.copyProperties(cook, this);
     }
-
 
     public void setNewName(String newName) {
         this.newName = newName;

@@ -7,30 +7,30 @@ import TopChefRPG.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.EntityManager;
 
 @Service
 public class CookService {
 
-    @Autowired
     private CookRepository cookRepository;
 
-    @Autowired
     private IngredientService ingredientService;
 
-    @Autowired
     private RecipeService recipeService;
 
     @Autowired
-    private LessonService lessonService;
+    public CookService (CookRepository cookRepository, IngredientService ingredientService, RecipeService recipeService )
+    {
+        this.cookRepository = cookRepository;
+        this.ingredientService = ingredientService;
+        this.recipeService = recipeService;
+    }
 
     public Cook createCook(String name, Character gender, User user) {
         Cook cook = new Cook(name, gender, user);
         cook = this.cookRepository.save(cook);
         // instancier la liste d'ingredients
         ingredientService.initializeIngredient(cook);
-        //cook = this.cookRepository.save(cook);
-
         return cook;
     }
 
@@ -39,11 +39,15 @@ public class CookService {
         cookRepository.save(cook);
         return cook;
     }
+    public void delCookById(int idCook)
+    {
+        Cook cook = getCookById(idCook);
+        // suppression manuelle des ingrédients
+       // ingredientService.deleteIngredients(cook.getIngredients());
 
-
-
-
-
+        //entityManager.remove(cook);
+        //cookRepository.deleteCookById(idCook);
+    }
     public void deleteCook(Cook cook) {
         cookRepository.deleteById(cook.getId());
     }
@@ -173,8 +177,5 @@ public class CookService {
         return cookRepository.getCookById(id);
     }
 
-    public void delCookById(int idCook)
-    {
-        cookRepository.removeCookById(idCook);
-    }
+
 }

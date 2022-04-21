@@ -21,7 +21,6 @@ public class LessonDTO {
         this.experienceCost = lesson.getExperienceCost();
         this.ingredientName = lesson.getIngredientName();
         this.ingredientQuantity = lesson.getIngredientQuantity();
-
     }
 
     public String getName() {
