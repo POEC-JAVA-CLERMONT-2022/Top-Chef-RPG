@@ -96,7 +96,6 @@ public class CookDTO {
 
     public void setCookDTO(Cook cook) {
         BeanUtils.copyProperties(cook, this);
-
     }
 
 

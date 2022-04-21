@@ -32,6 +32,7 @@ public class CookController {
     @GetMapping("/{id}/delete")
     public void delCookById(@PathVariable int id)
     {
+        Cook cook = cookService.getCookById(id);
         cookService.delCookById(id);
     }
     @PostMapping( "/changeName/{idCook}")

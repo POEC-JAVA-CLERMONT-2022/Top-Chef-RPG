@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeDTO {
-    @Autowired
-    RecipeService recipeService;
+
 
 
     public int idRecipe;
@@ -49,5 +48,85 @@ public class RecipeDTO {
                 }
             }
         }
+    }
+
+    public int getIdRecipe() {
+        return idRecipe;
+    }
+
+    public void setIdRecipe(int idRecipe) {
+        this.idRecipe = idRecipe;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Ingredient> getIngredientsRequired() {
+        return ingredientsRequired;
+    }
+
+    public void setIngredientsRequired(ArrayList<Ingredient> ingredientsRequired) {
+        this.ingredientsRequired = ingredientsRequired;
+    }
+
+    public ArrayList<Ingredient> getLootIngredient() {
+        return lootIngredient;
+    }
+
+    public void setLootIngredient(ArrayList<Ingredient> lootIngredient) {
+        this.lootIngredient = lootIngredient;
+    }
+
+    public int getStrengthRequired() {
+        return strengthRequired;
+    }
+
+    public void setStrengthRequired(int strengthRequired) {
+        this.strengthRequired = strengthRequired;
+    }
+
+    public int getDexterityRequired() {
+        return dexterityRequired;
+    }
+
+    public void setDexterityRequired(int dexterityRequired) {
+        this.dexterityRequired = dexterityRequired;
+    }
+
+    public int getCreativityRequired() {
+        return creativityRequired;
+    }
+
+    public void setCreativityRequired(int creativityRequired) {
+        this.creativityRequired = creativityRequired;
+    }
+
+    public int getChanceOfSucces() {
+        return chanceOfSucces;
+    }
+
+    public void setChanceOfSucces(int chanceOfSucces) {
+        this.chanceOfSucces = chanceOfSucces;
+    }
+
+    public int getExperienceGain() {
+        return experienceGain;
+    }
+
+    public void setExperienceGain(int experienceGain) {
+        this.experienceGain = experienceGain;
+    }
+
+    public boolean isDoable() {
+        return doable;
+    }
+
+    public void setDoable(boolean doable) {
+        this.doable = doable;
     }
 }

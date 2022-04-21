@@ -64,6 +64,7 @@ public class TopChefApplication {
             idUser = users.get(0).getId();
         }
         User user = userService.findById(idUser);
+
         List<Cook> cooks = userService.getAllCooks(user);
         Cook cook;
         if (cooks.size() == 0) {
@@ -71,6 +72,13 @@ public class TopChefApplication {
         } else {
             cook = cooks.get(0);
         }
+        User user2 = userService.create("deleteMe", "mymail@toto.com","pass" );
+        Cook cookdrop = cookService.createCook("dropme", 'F', user2);
+
+        // suppression marche sur le user
+        //userService.deleteUser(user2.getId());
+        //cookService.delCookById(cookdrop.getId());
+
         if (recipeService.getRecipes().size() == 0) {
             recipeService.createRecipes();
         }
