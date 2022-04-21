@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 
-public class CookServiceTest {
+ class CookServiceTest {
 
     Cook cook1;
     Cook cook2;
@@ -39,7 +39,7 @@ public class CookServiceTest {
 
     @Test
     @DisplayName("test create cook")
-    public void testCreateCook() {
+     void testCreateCook() {
 
         Assertions.assertNotNull(cook1);
         Assertions.assertNotNull(cook1.getIngredients());
