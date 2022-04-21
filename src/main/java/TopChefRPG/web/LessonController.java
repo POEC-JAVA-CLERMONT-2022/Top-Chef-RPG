@@ -29,6 +29,7 @@ public class LessonController {
     CookService cookService;
 
 
+    //TODO: gestion des exceptions + logger + code retour
     @GetMapping("/ownedByCook/{idCook}")
     public List<LessonDTO> getLessonsOwned(@PathVariable int idCook) {
         Cook cook = cookService.getCookById(idCook);
@@ -48,6 +49,7 @@ public class LessonController {
         cookLessonService.buyLesson(cook, lesson);
     }
 
+    //TODO utiliser un post
     @GetMapping("/doLesson/{idCook}/{idLesson}")
     public ResultLessonDTO doLesson(@PathVariable int idCook, @PathVariable int idLesson)
     {

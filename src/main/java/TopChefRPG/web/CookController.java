@@ -41,6 +41,7 @@ public class CookController {
         cookService.changeName(cook, cookDTO.getNewName());
     }
 
+    //TODO pas le bon controller
     @PostMapping ("/createCook/{idUser}")
     public void createCook(@RequestBody CookDTO cookDTO, @PathVariable int idUser)
     {

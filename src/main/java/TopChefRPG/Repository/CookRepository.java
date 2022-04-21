@@ -16,6 +16,7 @@ import java.util.List;
 public interface CookRepository extends JpaRepository<Cook, Integer> {
 
 
+    //TODO à supprimer
     Cook getCookByName(String name);
 
 

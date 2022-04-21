@@ -130,6 +130,7 @@ public class Cook {
             this.experience += changeValue;
         else
         {
+            //TODO à supprimer
             System.out.println("impossible de mettre à jour l'expérience car résultat final inférieur à 0 !");
         }
     }

@@ -43,5 +43,7 @@ public class RecipeServiceTest {
         assertNotNull(lastRecipe.requiredIngredients);
         assertEquals(3,lastRecipe.requiredIngredients.size());
         assertEquals(2,lastRecipe.lootIngredient.size());
+
+        //TODO verify
     }
 }

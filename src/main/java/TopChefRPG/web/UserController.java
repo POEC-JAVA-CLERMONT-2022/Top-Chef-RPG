@@ -22,7 +22,7 @@ public class UserController {
         return userFind.getName();
     }
 
-
+    //TODO:  DELETE verbe http
     @GetMapping("/{id}/delete")
     public void delUserById(@PathVariable int id) {
         userService.deleteUser(id);

@@ -17,6 +17,7 @@ public interface CookLessonRepository extends JpaRepository<CookLesson, Integer>
 
 
 
+    //TODO repo JPA
     @Query("select c from CookLesson c where c.cook = ?1")
     List<CookLesson> findCookLessonByCook(Cook cook);
     }

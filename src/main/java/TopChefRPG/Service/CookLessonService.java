@@ -37,6 +37,8 @@ public class CookLessonService {
         // si la lecon n'est pas encore achetée, on vérifie ensuite si il a ce qu'il faut comme ingredients requis
         if (!alreadyBuyedLesson)
         {
+            //TODO: trop complexe
+
             // on parcourt la liste des ingrédients du cook pour trouver l'ingrédient requis pour l'achat.
             for (Ingredient ingCook : cook.getIngredients())
             {

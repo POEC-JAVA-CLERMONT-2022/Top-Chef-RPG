@@ -21,6 +21,8 @@ import java.util.List;
 
 @SpringBootApplication
 public class TopChefApplication {
+
+    //TODO : à supprimer
     @Autowired
     private UserService userService;
 
@@ -48,6 +50,7 @@ public class TopChefApplication {
 
     }
 
+    //TODO : à mettre dans les Tests
     @EventListener(classes = {ApplicationStartedEvent.class})
     public void applicationStarted() {
         if (ingredientListRepository.findAll().size()==0)
