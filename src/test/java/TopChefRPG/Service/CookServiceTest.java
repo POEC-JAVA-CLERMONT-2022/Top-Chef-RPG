@@ -1,11 +1,7 @@
-
 package TopChefRPG.Service;
 
 import TopChefRPG.model.Cook;
-import TopChefRPG.model.CookLesson;
-import TopChefRPG.model.Lesson;
 import TopChefRPG.model.User;
-import TopChefRPG.Service.CookService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-
- class CookServiceTest {
+class CookServiceTest {
 
     Cook cook1;
     Cook cook2;
@@ -30,19 +25,32 @@ import org.springframework.boot.test.context.SpringBootTest;
 
     @BeforeEach
     public void varInitialize() {
-       paulo = userService.create("paulo", "mail", "password");
-       cook1 = cookService.createCook("alexandre", 'M', paulo);
-       cook2 = cookService.createCook("alexandra", 'F', paulo);
+        paulo = userService.create("paulo", "mail", "password");
+        cook1 = cookService.createCook("alexandre", 'M', paulo);
+        cook2 = cookService.createCook("alexandra", 'F', paulo);
 
 
     }
 
     @Test
     @DisplayName("test create cook")
-     void testCreateCook() {
+    void testCreateCook() {
 
         Assertions.assertNotNull(cook1);
         Assertions.assertNotNull(cook1.getIngredients());
+        Assertions.assertEquals(paulo, cook1.getUser());
+        Assertions.assertNotNull(cook1.getId());
     }
+
+    @Test
+    @DisplayName("changement de nom du cook")
+    public void TestChangeName() {
+        //methode à tester
+        Assertions.assertNotEquals("stephane", cook1.getName());
+        cook1 = cookService.changeName(cook1, "stephane");
+        Assertions.assertEquals("stephane", cook1.getName());
+
+    }
+
 }
 
