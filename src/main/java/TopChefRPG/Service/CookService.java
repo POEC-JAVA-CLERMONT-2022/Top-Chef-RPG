@@ -40,8 +40,7 @@ public class CookService {
         return cook;
     }
 
-    // la fonction save cook permet de sauvegarder étagalement les ingredients associés au cook et ses cooklecons.
-    public Cook saveCook(Cook cook) {  return cookRepository.save(cook);}
+
 
 
 

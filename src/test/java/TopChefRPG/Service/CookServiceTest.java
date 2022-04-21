@@ -2,50 +2,47 @@
 package TopChefRPG.Service;
 
 import TopChefRPG.model.Cook;
+import TopChefRPG.model.CookLesson;
+import TopChefRPG.model.Lesson;
 import TopChefRPG.model.User;
+import TopChefRPG.Service.CookService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
 
 public class CookServiceTest {
-/*
-    @Test
 
-    @DisplayName("Save Cook")
-    public void testSaveCook() {
+    Cook cook1;
+    Cook cook2;
+    User paulo;
 
-        //instantiation donnée
+    @Autowired
+    CookService cookService;
 
-
-
-
-
-        //appel de la méthode à tester
+    @Autowired
+    UserService userService;
 
 
-        cook1 = cookService.saveCook(cook1);
-        //cookService.saveCook(cook2);
-        System.out.println("toto)");
-        //test des valeurs après execution du code
-        //test si l'id de cook 1 = 1'
-        Assertions.assertEquals("alexandre", mockcookRepository.getCookById(cook1.getId()).getName());
-        //test du nombre de cook créés
-        //Assertions.assertEquals(2, cookRepository.findAll().size());
+    @BeforeEach
+    public void varInitialize() {
+       paulo = userService.create("paulo", "mail", "password");
+       cook1 = cookService.createCook("alexandre", 'M', paulo);
+       cook2 = cookService.createCook("alexandra", 'F', paulo);
+
 
     }
-}
-
 
     @Test
     @DisplayName("test create cook")
-    public void testCreateCook(){
-
-        User paulo = userService.create("paulo", "mail","password");
-
-
-        Cook cook1 = cookService.createCook("alexandre", 'M', paulo);
+    public void testCreateCook() {
 
         Assertions.assertNotNull(cook1);
-*/
+        Assertions.assertNotNull(cook1.getIngredients());
     }
+}
 
