@@ -1,8 +1,5 @@
 package TopChefRPG.model;
 
-
-import org.hibernate.annotations.CollectionId;
-
 import javax.persistence.*;
 
 @Entity

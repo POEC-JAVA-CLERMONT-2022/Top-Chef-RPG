@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-
 @Service
 public class CookService {
 
@@ -51,9 +49,6 @@ public class CookService {
     //entityManager.remove(cook);
         cookRepository.deleteCookById(idCook);
 }
-    public void deleteCook(Cook cook) {
-        cookRepository.deleteById(cook.getId());
-    }
 
 
     // fonction qui gère la réalisation d'une recette et renvoi un objet spécifique pour l'affichage de la recette

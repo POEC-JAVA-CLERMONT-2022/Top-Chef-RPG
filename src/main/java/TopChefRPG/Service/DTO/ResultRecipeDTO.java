@@ -1,8 +1,5 @@
 package TopChefRPG.Service.DTO;
-
 import TopChefRPG.model.Ingredient;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 
 public class ResultRecipeDTO {
@@ -15,19 +12,17 @@ public class ResultRecipeDTO {
 
     public ResultRecipeDTO()
     {
-        this.ingredientLoot = new ArrayList<Ingredient>();
-        this.ingredientUsed = new ArrayList<Ingredient>();
+        this.ingredientLoot = new ArrayList<>();
+        this.ingredientUsed = new ArrayList<>();
     }
     public void addIngredientLoot (ArrayList<Ingredient> ingredients)
     {
-        for (Ingredient i : ingredients)
-            this.ingredientLoot.add(i);
+        this.ingredientLoot.addAll(ingredients);
     }
 
     public void addIngredientUsed (ArrayList<Ingredient> ingredients)
     {
-        for (Ingredient i : ingredients)
-            this.ingredientUsed.add(i);
+        this.ingredientUsed.addAll(ingredients);
     }
 
     public void setExperienceGain(int experienceGain) {
@@ -74,7 +69,4 @@ public class ResultRecipeDTO {
         return errorMessage;
     }
 
-    public boolean isSucces() {
-        return succes;
-    }
 }

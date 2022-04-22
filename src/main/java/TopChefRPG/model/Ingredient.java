@@ -19,7 +19,6 @@ public class Ingredient {
     @JoinColumn(name="idCook", nullable=false)
     private Cook cook;
 
-
     public Ingredient() {
     }
 
@@ -31,7 +30,7 @@ public class Ingredient {
     }
 
     // constructeur specifique pour les recettes ou les ingredients ne sont pas propres à un user
-    // et e seront jamais en BDD
+    // et ne seront jamais en BDD
     public Ingredient(String name, int quantity)
     {
         this.name= name;

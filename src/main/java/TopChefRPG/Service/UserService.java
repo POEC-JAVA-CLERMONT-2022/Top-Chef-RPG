@@ -42,20 +42,13 @@ public class UserService {
 
     public User saveUser(User user)
     {
-        User userSaved =userRepository.save(user);
-        return userSaved;
+        return userRepository.save(user);
     }
 
-    public User findByName(String name)
-    {
-        User user =  userRepository.findByName(name);
-        return user;
-    }
-
+    // inutile pour le moment mais pourrait servir avec l'authentification
     public Optional<User> findUserByMailAndPassword (String mail, String password)
     {
-        Optional<User> userFinded = userRepository.findUserByMailAndPassword(mail, password);
-        return userFinded;
+        return userRepository.findUserByMailAndPassword(mail, password);
     }
 
     // fonction non utile si l'on garde le fetch EAGER dans l'entity

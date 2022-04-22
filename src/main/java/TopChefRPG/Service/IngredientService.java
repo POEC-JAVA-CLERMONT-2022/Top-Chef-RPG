@@ -42,10 +42,7 @@ public class IngredientService {
     // mise à jour de la liste d'ingredients d'un cook !! Attention innutile avec la mise à jour en direct de la bdd par hibernate
     public void saveIngredients(List<Ingredient> ingredients)
     {
-        for (Ingredient ing :ingredients)
-        {
-            ingredientRepository.save(ing);
-        }
+        ingredientRepository.saveAll(ingredients);
     }
 
     // retourne une liste d'ingrédients (nom quantité) qui ont été initialisés (quantité >-1)
