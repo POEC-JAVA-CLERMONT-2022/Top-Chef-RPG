@@ -15,12 +15,15 @@ class CookServiceTest {
     Cook cook1;
     Cook cook2;
     User paulo;
-
-    @Autowired
     CookService cookService;
+    UserService userService;
 
     @Autowired
-    UserService userService;
+    public CookServiceTest (CookService cookService, UserService userService)
+    {
+        this.cookService =cookService;
+        this.userService = userService;
+    }
 
 
     @BeforeEach
@@ -28,8 +31,6 @@ class CookServiceTest {
         paulo = userService.create("paulo", "mail", "password");
         cook1 = cookService.createCook("alexandre", 'M', paulo);
         cook2 = cookService.createCook("alexandra", 'F', paulo);
-
-
     }
 
     @Test
@@ -39,7 +40,6 @@ class CookServiceTest {
         Assertions.assertNotNull(cook1);
         Assertions.assertNotNull(cook1.getIngredients());
         Assertions.assertEquals(paulo, cook1.getUser());
-        Assertions.assertNotNull(cook1.getId());
     }
 
     @Test
