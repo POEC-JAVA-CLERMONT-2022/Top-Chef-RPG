@@ -7,6 +7,8 @@ import TopChefRPG.model.Cook;
 import TopChefRPG.model.Lesson;
 import TopChefRPG.model.Recipe;
 import TopChefRPG.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/cook")
 public class CookController {
+    Logger logger = LoggerFactory.getLogger(CookController.class);
 
     CookService cookService;
     UserService userService;
@@ -38,22 +41,27 @@ public class CookController {
     //http://localhost:8080/cook/1
     @GetMapping("/{id}")
     public CookDTO getCookById(@PathVariable int id) {
+        logger.info("given cook {}", id);
         CookDTO cookDTO = new CookDTO();
         cookDTO.initialiseCookDTO(cookService.getCookById(id));
         return cookDTO;
     }
+
     //http://localhost:8080/cook/changeName/cook/1
     @PostMapping("/changeName/{idCook}")
     public void changeName(@RequestBody CookDTO cookDTO, @PathVariable int idCook) {
-        Cook cook = cookService.getCookById(idCook);
+      logger.info("changement du nom du cook {}", idCook)   
+      Cook cook = cookService.getCookById(idCook);
         cookService.changeName(cook, cookDTO.getNewName());
     }
     //http://localhost:8080/cook/delete/1
     @GetMapping("/delete/{id}")
     public void delCookById(@PathVariable int id) {
+        logger.info("destruction du cook {} si il le veut bien, id");
         Cook cook = cookService.getCookById(id);
         cookService.delCookById(id);
     }
+
 
     //http://localhost:8080/cook/ingredients/1
     @GetMapping("/ingredients/{idCook}")
@@ -63,10 +71,11 @@ public class CookController {
 
     //http://localhost:8080/cook/changeName/1
     @GetMapping("/getRecipe/{idCook}")
-    public List<RecipeDTO> getRecipe(@PathVariable int idCook) {
-        Cook cook = cookService.getCookById(idCook);
-        return recipeService.getRecipesDTO(cook);
+    public List<RecipeDTO> getRecipe(@PathVariable int idCook) {      
+      Cook cook = cookService.getCookById(idCook);
+      return recipeService.getRecipesDTO(cook);
     }
+
     //http://localhost:8080/cook/doRecipe/1/1
     @GetMapping("/doRecipe/{idCook}/{idRecipe}")
     public ResultRecipeDTO doRecipe(@PathVariable int idCook, @PathVariable int idRecipe) {
@@ -89,6 +98,7 @@ public class CookController {
         Lesson lesson = lessonService.getLessonById(idLesson);
         cookLessonService.buyLesson(cook, lesson);
     }
+  
     //http://localhost:8080/cook/lessons/ownedByCook/1
     @GetMapping("/lessons/ownedByCook/{idCook}")
     public List<LessonDTO> getLessonsOwned(@PathVariable int idCook) {
@@ -102,6 +112,4 @@ public class CookController {
         Cook cook = cookService.getCookById(idCook);
         return cookService.doLesson(idLesson, cook);
     }
-
-
 }
