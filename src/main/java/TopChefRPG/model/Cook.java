@@ -2,6 +2,8 @@ package TopChefRPG.model;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -36,16 +38,17 @@ public class Cook {
     @Column(name = "experience")
     private int experience;
 
-    @OneToMany(targetEntity = Ingredient.class, mappedBy = "cook", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Ingredient.class, cascade = CascadeType.ALL,  mappedBy = "cook",  fetch = FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Ingredient> ingredients;
 
 
-    @OneToMany(targetEntity = CookLesson.class, mappedBy = "cook", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = CookLesson.class, cascade = CascadeType.ALL, mappedBy = "cook", fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<CookLesson> cookLessons;
 
-    @ManyToOne
-    @JoinColumn(name = "idUser", nullable = false)
+    @ManyToOne     @JoinColumn(name = "idUser" ,nullable = false)
     private User user;
 
     public int getDexterity() {

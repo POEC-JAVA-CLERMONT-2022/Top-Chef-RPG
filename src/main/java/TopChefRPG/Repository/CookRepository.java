@@ -11,7 +11,7 @@ public interface CookRepository extends JpaRepository<Cook, Integer> {
 
 
     void deleteCookById(int Id);
-    void removeCookById(int id);
+    //void removeCookById(int id);
 
     Cook getCookById(int id);
 

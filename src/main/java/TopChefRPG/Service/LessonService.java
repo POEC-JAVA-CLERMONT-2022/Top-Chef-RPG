@@ -15,13 +15,15 @@ import java.util.List;
 @Service
 public class LessonService {
 
-    @Autowired
     LessonRepository lessonRepository;
 
-
-    @Autowired
     CookLessonService cookLessonService;
 
+    @Autowired
+    public LessonService(LessonRepository lessonRepository,CookLessonService cookLessonService){
+        this.lessonRepository =lessonRepository;
+        this.cookLessonService = cookLessonService;
+    }
     public void initializeLesson() {
         Lesson lesson1 = new Lesson("couteaux japonais", 10, 10, 10, 10, 100, "pomme", 20);
         lessonRepository.save(lesson1);

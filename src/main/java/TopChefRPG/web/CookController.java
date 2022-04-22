@@ -1,51 +1,107 @@
 package TopChefRPG.web;
 
 
-import TopChefRPG.Service.CookService;
-import TopChefRPG.Service.DTO.CookDTO;
-import TopChefRPG.Service.UserService;
+import TopChefRPG.Service.*;
+import TopChefRPG.Service.DTO.*;
 import TopChefRPG.model.Cook;
+import TopChefRPG.model.Lesson;
+import TopChefRPG.model.Recipe;
 import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
 @RequestMapping("/cook")
 public class CookController {
-    @Autowired
+
     CookService cookService;
+    UserService userService;
+    RecipeService recipeService;
+    LessonService lessonService;
+    CookLessonService cookLessonService;
+    IngredientService ingredientService;
 
     @Autowired
-    UserService userService;
-
+    public CookController(CookService cookService, UserService userService, RecipeService recipeService,
+                          LessonService lessonService, CookLessonService cookLessonService, IngredientService ingredientService) {
+        this.cookService = cookService;
+        this.userService = userService;
+        this.recipeService = recipeService;
+        this.lessonService = lessonService;
+        this.cookLessonService = cookLessonService;
+        this.ingredientService = ingredientService;
+    }
 
     //http://localhost:8080/cook/1
     @GetMapping("/{id}")
-    public CookDTO getCookById(@PathVariable int id)
-    {
+    public CookDTO getCookById(@PathVariable int id) {
         CookDTO cookDTO = new CookDTO();
         cookDTO.initialiseCookDTO(cookService.getCookById(id));
         return cookDTO;
     }
-
-    @GetMapping("/{id}/delete")
-    public void delCookById(@PathVariable int id)
-    {
-        Cook cook = cookService.getCookById(id);
-        cookService.delCookById(id);
-    }
-    @PostMapping( "/changeName/{idCook}")
+    //http://localhost:8080/cook/changeName/cook/1
+    @PostMapping("/changeName/{idCook}")
     public void changeName(@RequestBody CookDTO cookDTO, @PathVariable int idCook) {
         Cook cook = cookService.getCookById(idCook);
         cookService.changeName(cook, cookDTO.getNewName());
     }
-
-    //TODO pas le bon controller
-    @PostMapping ("/createCook/{idUser}")
-    public void createCook(@RequestBody CookDTO cookDTO, @PathVariable int idUser)
-    {
-        User user = userService.findById(idUser);
-        cookService.createCook(cookDTO.getName(), cookDTO.getGender(), user);
+    //http://localhost:8080/cook/delete/1
+    @GetMapping("/delete/{id}")
+    public void delCookById(@PathVariable int id) {
+        Cook cook = cookService.getCookById(id);
+        cookService.delCookById(id);
     }
+
+    //http://localhost:8080/cook/ingredients/1
+    @GetMapping("/ingredients/{idCook}")
+    public List<IngredientDTO> getIngredients(@PathVariable int idCook) {
+        return ingredientService.getIngredientOfCook(idCook);
+    }
+
+    //http://localhost:8080/cook/changeName/1
+    @GetMapping("/getRecipe/{idCook}")
+    public List<RecipeDTO> getRecipe(@PathVariable int idCook) {
+        Cook cook = cookService.getCookById(idCook);
+        return recipeService.getRecipesDTO(cook);
+    }
+    //http://localhost:8080/cook/doRecipe/1/1
+    @GetMapping("/doRecipe/{idCook}/{idRecipe}")
+    public ResultRecipeDTO doRecipe(@PathVariable int idCook, @PathVariable int idRecipe) {
+        Cook cook = cookService.getCookById(idCook);
+        Recipe recipe = recipeService.getRecipe(idRecipe);
+        ResultRecipeDTO result = cookService.tryRecipe(recipe.getIdRecipe(), cook);
+        return result;
+    }
+
+    //http://localhost:8080/cook/lessons/tobuy/1
+    @GetMapping("/lessons/toBuy/{idCook}")
+    public List<LessonDTO> getLessonToBuy(@PathVariable int idCook) {
+        Cook cook = cookService.getCookById(idCook);
+        return lessonService.getLessonsNotOwned(cook);
+    }
+    //http://localhost:8080/cook/lessons/buy/1/1
+    @PostMapping("/lessons/buy/{idCook}/{idLesson}")
+    public void buyLesson(@PathVariable int idCook, @PathVariable int idLesson) {
+        Cook cook = cookService.getCookById(idCook);
+        Lesson lesson = lessonService.getLessonById(idLesson);
+        cookLessonService.buyLesson(cook, lesson);
+    }
+    //http://localhost:8080/cook/lessons/ownedByCook/1
+    @GetMapping("/lessons/ownedByCook/{idCook}")
+    public List<LessonDTO> getLessonsOwned(@PathVariable int idCook) {
+        Cook cook = cookService.getCookById(idCook);
+        return lessonService.getLessonsBuyed(cook);
+    }
+
+    //http://localhost:8080/cook/lessons/doLesson/1/1
+    @PostMapping("/lessons/doLesson/{idCook}/{idLesson}")
+    public ResultLessonDTO doLesson(@PathVariable int idCook, @PathVariable int idLesson) {
+        Cook cook = cookService.getCookById(idCook);
+        return cookService.doLesson(idLesson, cook);
+    }
+
+
 }

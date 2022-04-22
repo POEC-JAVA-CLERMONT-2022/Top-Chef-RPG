@@ -77,20 +77,20 @@ public class TopChefApplication {
         }
         User user2 = userService.create("deleteMe", "mymail@toto.com","pass" );
         Cook cookdrop = cookService.createCook("dropme", 'F', user2);
-        cookService.delCookById(cookdrop.getId());
+        //cookService.delCookById(cookdrop.getId());
         //var delete = userService.getAllCooks(user2).remove(cookdrop);
-        //user2 = userService.saveUser(user2);
+        user2 = userService.saveUser(user2);
 
 
         // suppression marche sur le user
         //userService.deleteUser(user2.getId());
-        //cookService.delCookById(cookdrop.getId());
-
+        cookService.delCookById(cookdrop.getId());
+/*
         if (recipeService.getRecipes().size() == 0) {
             recipeService.createRecipes();
         }
         cook = cookService.getCookById(cook.getId());
-/*
+
 
         while (cook.getIngredients().get(0).getIngredientQuantity() < 30) {
             ResultRecipeDTO rr = cookService.tryRecipe(1, cook);
@@ -99,7 +99,7 @@ public class TopChefApplication {
         while (cook.getIngredients().get(1).getIngredientQuantity() < 30)
         {
             ResultRecipeDTO rr = cookService.tryRecipe(2, cook);
-        }*/
+        }
 
 
         List<Lesson> lessons = lessonService.getAllLessons();
@@ -108,7 +108,7 @@ public class TopChefApplication {
         }
 
         Lesson lesson = lessonService.getLessonById(1);
-
+*/
     }
 
 }

@@ -13,9 +13,12 @@ import java.util.List;
 
 @Service
 public class RecipeService {
-    @Autowired
-    RecipeRepository recipeRepository;
 
+    RecipeRepository recipeRepository;
+    @Autowired
+    public RecipeService(RecipeRepository recipeRepository){
+        this.recipeRepository =recipeRepository;
+    }
 
     public void createRecipes() {
 

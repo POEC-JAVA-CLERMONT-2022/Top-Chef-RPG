@@ -6,6 +6,7 @@ import TopChefRPG.Service.DTO.ResultRecipeDTO;
 import TopChefRPG.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
@@ -39,15 +40,17 @@ public class CookService {
         cookRepository.save(cook);
         return cook;
     }
+
+    @Transactional
     public void delCookById(int idCook)
     {
         Cook cook = getCookById(idCook);
-        // suppression manuelle des ingrédients
-       // ingredientService.deleteIngredients(cook.getIngredients());
+    // suppression manuelle des ingrédients
+    //ingredientService.deleteIngredients(cook.getIngredients());
 
-        //entityManager.remove(cook);
-        //cookRepository.deleteCookById(idCook);
-    }
+    //entityManager.remove(cook);
+        cookRepository.deleteCookById(idCook);
+}
     public void deleteCook(Cook cook) {
         cookRepository.deleteById(cook.getId());
     }

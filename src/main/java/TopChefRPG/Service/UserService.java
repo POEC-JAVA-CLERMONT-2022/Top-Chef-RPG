@@ -14,11 +14,16 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    @Autowired
     private UserRepository userRepository;
 
-    @Autowired
     private CookRepository cookRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository,CookRepository cookRepository )
+    {
+        this.userRepository =userRepository;
+        this.cookRepository=cookRepository;
+    }
 
     public List<User> findAll() {
         return userRepository.findAll();

@@ -16,14 +16,18 @@ import java.util.List;
 @Service
 public class IngredientService {
 
-    @Autowired
     IngredientRepository ingredientRepository;
 
-    @Autowired
     CookRepository cookRepository;
 
-    @Autowired
     IngredientListRepository ingredientListRepository;
+    @Autowired
+    public IngredientService (IngredientRepository ingredientRepository, CookRepository cookRepository,IngredientListRepository ingredientListRepository)
+    {
+        this.ingredientRepository = ingredientRepository;
+        this.cookRepository = cookRepository;
+        this.ingredientListRepository =ingredientListRepository;
+    }
 
     public void initializeIngredient(Cook cook)
     {
@@ -70,12 +74,12 @@ public class IngredientService {
         ing = new IngredientList("chou");
         ingredientListRepository.save(ing);
     }
-/*
+
     public void deleteIngredients(List<Ingredient> ingredients)
     {
         for (Ingredient ing : ingredients)
         {
-            ingredientRepository.delete(ing);
+            ingredientRepository.deleteById(ing.getId());
         }
-    }*/
+    }
 }

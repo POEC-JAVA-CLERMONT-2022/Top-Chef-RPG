@@ -14,30 +14,7 @@ import java.util.List;
 @RequestMapping("/recipes")
 public class RecipeController {
 
-    @Autowired
-    RecipeService recipeService;
+    // class vidée dans cook controller
 
-    @Autowired
-    CookService cookService;
-
-
-    //localhost:8080/recipes/1
-    @GetMapping("/{idCook}")
-    public List<RecipeDTO> getRecipe(@PathVariable int idCook)
-    {
-        Cook cook = cookService.getCookById(idCook);
-        return recipeService.getRecipesDTO(cook);
-    }
-
-
-    //localhost:8080/recipe/doRecipe/1/2
-    @GetMapping("/doRecipe/{idCook}/{idRecipe}")
-    public ResultRecipeDTO doRecipe(@PathVariable int idCook, @PathVariable int idRecipe)
-    {
-        Cook cook = cookService.getCookById(idCook);
-        Recipe recipe = recipeService.getRecipe(idRecipe);
-        ResultRecipeDTO result = cookService.tryRecipe(recipe.getIdRecipe(), cook);
-        return result;
-    }
 
 }
