@@ -1,10 +1,7 @@
 package TopChefRPG.Service;
-
-
 import TopChefRPG.Repository.LessonRepository;
 import TopChefRPG.Service.DTO.LessonDTO;
 import TopChefRPG.model.Cook;
-import TopChefRPG.model.CookLesson;
 import TopChefRPG.model.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,13 +62,7 @@ public class LessonService {
         // on parcourt la liste des lessons achetées et on les retire de la liste générale de leçons.
         for (Lesson lessonowned : ownedLessons)
         {
-            for (Lesson lesson : lessons)
-            {
-                if (lessonowned == lesson)
-                {
-                    lessons.remove(lesson);
-                }
-            }
+            lessons.removeIf(lesson -> lessonowned == lesson);
         }
         // on rempli la liste de lessons non achetées
         for(Lesson notOwnedLesson : lessons)

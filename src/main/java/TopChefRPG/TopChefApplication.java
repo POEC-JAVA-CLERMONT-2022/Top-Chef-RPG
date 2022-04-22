@@ -1,21 +1,12 @@
 package TopChefRPG;
-
-
 import TopChefRPG.Repository.IngredientListRepository;
-import TopChefRPG.Repository.IngredientRepository;
 import TopChefRPG.Service.*;
-
-import TopChefRPG.Service.DTO.ResultRecipeDTO;
 import TopChefRPG.model.*;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
-
-
 import java.util.List;
 
 
@@ -45,6 +36,7 @@ public class TopChefApplication {
     @Autowired
     private IngredientListRepository ingredientListRepository;
 
+
     public static void main(String[] args) {
         SpringApplication.run(TopChefApplication.class, args);
 
@@ -57,6 +49,7 @@ public class TopChefApplication {
         {
             ingredientService.initializeIngredientListInBDD();
         }
+        // inintialisation d'un context de données en BDD
 
         List<User> users = userService.findAll();
         int idUser;
@@ -79,12 +72,12 @@ public class TopChefApplication {
         Cook cookdrop = cookService.createCook("dropme", 'F', user2);
         //cookService.delCookById(cookdrop.getId());
         //var delete = userService.getAllCooks(user2).remove(cookdrop);
-        user2 = userService.saveUser(user2);
+        //user2 = userService.saveUser(user2);
 
 
         // suppression marche sur le user
         //userService.deleteUser(user2.getId());
-        cookService.delCookById(cookdrop.getId());
+        //cookService.delCookById(cookdrop.getId());
 /*
         if (recipeService.getRecipes().size() == 0) {
             recipeService.createRecipes();

@@ -10,8 +10,6 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>
 {
-    User findByName(String name);
-
     @Query("select u from User u where u.mail = ?1 and u.password = ?2")
     Optional<User> findUserByMailAndPassword (String mail, String password);
 }

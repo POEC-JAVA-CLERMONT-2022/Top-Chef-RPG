@@ -1,12 +1,6 @@
 package TopChefRPG.Service.DTO;
-
-import TopChefRPG.Service.RecipeService;
-import TopChefRPG.model.Cook;
 import TopChefRPG.model.Ingredient;
 import TopChefRPG.model.Recipe;
-import org.springframework.beans.factory.annotation.Autowired;
-
-
 import java.util.ArrayList;
 import java.util.List;
 

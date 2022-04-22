@@ -31,7 +31,7 @@ public class RecipeService {
     public List<Recipe> getRecipes() {
         List<Recipe> recipes = recipeRepository.findAll();
         for (Recipe recipe : recipes) {
-            recipe.requiredIngredients = new ArrayList<Ingredient>();
+            recipe.requiredIngredients = new ArrayList<>();
             if (recipe.getFirstIngredient().length() > 0) {
                 recipe.requiredIngredients.add(new Ingredient(recipe.getFirstIngredient(), recipe.getFirstQty()));
             }
@@ -41,7 +41,7 @@ public class RecipeService {
             if (recipe.getThirdIngredient().length() > 0) {
                 recipe.requiredIngredients.add(new Ingredient(recipe.getThirdIngredient(), recipe.getThirdQty()));
             }
-            recipe.lootIngredient = new ArrayList<Ingredient>();
+            recipe.lootIngredient = new ArrayList<>();
             if (recipe.getLooting1Name().length() > 0) {
                 recipe.lootIngredient.add(new Ingredient(recipe.getLooting1Name(), recipe.getLooting1Qty()));
             }
@@ -59,7 +59,7 @@ public class RecipeService {
         int chanceOfSuccess ;
         for (Recipe recipe : recipes)
         {
-            chanceOfSuccess = getChanceSucces(recipe, cook);
+            chanceOfSuccess = getProbabilityOfSucces(recipe, cook);
             recipeDTOS.add(new RecipeDTO(recipe, chanceOfSuccess, cook.getIngredients()));
         }
         return recipeDTOS;
@@ -67,7 +67,7 @@ public class RecipeService {
 
     public Recipe getRecipe(int id) {
         Recipe recipe = recipeRepository.getRecipeById(id);
-        recipe.requiredIngredients = new ArrayList<Ingredient>();
+        recipe.requiredIngredients = new ArrayList<>();
         // on nourrit les listes d'ingrédients loot et requis de l'objet
         if (recipe.getFirstIngredient().length() > 0) {
             recipe.requiredIngredients.add(new Ingredient(recipe.getFirstIngredient(), recipe.getFirstQty()));
@@ -78,7 +78,7 @@ public class RecipeService {
         if (recipe.getThirdIngredient().length() > 0) {
             recipe.requiredIngredients.add(new Ingredient(recipe.getThirdIngredient(), recipe.getThirdQty()));
         }
-        recipe.lootIngredient = new ArrayList<Ingredient>();
+        recipe.lootIngredient = new ArrayList<>();
         if (recipe.getLooting1Name().length() > 0) {
             recipe.lootIngredient.add(new Ingredient(recipe.getLooting1Name(), recipe.getLooting1Qty()));
         }
