@@ -19,42 +19,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/Lessons")
 public class LessonController {
+    // classe inutile (code déplacé dans cook)
 
-    @Autowired
-    LessonService lessonService;
-    @Autowired
-    CookLessonService cookLessonService;
-
-    @Autowired
-    CookService cookService;
-
-
-    //TODO: gestion des exceptions + logger + code retour
-    @GetMapping("/ownedByCook/{idCook}")
-    public List<LessonDTO> getLessonsOwned(@PathVariable int idCook) {
-        Cook cook = cookService.getCookById(idCook);
-        return lessonService.getLessonsBuyed(cook);
-    }
-
-    @GetMapping("/tobuy/{idCook}")
-    public List<LessonDTO> getLessonToBuy(@PathVariable int idCook) {
-        Cook cook = cookService.getCookById(idCook);
-        return lessonService.getLessonsNotOwned(cook);
-    }
-
-    @GetMapping("/buyLesson/{idCook}/{idLesson}")
-    public void buyLesson(@PathVariable int idCook, @PathVariable int idLesson) {
-        Cook cook = cookService.getCookById(idCook);
-        Lesson lesson = lessonService.getLessonById(idLesson);
-        cookLessonService.buyLesson(cook, lesson);
-    }
-
-    //TODO utiliser un post
-    @GetMapping("/doLesson/{idCook}/{idLesson}")
-    public ResultLessonDTO doLesson(@PathVariable int idCook, @PathVariable int idLesson)
-    {
-        Cook cook = cookService.getCookById(idCook);
-
-        return cookService.doLesson( idLesson, cook);
-    }
 }

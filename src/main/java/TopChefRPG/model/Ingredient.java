@@ -15,7 +15,7 @@ public class Ingredient {
     @Column (name="Quantity")
     private int quantity;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn(name="idCook", nullable=false)
     private Cook cook;
 

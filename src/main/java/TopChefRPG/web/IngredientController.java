@@ -13,11 +13,6 @@ import java.util.List;
 @RequestMapping("/Ingredients")
 public class IngredientController {
 
-    @Autowired
-    IngredientService ingredientService;
+// classe inutile maintenant...
 
-    @GetMapping("/{idCook}")
-    public List<IngredientDTO> getIngredients(@PathVariable int idCook) {
-        return ingredientService.getIngredientOfCook(idCook);
-    }
 }

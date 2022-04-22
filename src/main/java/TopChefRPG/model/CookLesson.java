@@ -13,7 +13,7 @@ public class CookLesson {
 
     private Integer countUse;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn(name="idCook", nullable=false)
     private Cook cook;
 
