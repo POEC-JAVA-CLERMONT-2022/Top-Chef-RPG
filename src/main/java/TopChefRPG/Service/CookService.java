@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CookService {
-
     private CookRepository cookRepository;
 
     private IngredientService ingredientService;
