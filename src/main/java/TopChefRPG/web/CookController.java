@@ -9,6 +9,8 @@ import TopChefRPG.model.Recipe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,11 +41,18 @@ public class CookController {
 
     //http://localhost:8080/cook/1
     @GetMapping("/{id}")
-    public CookDTO getCookById(@PathVariable int id) {
-        logger.info("given cook {}", id);
-        CookDTO cookDTO = new CookDTO();
-        cookDTO.initialiseCookDTO(cookService.getCookById(id));
-        return cookDTO;
+    public ResponseEntity<CookDTO> getCookById(@PathVariable int id) {
+        try {
+            logger.info("given cook {}", id);
+            CookDTO cookDTO = new CookDTO();
+            cookDTO.initialiseCookDTO(cookService.getCookById(id));
+            return new ResponseEntity<> (cookDTO, HttpStatus.OK);
+        }
+        catch (Exception exception)
+        {
+            return  new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     //http://localhost:8080/cook/changeName/cook/1
