@@ -13,10 +13,15 @@ import java.util.List;
 public class InitializeBDDService {
 
     IngredientListRepository ingredientListRepository;
+
     IngredientService ingredientService;
+
     RecipeService recipeService;
+
     LessonService lessonService;
+
     UserService userService;
+
     CookService cookService;
 
     @Autowired
@@ -28,12 +33,14 @@ public class InitializeBDDService {
         this.lessonService = lessonService;
         this.userService = userService;
         this.cookService = cookService;
+    }
 
+    public InitializeBDDService() {
         setDatainBDD();
     }
 
 
-    private void setDatainBDD() {
+    public void setDatainBDD() {
         // initialisation des ingrédients si vide
         if (ingredientListRepository.findAll().size() == 0) {
             ingredientService.initializeIngredientListInBDD();
@@ -47,6 +54,10 @@ public class InitializeBDDService {
         if (lessons.size() == 0) {
             lessonService.initializeLesson();
         }
+
+    }
+
+    public void setUSerANdCookInBDD() {
         // inintialisation d'un context de données en BDD
         List<User> users = userService.findAll();
         int idUser;
@@ -65,7 +76,6 @@ public class InitializeBDDService {
         } else {
             cook = cooks.get(0);
         }
-
         //User user2 = userService.create("deleteMe", "mymail@toto.com","pass" );
         //Cook cookdrop = cookService.createCook("dropme", 'F', user2);
         //cookService.delCookById(cookdrop.getId());
@@ -91,7 +101,6 @@ public class InitializeBDDService {
             ResultRecipeDTO rr = cookService.tryRecipe(2, cook);
         }
 */
-
 
 
         //Lesson lesson = lessonService.getLessonById(1);

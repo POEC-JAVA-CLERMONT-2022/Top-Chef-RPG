@@ -14,6 +14,7 @@ public class ErrorController {
     public void handleException (Exception exception, WebRequest webRequest)
     {
         // gestion des erreurs ici pour tous les controlleurs qui ont un throws
+
     }
 
 }
