@@ -1,7 +1,9 @@
 package TopChefRPG.Service;
 
 import TopChefRPG.Repository.RecipeRepository;
+import TopChefRPG.model.Cook;
 import TopChefRPG.model.Recipe;
+import TopChefRPG.model.User;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -45,5 +47,29 @@ public class RecipeServiceTest {
         assertEquals(2,lastRecipe.lootIngredient.size());
 
         //TODO verify
+    }
+
+    @Test
+    public void getProbabilityOfSucces()
+    {
+        Recipe recipe1 = new Recipe("recetteTest","ing1",1, "ing",2, "ing", 3, 100, "loot", 1, "loot", 2, 1,1,1);
+        Recipe recipe20 = new Recipe("recetteTest","ing1",1, "ing",2, "ing", 3, 100, "loot", 1, "loot", 2, 20,20,20);
+
+        User emptyUser = new User();
+        Cook cookTest = new Cook("cookTest", 'M', emptyUser );
+
+        // avec les carac = 1 et niveau requis = 1 on devrait avoir 50 % de réussite
+        int proba = recipeService.getProbabilityOfSucces(recipe1,cookTest);
+        assertEquals(50,proba);
+
+        // on augmente la chance du cook pour monter à 63% de réussite (50% + 26 de luck)
+        cookTest.changeCaracteristique(0,0,0,26);
+        proba = recipeService.getProbabilityOfSucces(recipe1,cookTest);
+        assertEquals(63,proba);
+
+        // on augmente la chance au max (50) pour monter la proba 75%
+        cookTest.changeCaracteristique(0,0,0,24);
+        proba = recipeService.getProbabilityOfSucces(recipe1,cookTest);
+        assertEquals(75,proba);
     }
 }

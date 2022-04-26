@@ -34,7 +34,7 @@ public class UserController {
             {
                 // si l'on a pas le User en BDD on jette cette exception (à remplacer par une custom ?)
                 // permet l'appel du error controller sur ce type précis d'exception
-                throw new NoSuchElementException();
+                throw new TopChefException();
             }
             return userFind.getName();
         }

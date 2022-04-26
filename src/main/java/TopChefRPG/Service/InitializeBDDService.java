@@ -76,9 +76,15 @@ public class InitializeBDDService {
         } else {
             cook = cooks.get(0);
         }
-        //User user2 = userService.create("deleteMe", "mymail@toto.com","pass" );
-        //Cook cookdrop = cookService.createCook("dropme", 'F', user2);
-        //cookService.delCookById(cookdrop.getId());
+        User user2 = userService.create("deleteMe", "mymail@toto.com","pass" );
+        Cook cookdrop = cookService.createCook("dropme", 'F', user2);
+        try {
+            cookService.delCookById(cookdrop.getId());
+        }
+        catch (Exception exception)
+        {
+            exception.printStackTrace();
+        }
         //var delete = userService.getAllCooks(user2).remove(cookdrop);
         //user2 = userService.saveUser(user2);
 

@@ -16,7 +16,7 @@ public class CookService {
 
     private RecipeService recipeService;
 
-    @Autowired
+
     public CookService (CookRepository cookRepository, IngredientService ingredientService, RecipeService recipeService )
     {
         this.cookRepository = cookRepository;
