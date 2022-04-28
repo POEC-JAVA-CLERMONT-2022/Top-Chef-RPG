@@ -1,6 +1,8 @@
 package TopChefRPG.web;
 
 
+import TopChefRPG.Exception.ErrorType;
+import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Service.*;
 import TopChefRPG.Service.DTO.*;
 import TopChefRPG.model.Cook;
@@ -60,7 +62,24 @@ public class CookController {
     public void changeName(@RequestBody CookDTO cookDTO, @PathVariable int idCook) {
         logger.info("changement du nom du cook {}", idCook);
         Cook cook = cookService.getCookById(idCook);
-        cookService.changeName(cook, cookDTO.getNewName());
+        if (cookDTO.getNewName() != cookDTO.getName() && cookDTO.getNewName().length()>0)
+        {
+            cookService.changeName(cook, cookDTO.getNewName());
+        }
+        else
+        {
+            String error = "" ;
+            if (cookDTO.getNewName() != cookDTO.getName())
+            {
+                error = "the new name is identical to the old name";
+            }
+            if (cookDTO.getNewName().length()>0)
+            {
+                error = " the new name is not defined or empty";
+            }
+            logger.error("impossible to change name : "+ error + " old name : " + cookDTO.getName()+ ", new Name : "+ cookDTO.getNewName());
+            throw new TopChefException(ErrorType.INCORRECT_DATA, "impossible to change name : "+ error, HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
     //http://localhost:8080/cook/delete/1
@@ -73,8 +92,8 @@ public class CookController {
 
     //http://localhost:8080/cook/ingredients/1
     @GetMapping("/ingredients/{idCook}")
-    public List<IngredientDTO> getIngredients(@PathVariable int idCook) {
-        return ingredientService.getIngredientOfCook(idCook);
+    public ResponseEntity<List<IngredientDTO>> getIngredients(@PathVariable int idCook) {
+        return new ResponseEntity<>( ingredientService.getIngredientOfCook(idCook), HttpStatus.OK);
     }
 
     //http://localhost:8080/cook/getRecipe/1

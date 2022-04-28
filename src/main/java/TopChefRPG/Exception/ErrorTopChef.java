@@ -2,13 +2,15 @@ package TopChefRPG.Exception;
 
 import org.springframework.http.HttpStatus;
 
-public class Error {
-    public String name;
+import java.io.Serializable;
+
+public class ErrorTopChef implements Serializable {
+    public ErrorType name;
     public String description;
     public HttpStatus httpStatus;
 
 
-    public Error(String name, String description, HttpStatus httpStatus) {
+    public ErrorTopChef(ErrorType name, String description, HttpStatus httpStatus) {
         this.name = name;
         this.description = description;
         this.httpStatus = httpStatus;

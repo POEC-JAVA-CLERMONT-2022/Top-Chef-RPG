@@ -49,7 +49,6 @@ class CookServiceTest {
         Assertions.assertNotEquals("stephane", cook1.getName());
         cook1 = cookService.changeName(cook1, "stephane");
         Assertions.assertEquals("stephane", cook1.getName());
-
     }
 
 }

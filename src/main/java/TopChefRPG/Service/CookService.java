@@ -1,10 +1,13 @@
 package TopChefRPG.Service;
 
+import TopChefRPG.Exception.ErrorType;
+import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Service.DTO.ResultLessonDTO;
 import TopChefRPG.Service.DTO.ResultRecipeDTO;
 import TopChefRPG.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -171,7 +174,20 @@ public class CookService {
     }
 
     public Cook getCookById(int id) {
-        return cookRepository.getCookById(id);
+        try {
+            if( cookRepository.existsById(id))
+            {
+                return cookRepository.getCookById(id);
+            }
+            else {
+                throw new TopChefException(ErrorType.NO_DATA, "No cook with id : "+ id+" in BDD", HttpStatus.NOT_FOUND);
+            }
+        }
+        catch (Exception exception)
+        {
+            throw exception;
+        }
+
     }
 
 
