@@ -74,27 +74,32 @@ public class RecipeService {
     }
 
     public Recipe getRecipe(int id) {
-        Recipe recipe = recipeRepository.getRecipeById(id);
-        recipe.requiredIngredients = new ArrayList<>();
-        // on nourrit les listes d'ingrédients loot et requis de l'objet
-        if (recipe.getFirstIngredient().length() > 0) {
-            recipe.requiredIngredients.add(new Ingredient(recipe.getFirstIngredient(), recipe.getFirstQty()));
-        }
-        if (recipe.getSecondIngredient().length() > 0) {
-            recipe.requiredIngredients.add(new Ingredient(recipe.getSecondIngredient(), recipe.getSecondQty()));
-        }
-        if (recipe.getThirdIngredient().length() > 0) {
-            recipe.requiredIngredients.add(new Ingredient(recipe.getThirdIngredient(), recipe.getThirdQty()));
-        }
-        recipe.lootIngredient = new ArrayList<>();
-        if (recipe.getLooting1Name().length() > 0) {
-            recipe.lootIngredient.add(new Ingredient(recipe.getLooting1Name(), recipe.getLooting1Qty()));
-        }
-        if (recipe.getLooting2Name().length() > 0) {
-            recipe.lootIngredient.add(new Ingredient(recipe.getLooting2Name(), recipe.getLooting2Qty()));
-        }
+        if (recipeRepository.existsById(id)) {
+            Recipe recipe = recipeRepository.getRecipeById(id);
+            recipe.requiredIngredients = new ArrayList<>();
+            // on nourrit les listes d'ingrédients loot et requis de l'objet
+            if (recipe.getFirstIngredient().length() > 0) {
+                recipe.requiredIngredients.add(new Ingredient(recipe.getFirstIngredient(), recipe.getFirstQty()));
+            }
+            if (recipe.getSecondIngredient().length() > 0) {
+                recipe.requiredIngredients.add(new Ingredient(recipe.getSecondIngredient(), recipe.getSecondQty()));
+            }
+            if (recipe.getThirdIngredient().length() > 0) {
+                recipe.requiredIngredients.add(new Ingredient(recipe.getThirdIngredient(), recipe.getThirdQty()));
+            }
+            recipe.lootIngredient = new ArrayList<>();
+            if (recipe.getLooting1Name().length() > 0) {
+                recipe.lootIngredient.add(new Ingredient(recipe.getLooting1Name(), recipe.getLooting1Qty()));
+            }
+            if (recipe.getLooting2Name().length() > 0) {
+                recipe.lootIngredient.add(new Ingredient(recipe.getLooting2Name(), recipe.getLooting2Qty()));
+            }
 
-        return recipe;
+            return recipe;
+        }
+        else {
+            throw new TopChefException(ErrorType.WRONG_RECIPE_ID, "Aucune recette ne correspond à l'ID : "+ id, HttpStatus.NOT_FOUND);
+        }
     }
 
     // fonction qui calcule la chance de succès d'une recette retourne un int compris entre 0 et 100
