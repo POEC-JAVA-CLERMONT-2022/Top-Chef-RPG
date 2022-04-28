@@ -53,6 +53,10 @@ public class IngredientService {
             if (cookRepository.existsById(idCook)) {
                 Cook cook = cookRepository.getCookById(idCook);
 
+                if (cook.getIngredients().isEmpty())
+                {
+                    throw new TopChefException(ErrorType.COOK_NOT_INITIALIZED_CORRECTLY, "The returned cook from DataBase has no ingredients. Cook id = "+ idCook, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
                 for (Ingredient ingredient : cook.getIngredients()) {
                     if (ingredient.getIngredientQuantity() > -1) {
                         IngredientDTO ingredientDTO = new IngredientDTO(ingredient);
