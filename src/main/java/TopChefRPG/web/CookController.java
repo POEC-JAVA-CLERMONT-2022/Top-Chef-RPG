@@ -45,7 +45,7 @@ public class CookController {
     @GetMapping("/{id}")
     public ResponseEntity<CookDTO> getCookById(@PathVariable int id) {
         try {
-            logger.info("given cook {}", id);
+            logger.info("given cook " + id+ " try to get data of Cook from BDD ");
             CookDTO cookDTO = new CookDTO();
             cookDTO.initialiseCookDTO(cookService.getCookById(id));
             return new ResponseEntity<> (cookDTO, HttpStatus.OK);
@@ -85,7 +85,7 @@ public class CookController {
     //http://localhost:8080/cook/delete/1
     @GetMapping("/delete/{id}")
     public void delCookById(@PathVariable int id) {
-        logger.info("destruction du cook {} si il le veut bien, id");
+        logger.info(" appel destruction du cook "+  id);
         cookService.delCookById(id);
     }
 

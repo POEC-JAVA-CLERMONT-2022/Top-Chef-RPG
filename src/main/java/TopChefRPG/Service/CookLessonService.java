@@ -1,5 +1,7 @@
 package TopChefRPG.Service;
 
+import TopChefRPG.Exception.ErrorType;
+import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.CookLessonRepository;
 import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.model.Cook;
@@ -7,6 +9,7 @@ import TopChefRPG.model.CookLesson;
 import TopChefRPG.model.Ingredient;
 import TopChefRPG.model.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -56,7 +59,8 @@ public class CookLessonService {
                     }
                     else
                     {
-                        //message erreur pas assez d'ingrédients pour faire la recette
+                        throw new TopChefException(ErrorType.NOT_ENOUGH_INGREDIENT, "impossible d'effectuer le changement " +
+                                "de quantité d'ingrédient, la valeure finale ne peut être négative", HttpStatus.INTERNAL_SERVER_ERROR);
                     }
                 }
             }

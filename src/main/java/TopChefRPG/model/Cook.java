@@ -1,9 +1,12 @@
 package TopChefRPG.model;
 
+import TopChefRPG.Exception.ErrorType;
+import TopChefRPG.Exception.TopChefException;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.http.HttpStatus;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -135,9 +138,7 @@ public class Cook {
         if (this.experience + changeValue >= 0)
             this.experience += changeValue;
         else {
-            //TODO à supprimer ou remplacer par une exception
-            //System.out.println("impossible de mettre à jour l'expérience car résultat final inférieur à 0 !");
-
+            throw new TopChefException(ErrorType.INCORRECT_DATA, "impossible de changer l'expérience à une valeure inférieur à 0 !", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

@@ -44,12 +44,16 @@ public class CookService {
     @Transactional
     public void delCookById(int idCook)
     {
-        Cook cook = getCookById(idCook);
-    // suppression manuelle des ingrédients
-    //ingredientService.deleteIngredients(cook.getIngredients());
+        if (cookRepository.existsById(idCook))
+        {
+            Cook cook = getCookById(idCook);
+            cookRepository.deleteCookById(idCook);
+        }
+        else
+        {
+            throw  new TopChefException(ErrorType.NO_DATA, "no cook find in BDD with id : "+idCook + ". impossible to delete", HttpStatus.NOT_FOUND);
+        }
 
-    //entityManager.remove(cook);
-        cookRepository.deleteCookById(idCook);
 }
 
 
@@ -136,6 +140,7 @@ public class CookService {
         // on parcourt les cooklessons possedées par le cook pour voir si il possède la bonne leçon.
         for (CookLesson cl : cook.getCookLessons())
         {
+
             if (cl.getLesson().getIdLesson() == idLesson) {
                 haveBuyLesson = true;
                 Lesson lesson = cl.getLesson();
@@ -161,13 +166,14 @@ public class CookService {
                     resultLessonDTO = new ResultLessonDTO(dexterityIncrease, creativityIncrease, strengthIncrease, luckIncrease,lesson.getExperienceCost());
                 }
                 else{
-                    // message erreur cook pas assez d'expérience
+                    throw new TopChefException(ErrorType.NOT_ENOUGH_EXPERIENCE, "Pas assez d'expérience pour réaliser la leçon. Cook id / exp: "+
+                            cook.getId()+ " / "+cook.getExperience()+ ", Lesson id / experience cost : "+ lesson.getIdLesson() +" / "+ lesson.getExperienceCost(), HttpStatus.NOT_ACCEPTABLE );
                 }
             }
         }
         if (haveBuyLesson == false)
         {
-            //message erreur lesson pas possedée par le cook;+
+            throw new TopChefException(ErrorType.INCORRECT_DATA, "Le cook ne possède pas encore la leçon. Cook id : "+cook.getId() + " Lesson id: "+idLesson, HttpStatus.NOT_ACCEPTABLE);
         }
         cookRepository.save(cook);
         return resultLessonDTO ;

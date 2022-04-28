@@ -1,5 +1,9 @@
 package TopChefRPG.model;
 
+import TopChefRPG.Exception.ErrorType;
+import TopChefRPG.Exception.TopChefException;
+import org.springframework.http.HttpStatus;
+
 import javax.persistence.*;
 
 @Entity
@@ -53,9 +57,7 @@ public class Ingredient {
         }
         else
         {
-            //message erreur
-            System.out.println("modification de la quantité impossible car inférieure à 0 pour "+this.name);
-
+            throw new TopChefException(ErrorType.INCORRECT_DATA, "impossible de modifier la quantité de l'ingrédient à une valeur inférieure à zéro", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

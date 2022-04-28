@@ -1,11 +1,14 @@
 package TopChefRPG.Service;
 
+import TopChefRPG.Exception.ErrorType;
+import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.RecipeRepository;
 import TopChefRPG.Service.DTO.RecipeDTO;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Ingredient;
 import TopChefRPG.model.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,6 +33,10 @@ public class RecipeService {
 
     public List<Recipe> getRecipes() {
         List<Recipe> recipes = recipeRepository.findAll();
+        if (recipes.isEmpty())
+        {
+            throw new TopChefException(ErrorType.DATA_NOT_INITIALIZED_IN_BDD, "no recipes returned from BDD", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         for (Recipe recipe : recipes) {
             recipe.requiredIngredients = new ArrayList<>();
             if (recipe.getFirstIngredient().length() > 0) {
@@ -53,6 +60,7 @@ public class RecipeService {
     }
 
     public List<RecipeDTO> getRecipesDTO (Cook cook){
+
         List<Recipe> recipes = getRecipes();
 
         List<RecipeDTO> recipeDTOS = new ArrayList<>();
