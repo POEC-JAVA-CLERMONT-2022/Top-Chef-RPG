@@ -36,8 +36,8 @@ public class CookLessonService {
             if (cl.getLesson().getIdLesson() == lesson.getIdLesson())
             {
                 alreadyBuyedLesson = true;
-                break;
-                // message erreur leçon déjà achetée
+                throw  new TopChefException(ErrorType.ALLREADY_OWNED_LECON, "La leçon est déjà achetée par le Cook. Cook Id : "
+                        + cook.getId() + ", lesson Id : "+ lesson.getIdLesson(), HttpStatus.NOT_ACCEPTABLE);
             }
         }
         // si la lecon n'est pas encore achetée, on vérifie ensuite si il a ce qu'il faut comme ingredients requis

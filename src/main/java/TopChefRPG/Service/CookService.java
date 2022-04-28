@@ -59,6 +59,7 @@ public class CookService {
 
     // fonction qui gère la réalisation d'une recette et renvoi un objet spécifique pour l'affichage de la recette
     public ResultRecipeDTO tryRecipe(int idRecipe, Cook cook) {
+
         Recipe recipe = recipeService.getRecipe(idRecipe);
 
         // instanciation de l'objet de retour de la réalisation de la recette

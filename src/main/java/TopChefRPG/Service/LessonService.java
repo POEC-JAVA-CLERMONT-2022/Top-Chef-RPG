@@ -1,9 +1,12 @@
 package TopChefRPG.Service;
+import TopChefRPG.Exception.ErrorType;
+import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.LessonRepository;
 import TopChefRPG.Service.DTO.LessonDTO;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,7 +37,13 @@ public class LessonService {
     }
 
     public Lesson getLessonById(int Id) {
-        return lessonRepository.getLessonById(Id);
+        if (lessonRepository.existsById(Id))
+        {
+            return lessonRepository.getLessonById(Id);
+        }
+        else {
+            throw  new TopChefException(ErrorType.WRONG_LESSON_ID, "Aucune lesson ne correspond à l'Id : "+ Id, HttpStatus.NOT_FOUND);
+        }
     }
 
     public List<Lesson> getAllLessons()
@@ -56,6 +65,10 @@ public class LessonService {
     public List<LessonDTO> getLessonsNotOwned (Cook cook)
     {
         List<Lesson> lessons = getAllLessons();
+        if (lessons.isEmpty())
+        {
+            throw new TopChefException(ErrorType.DATA_NOT_INITIALIZED_IN_BDD, "Aucune lecçon n'existe en BDD", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         List<Lesson> ownedLessons = cookLessonService.getLessonsOfCook(cook);
         List<LessonDTO> notOwnedLessons =new ArrayList<>();
 
