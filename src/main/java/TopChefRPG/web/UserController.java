@@ -1,11 +1,14 @@
 package TopChefRPG.web;
 
+import TopChefRPG.Exception.ErrorType;
 import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Service.CookService;
 import TopChefRPG.Service.DTO.CookDTO;
 import TopChefRPG.Service.UserService;
 import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
@@ -27,16 +30,16 @@ public class UserController {
     }
 
     @GetMapping("/{id}/name")
-    public String getUserById(@PathVariable int id) {
+    public ResponseEntity<String> getUserById(@PathVariable int id) {
         try{
             User userFind = userService.findById(id);
             if (userFind.getId() ==0)
             {
-                // si l'on a pas le User en BDD on jette cette exception (à remplacer par une custom ?)
+                // si on a pas le User en BDD on jette cette exception
                 // permet l'appel du error controller sur ce type précis d'exception
-                throw new TopChefException();
+                throw new TopChefException(ErrorType.NO_DATA,"No User find in BDD with id : "+ id , HttpStatus.NOT_FOUND);
             }
-            return userFind.getName();
+            return new ResponseEntity<>(userFind.getName(), HttpStatus.OK);
         }
         catch (Exception exception)
         {

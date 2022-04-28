@@ -1,5 +1,4 @@
 package TopChefRPG;
-import TopChefRPG.Repository.IngredientListRepository;
 import TopChefRPG.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

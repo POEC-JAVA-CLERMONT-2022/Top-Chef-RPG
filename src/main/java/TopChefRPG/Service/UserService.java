@@ -1,10 +1,13 @@
 package TopChefRPG.Service;
 
+import TopChefRPG.Exception.ErrorType;
+import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Repository.UserRepository;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -59,7 +62,18 @@ public class UserService {
 
     public void deleteUser(int id)
     {
-        userRepository.deleteById(id);
+        try {
+            if (userRepository.existsById(id)) {
+                userRepository.deleteById(id);
+            }
+            else {
+                throw  new TopChefException(ErrorType.NO_DATA, "no User are in BDD with ID : "+ id +". Impossible to delete", HttpStatus.NOT_FOUND);
+            }
+        }
+        catch (Exception exception)
+        {
+            throw exception;
+        }
     }
     public User save(User user)
     {
