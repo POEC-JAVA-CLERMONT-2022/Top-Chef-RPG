@@ -15,7 +15,7 @@ public interface CookRepository extends JpaRepository<Cook, Integer> {
     @Query ("delete from Cook c where c.id = :id")
     @Modifying
     void deleteCookById(@Param("id") int id);
-    //void removeCookById(int id);
+
 
     Cook getCookById(int id);
 
