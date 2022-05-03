@@ -82,8 +82,8 @@ public class CookController {
         }
     }
 
-    //http://localhost:8080/cook/delete/1
-    @GetMapping("/delete/{id}")
+    //http://localhost:8080/cook/1
+    @DeleteMapping("/{id}")
     public void delCookById(@PathVariable int id) {
         logger.info(" appel destruction du cook "+  id);
         cookService.delCookById(id);
