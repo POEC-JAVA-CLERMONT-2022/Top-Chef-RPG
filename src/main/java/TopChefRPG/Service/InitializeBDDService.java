@@ -1,5 +1,7 @@
 package TopChefRPG.Service;
 
+import TopChefRPG.Exception.ErrorType;
+import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.IngredientListRepository;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Lesson;
@@ -46,8 +48,14 @@ public class InitializeBDDService {
             ingredientService.initializeIngredientListInBDD();
         }
         // initialisation des recettes
-        if (recipeService.getRecipes().size() == 0) {
-            recipeService.createRecipes();
+        try{
+            recipeService.getRecipes();
+        }
+        catch (TopChefException exception)
+        {
+            if (exception.getExceptionType() == ErrorType.DATA_NOT_INITIALIZED_IN_BDD) {
+                recipeService.createRecipes();
+            }
         }
         //initialisation des leçons.
         List<Lesson> lessons = lessonService.getAllLessons();
