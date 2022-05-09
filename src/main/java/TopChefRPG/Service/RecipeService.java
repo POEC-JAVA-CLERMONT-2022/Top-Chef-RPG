@@ -35,7 +35,7 @@ public class RecipeService {
         List<Recipe> recipes = recipeRepository.findAll();
         if (recipes.isEmpty())
         {
-            //throw new TopChefException(ErrorType.DATA_NOT_INITIALIZED_IN_BDD, "no recipes returned from BDD", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new TopChefException(ErrorType.DATA_NOT_INITIALIZED_IN_BDD, "no recipes returned from BDD", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         for (Recipe recipe : recipes) {
             recipe.requiredIngredients = new ArrayList<>();
