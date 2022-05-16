@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="grow-9">
+    <div class="column">
+      <div class="grow-6">
+        <div class="row heigh-fixed">
+          <div class="grow-6">
+            <app-cook [cook]="cook"></app-cook>
+          </div>
+          <div class="grow-6">
+            //ngfor lessons owned
+            // pour chaque afficher lesson
+            <app-lesson></app-lesson>
+          </div>
+        </div>
+      </div>
+      <div class=" row grow-6">
+        <div *ngFor="let recipe of recipes" >
+          <div class="recipeBlock">
+          <app-recipe [recipe]="recipe"></app-recipe>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="grow-3">
+    <app-frigo [Ingredients]="ingredients"></app-frigo>
+  </div>
+
+
+</div>

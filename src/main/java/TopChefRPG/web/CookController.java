@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/cook")
 public class CookController {
@@ -104,7 +104,7 @@ public class CookController {
     }
 
     //http://localhost:8080/cook/doRecipe/1/1
-    @GetMapping("/doRecipe/{idCook}/{idRecipe}")
+    @PostMapping("/doRecipe/{idCook}/{idRecipe}")
     public ResultRecipeDTO doRecipe(@PathVariable int idCook, @PathVariable int idRecipe) {
         Cook cook = cookService.getCookById(idCook);
         Recipe recipe = recipeService.getRecipe(idRecipe);
