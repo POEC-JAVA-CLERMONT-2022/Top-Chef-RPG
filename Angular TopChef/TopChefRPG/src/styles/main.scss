@@ -1,0 +1,55 @@
+body {
+  background-color: darkslategrey;
+  color: mediumspringgreen;
+}
+
+.title {
+  color: lime;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.grow-9 {
+  flex-grow: 9;
+  flex-basis: 75%;
+}
+
+.grow-3 {
+  flex-grow: 3;
+  flex-basis: 25%;
+}
+
+.grow-6 {
+  flex-grow: 6;
+  flex-basis: 50%;
+}
+.heigh-fixed{
+  height: 40vh;
+}
+
+.blockIngredient {
+  padding: 5px;
+  border: solid #009688;
+  margin: 5px;
+}
+
+.recipeBlock {
+  padding: 5px;
+  border: solid #009688;
+  margin: 5px;
+  min-height: 250px;
+  min-width: 250px
+;
+
+}
+

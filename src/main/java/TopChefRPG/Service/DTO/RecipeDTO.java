@@ -1,6 +1,8 @@
 package TopChefRPG.Service.DTO;
 import TopChefRPG.model.Ingredient;
 import TopChefRPG.model.Recipe;
+import com.sun.xml.bind.v2.runtime.reflect.Lister;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +10,8 @@ public class RecipeDTO {
     public int idRecipe;
 
     public String name;
-    public ArrayList<Ingredient> ingredientsRequired;
-    public ArrayList<Ingredient> lootIngredient;
+    public ArrayList<IngredientDTO> ingredientsRequired;
+    public ArrayList<IngredientDTO> lootIngredient;
     public int strengthRequired;
     public int dexterityRequired;
     public int creativityRequired;
@@ -21,8 +23,8 @@ public class RecipeDTO {
     {
         this.idRecipe = recipe.getIdRecipe();
         this.name = recipe.getName();
-        this.ingredientsRequired = recipe.requiredIngredients;
-        this.lootIngredient =  recipe.lootIngredient;
+        this.ingredientsRequired = new ArrayList<IngredientDTO>();
+        this.lootIngredient =  new ArrayList<IngredientDTO>();
         this.strengthRequired = recipe.getStrengthRequired();
         this.creativityRequired = recipe.getCreativityRequired();
         this.dexterityRequired = recipe.getDexterityRequired();
@@ -39,7 +41,16 @@ public class RecipeDTO {
                         this.doable = false;
                 }
             }
+            //remplissage des ingrédients requis sous forme DTO
+            this.ingredientsRequired.add(new IngredientDTO(ingRequired));
         }
+        for (Ingredient ingLoot : recipe.lootIngredient)
+        {
+            this.lootIngredient.add(new IngredientDTO(ingLoot));
+        }
+
+
+
     }
 
     public int getIdRecipe() {
@@ -58,19 +69,19 @@ public class RecipeDTO {
         this.name = name;
     }
 
-    public ArrayList<Ingredient> getIngredientsRequired() {
+    public ArrayList<IngredientDTO> getIngredientsRequired() {
         return ingredientsRequired;
     }
 
-    public void setIngredientsRequired(ArrayList<Ingredient> ingredientsRequired) {
+    public void setIngredientsRequired(ArrayList<IngredientDTO> ingredientsRequired) {
         this.ingredientsRequired = ingredientsRequired;
     }
 
-    public ArrayList<Ingredient> getLootIngredient() {
+    public ArrayList<IngredientDTO> getLootIngredient() {
         return lootIngredient;
     }
 
-    public void setLootIngredient(ArrayList<Ingredient> lootIngredient) {
+    public void setLootIngredient(ArrayList<IngredientDTO> lootIngredient) {
         this.lootIngredient = lootIngredient;
     }
 
