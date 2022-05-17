@@ -34,7 +34,7 @@ body {
   flex-basis: 50%;
 }
 .heigh-fixed{
-  height: 40vh;
+  height: 25vh;
 }
 
 .blockIngredient {
@@ -43,13 +43,24 @@ body {
   margin: 5px;
 }
 
-.recipeBlock {
+.border{
   padding: 5px;
   border: solid #009688;
   margin: 5px;
-  min-height: 250px;
-  min-width: 250px
-;
+}
+.popup{
+  text-align: center;
+  background-color: lightslategrey;
+  position: fixed;
+  top: 20vh;
+  left: 20vw;
+  width: 60vw;
+  height: 60vh;
+}
 
+.recipeBlock {
+
+  min-height: 300px;
+  min-width: 250px;
 }
 

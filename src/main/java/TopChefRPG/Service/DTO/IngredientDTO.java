@@ -2,6 +2,8 @@ package TopChefRPG.Service.DTO;
 
 import TopChefRPG.model.Ingredient;
 
+import java.util.ArrayList;
+
 public class IngredientDTO {
     public String ingredientName;
 
@@ -12,4 +14,6 @@ public class IngredientDTO {
         this.ingredientName =ingredient.getName();
         this.ingredientQuantity =ingredient.getIngredientQuantity();
     }
+
+
 }

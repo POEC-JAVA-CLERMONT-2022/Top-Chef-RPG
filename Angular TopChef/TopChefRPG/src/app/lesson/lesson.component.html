@@ -1,1 +1,15 @@
-<p>lesson works!</p>
+Lesson app
+<div *ngIf="lessons.length>0" class="row">
+
+  <div *ngFor="let lesson of lessons">
+    <div> {{lesson.name}}</div>
+    <div>Cout en expérience :{{lesson.experienceCost}}</div>
+    <div>D : {{lesson.dexterityIncrease}}, C : {{lesson.creativityIncrease}}, F : {{lesson.strengthIncrease}},
+      L : {{lesson.luckIncrease}}</div>
+    <button (click)="doLesson(lesson.id)">Suivre la leçon</button>
+
+
+  </div>
+
+
+</div>

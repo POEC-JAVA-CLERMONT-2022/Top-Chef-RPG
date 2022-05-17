@@ -84,6 +84,30 @@ public class IngredientService {
         ingredientListRepository.save(ing);
         ing = new IngredientList("chou");
         ingredientListRepository.save(ing);
+        ing = new IngredientList("tomate");
+        ingredientListRepository.save(ing);
+        ing = new IngredientList("saucisse");
+        ingredientListRepository.save(ing);
+        ing = new IngredientList("farine");
+        ingredientListRepository.save(ing);
+        ing = new IngredientList("eau");
+        ingredientListRepository.save(ing);
+        ing = new IngredientList("pate à tarte");
+        ingredientListRepository.save(ing);
+        ing = new IngredientList("pate à pizza");
+        ingredientListRepository.save(ing);
+        ing = new IngredientList("mozzarela");
+        ingredientListRepository.save(ing);
+    }
+
+    public ArrayList<IngredientDTO> ingredientsToDTOS(ArrayList<Ingredient> ingredients)
+    {
+        ArrayList<IngredientDTO> IngredientDTOS = new ArrayList<>();
+        for (Ingredient ing : ingredients)
+        {
+            IngredientDTOS.add(new IngredientDTO(ing));
+        }
+        return IngredientDTOS;
     }
 
     public void deleteIngredients(List<Ingredient> ingredients) {

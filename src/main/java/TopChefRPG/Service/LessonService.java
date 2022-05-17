@@ -25,14 +25,20 @@ public class LessonService {
         this.cookLessonService = cookLessonService;
     }
     public void initializeLesson() {
-        Lesson lesson1 = new Lesson("couteaux japonais", 10, 10, 10, 10, 100, "pomme", 20);
+        Lesson lesson0 = new Lesson("Epluchage pommes", 10, 10, 10, 10, 100, "pomme", 20);
+        lessonRepository.save(lesson0);
+
+        Lesson lesson1 = new Lesson("Taille de frites", 30, 10, 15, 10, 200, "patate", 20);
         lessonRepository.save(lesson1);
 
-        Lesson lesson2 = new Lesson("cuisson à la poele", 20, 25, 30, 30, 300, "patate", 30);
+        Lesson lesson2 = new Lesson("pate à tarte", 20, 25, 30, 20, 300, "farine", 30);
         lessonRepository.save(lesson2);
 
-        Lesson lesson3 = new Lesson("cuisson au four", 30, 20, 40, 20, 600, "steak", 15);
+        Lesson lesson3 = new Lesson("cuisson cocotte", 80, 60, 50, 40, 1200, "chou", 20);
         lessonRepository.save(lesson3);
+
+        Lesson lesson4 = new Lesson("pate à pizza", 50, 80, 40, 30, 2000, "tomate", 30);
+        lessonRepository.save(lesson4);
 
     }
 

@@ -5,6 +5,7 @@ import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Service.CookService;
 import TopChefRPG.Service.DTO.CookDTO;
 import TopChefRPG.Service.UserService;
+import TopChefRPG.model.Cook;
 import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,9 +55,10 @@ public class UserController {
     }
 
     @PostMapping("/createCook/{idUser}")
-    public void createCook(@RequestBody CookDTO cookDTO, @PathVariable int idUser)
+    public int createCook(@RequestBody CookDTO cook, @PathVariable int idUser)
     {
         User user = userService.findById(idUser);
-        cookService.createCook(cookDTO.getName(), cookDTO.getGender(), user);
+        Cook cookreturned = cookService.createCook(cook.getName(), 'M', user);
+        return cookreturned.getId();
     }
 }

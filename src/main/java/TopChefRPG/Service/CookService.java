@@ -96,7 +96,7 @@ public class CookService {
             }
 
 
-            RRDTO.addIngredientUsed(recipe.requiredIngredients);
+            RRDTO.addIngredientUsed(ingredientService.ingredientsToDTOS(recipe.requiredIngredients));
 
             // on test la réussite de la recette, si le score est supperieur à 100
             if (recipeService.getChanceSucces(recipe, cook)> Math.random()*100)
@@ -117,7 +117,7 @@ public class CookService {
                 // on nourrit l'objet du message de retour
                 RRDTO.setTextRetour("la recette est réussie !!");
 
-                RRDTO.addIngredientLoot(recipe.lootIngredient);
+                RRDTO.addIngredientLoot(ingredientService.ingredientsToDTOS(recipe.lootIngredient));
                 RRDTO.setExperienceGain(recipe.getExperience());
                 RRDTO.setSucces(true);
 

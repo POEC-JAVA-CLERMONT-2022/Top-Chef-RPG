@@ -8,19 +8,20 @@ import {UrlService} from "./UrlService";
 })
 export class RequestServiceService {
 
-  urlApi: string ="http://localhost:8080"
+
   constructor(private httpClient: HttpClient) { }
 
   getRequest<T>(endUrl : string ): Observable<T>{
-    console.log("url appelée : "+ this.urlApi + endUrl );
+    console.log("url appelée : "+ UrlService.urlApi + endUrl );
     return this.httpClient.get<T>(UrlService.urlApi + endUrl );
   }
 
   postRequest<T>(endUrl : string, body : any): Observable<T>{
-    return this.httpClient.post<T>( this.urlApi + endUrl, body, UrlService.headers);
+    console.log("url appelée : "+ UrlService.urlApi + endUrl );
+    return this.httpClient.post<T>( UrlService.urlApi + endUrl, body, UrlService.headers);
   }
 
   deleteRequest(endUrl : string ): void {
-    this.httpClient.delete(this.urlApi +endUrl);
+    this.httpClient.delete(UrlService.urlApi +endUrl);
 }
 }

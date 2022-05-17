@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import {Recipe} from "../../models/recipe";
+import {RequestServiceService} from "../../services/request-service.service";
+
 
 @Component({
   selector: 'app-recipe',
@@ -9,16 +11,26 @@ import {Recipe} from "../../models/recipe";
 export class RecipeComponent implements OnInit {
 
 
-  @Input()  public recipe :Recipe = new Recipe();
+  @Input()
+  public recipes :Array<Recipe> = new Array<Recipe>();
 
-  constructor() { }
+
+  @Output()
+  public idRecipe : EventEmitter<number> =new EventEmitter<number>();
+
+
+
+  constructor(private request : RequestServiceService) { }
 
   ngOnInit(): void {
-    console.log(this.recipe.name)
-    console.log(this.recipe.ingredientsRequired.toString())
-    this.recipe.ingredientsRequired.
+
   }
 
 
+  doRecipe(idRecipe :number){
+    console.log("go make recipe "+ idRecipe);
+    // appel de la main avec la recette clickée
+    this.idRecipe.emit(idRecipe);
+  }
 
 }

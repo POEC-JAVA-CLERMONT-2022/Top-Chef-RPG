@@ -1,0 +1,7 @@
+<form [formGroup]="cookFormGroup">
+  <input formControlName="cookName"
+         type="text"
+         placeholder="enter your cook name here"
+         >
+  <button [disabled]="cookName.invalid" (click)="createCook()">create cook</button>
+</form>

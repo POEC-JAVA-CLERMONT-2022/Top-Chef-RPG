@@ -1,10 +1,9 @@
 package TopChefRPG.Service.DTO;
-import TopChefRPG.model.Ingredient;
 import java.util.ArrayList;
 
 public class ResultRecipeDTO {
-    private ArrayList<Ingredient> ingredientLoot;
-    private ArrayList<Ingredient> ingredientUsed;
+    private ArrayList<IngredientDTO> ingredientLoot;
+    private ArrayList<IngredientDTO> ingredientUsed;
     private int experienceGain;
     private String textRetour;
     private String errorMessage;
@@ -15,14 +14,14 @@ public class ResultRecipeDTO {
         this.ingredientLoot = new ArrayList<>();
         this.ingredientUsed = new ArrayList<>();
     }
-    public void addIngredientLoot (ArrayList<Ingredient> ingredients)
+    public void addIngredientLoot (ArrayList<IngredientDTO> dtos)
     {
-        this.ingredientLoot.addAll(ingredients);
+        this.ingredientLoot.addAll(dtos);
     }
 
-    public void addIngredientUsed (ArrayList<Ingredient> ingredients)
+    public void addIngredientUsed (ArrayList<IngredientDTO> dtos)
     {
-        this.ingredientUsed.addAll(ingredients);
+        this.ingredientUsed.addAll(dtos);
     }
 
     public void setExperienceGain(int experienceGain) {
@@ -41,25 +40,10 @@ public class ResultRecipeDTO {
         this.errorMessage = errorMessage;
     }
 
-    public ArrayList<Ingredient> getIngredientLoot() {
+    public ArrayList<IngredientDTO> getIngredientLoot() {
         return ingredientLoot;
     }
 
-    public void setIngredientLoot(ArrayList<Ingredient> ingredientLoot) {
-        this.ingredientLoot = ingredientLoot;
-    }
-
-    public ArrayList<Ingredient> getIngredientUsed() {
-        return ingredientUsed;
-    }
-
-    public void setIngredientUsed(ArrayList<Ingredient> ingredientUsed) {
-        this.ingredientUsed = ingredientUsed;
-    }
-
-    public int getExperienceGain() {
-        return experienceGain;
-    }
 
     public String getTextRetour() {
         return textRetour;
@@ -69,4 +53,23 @@ public class ResultRecipeDTO {
         return errorMessage;
     }
 
+    public void setIngredientLoot(ArrayList<IngredientDTO> ingredientLoot) {
+        this.ingredientLoot = ingredientLoot;
+    }
+
+    public ArrayList<IngredientDTO> getIngredientUsed() {
+        return ingredientUsed;
+    }
+
+    public void setIngredientUsed(ArrayList<IngredientDTO> ingredientUsed) {
+        this.ingredientUsed = ingredientUsed;
+    }
+
+    public int getExperienceGain() {
+        return experienceGain;
+    }
+
+    public boolean isSucces() {
+        return succes;
+    }
 }

@@ -1,0 +1,21 @@
+<div><h1> Lessons disponibles</h1> <button (click)="retour()" >retour</button></div>
+<div class="row">
+<div *ngFor="let lesson of LessonsToBuy" class="column">
+  <div> {{lesson.name}}</div>
+  <div> prix : {{lesson.ingredientQuantity}} {{lesson.ingredientName}}</div>
+  <div> expérience consommée : {{lesson.experienceCost}}</div>
+  <div>caracteristiques : </div>
+  <ul>
+    <li> créativité :{{lesson.creativityIncrease}}</li>
+    <li> dextérité :{{lesson.dexterityIncrease}}</li>
+    <li> force :{{lesson.strengthIncrease}}</li>
+    <li> chance : {{lesson.luckIncrease}}</li>
+  </ul>
+  <button (click)="buyLesson(lesson.id)">Acheter</button>
+
+</div>
+
+
+
+
+</div>
