@@ -7,26 +7,50 @@
             <app-cook [cook]="cook"></app-cook>
           </div>
           <div class="grow-6">
-            //ngfor lessons owned
-            // pour chaque afficher lesson
-            <app-lesson></app-lesson>
+            <div class="row">
+              <h3> Leçons disponibles</h3>
+              <button (click)="gomarket()" >Acheter Leçons</button>
+            </div>
+            <app-lesson [lessons]="lessonsOwned" (lessonChoosed)="dolesson($event)"></app-lesson>
           </div>
+
         </div>
       </div>
-      <div class=" row grow-6">
-        <div *ngFor="let recipe of recipes" >
-          <div class="recipeBlock">
-          <app-recipe [recipe]="recipe"></app-recipe>
-          </div>
-
-        </div>
-
+      <div class="grow-6">
+        <app-recipe [recipes]="recipes" (idRecipe)="doRecipe($event)"></app-recipe>
       </div>
     </div>
   </div>
   <div class="grow-3">
     <app-frigo [Ingredients]="ingredients"></app-frigo>
   </div>
+</div>
 
+<div *ngIf="showResultrecipe" (click)="exitResultpopup()" class="column popup">
+  <div *ngIf="resultRecipe.succes" class="column" >
+    <div>Recette réussie !</div>
+    <div>Expérience gagnéé : {{resultRecipe.experienceGain}}</div>
+    <div>Ingrédients gagnés : <br>
+      <ul>
+        <li *ngFor="let ingredient of resultRecipe.ingredientLoot">
+          {{ingredient.ingredientQuantity}}  :  {{ingredient.ingredientName}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="!resultRecipe.succes" >
+    <div>Echec de la recette !</div>
+    <div *ngIf="resultRecipe.ingredientUsed.length>0">Ingrédients perdus : </div>
+    <ul *ngIf="resultRecipe.ingredientUsed.length>0">
+      <li *ngFor="let ingredient of resultRecipe.ingredientUsed">
+        {{ingredient.ingredientQuantity}}  :  {{ingredient.ingredientName}}
+      </li>
+    </ul>
+  </div>
 
 </div>
+
+
+
+
+

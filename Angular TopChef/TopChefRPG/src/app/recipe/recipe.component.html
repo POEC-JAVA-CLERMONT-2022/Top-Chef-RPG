@@ -1,25 +1,33 @@
-<div>
-  <div> {{recipe.name}}  succès : {{recipe.chanceOfSucces}} %</div>
-  <div>Ingredients requis :
-    <ul>
-      <li *ngFor="let ingredient of recipe.ingredientsRequired">
-        {{ingredient.ingredientQuantity}} : {{ingredient.ingredientName}}
-      </li>
-    </ul>
+<div class="row" >
+
+  <div *ngFor="let recipe of recipes" class="recipeBlock border">
+    <div> {{recipe.name}} .... succès : {{recipe.chanceOfSucces}} %</div>
+
+    <div *ngIf="recipe.ingredientsRequired.length > 0">Ingredients requis :
+      <ul>
+        <li *ngFor="let ingredient of recipe.ingredientsRequired">
+          {{ingredient.ingredientQuantity}} : {{ingredient.ingredientName}}
+        </li>
+      </ul>
+    </div>
+    <div>Récompenses :
+      <ul>
+        <li *ngFor="let ingredient of recipe.lootIngredient">
+          {{ingredient.ingredientQuantity}} : {{ingredient.ingredientName}}
+        </li>
+      </ul>
+    </div>
+    <div>
+      Niveaux conseillés :
+      <ul>
+        <li> Créativité : {{recipe.creativityRequired}}</li>
+        <li> Dextérité : {{recipe.dexterityRequired}}</li>
+        <li> Force : {{recipe.strengthRequired}}</li>
+      </ul>
+    </div>
+
+
+    <button [disabled]="!recipe.doable" (click)="doRecipe(recipe.idRecipe)">Faire la recette</button>
   </div>
-  <div>Récompense :
-    <ul>
-      <li *ngFor="let ingredient of recipe.lootIngredient">
-        {{ingredient.ingredientQuantity}} : {{ingredient.ingredientName}}
-      </li>
-    </ul>
-  </div>
-  <div>
 
-  </div>
-
-
-
-  <button disabled="recipe.doable">Faire la recette</button>
-  <div>{{recipe.doable}}</div>
 </div>

@@ -10,7 +10,11 @@ export class UrlService {
   }
 
 
+  //static urlApi: string = "https://topchefapp.azurewebsites.net:8080";
   static urlApi: string = "http://localhost:8080"
+
+
+  static urlCreateCook : string='/users/createCook/1';
   static urlGetCookById: string = "/cook/";
   static urlGetIngredient : string = "/cook/ingredients/";
 

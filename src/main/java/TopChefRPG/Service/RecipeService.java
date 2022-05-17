@@ -25,10 +25,27 @@ public class RecipeService {
 
     public void createRecipes() {
 
-        Recipe epluchPomme = new Recipe("eplucher pomme", "", 0, "", 0, "", 0, 10, "pomme", 5, "", 0, 1, 1, 1);
+        Recipe epluchPomme = new Recipe("Eplucher pomme", "", 0, "", 0, "", 0, 10, "pomme", 5, "", 0, 1, 1, 1);
         recipeRepository.save(epluchPomme);
-        Recipe tartePomme = new Recipe("tarte au pommes", "pomme", 10, "", 0, "", 0, 10, "patate", 5, "", 0, 10, 10, 10);
+        Recipe tartePomme = new Recipe("Compote", "pomme", 10, "", 0, "", 0, 15, "patate", 5, "", 0, 10, 10, 10);
         recipeRepository.save(tartePomme);
+        Recipe frites = new Recipe("Frites au four", "patate", 5, "", 0, "", 0, 25, "farine", 5, "eau", 7, 25, 15, 10);
+        recipeRepository.save(frites);
+        Recipe pateATarte = new Recipe("Pâte à tarte", "farine", 5, "eau", 5, "", 0, 30, "pate à tarte", 2, "", 0, 30, 20, 15);
+        recipeRepository.save(pateATarte);
+        Recipe epluchChou = new Recipe("Eplucher chou", "", 0, "", 0, "", 0, 10, "chou", 50, "saucisse", 1, 35, 30, 15);
+        recipeRepository.save(epluchChou);
+        Recipe tartopomme = new Recipe("Tarte aux pommes", "pate à tarte",1 , "pomme", 10, "", 0, 80, "tomate", 10, "mozzarela", 5, 30, 40, 25);
+        recipeRepository.save(tartopomme);
+        Recipe soupochou = new Recipe("Soupe aux choux", "chou",8 , "patate", 10, "eau", 10, 120, "saucisse", 5, "eau", 8, 40, 20, 20);
+        recipeRepository.save(soupochou);
+        Recipe socochou = new Recipe("Saucise au chou", "chou",3 , "saucisse", 2, "", 0, 200, "mozzarela", 5, "eau", 10, 30, 40, 25);
+        recipeRepository.save(socochou);
+        Recipe pateApizza = new Recipe("Pate à pizza", "farine",10 , "eau", 5, "", 0, 300, "pate à pizza", 2, "tomate", 10, 45, 35, 40);
+        recipeRepository.save(pateApizza);
+        Recipe pizza = new Recipe("Pizza !", "pate à pizza",1 , "tomate", 4, "mozzarela", 5, 500, "mozzarela", 10, "saucisse", 10, 50, 50, 50);
+        recipeRepository.save(pizza);
+
     }
 
     public List<Recipe> getRecipes() {

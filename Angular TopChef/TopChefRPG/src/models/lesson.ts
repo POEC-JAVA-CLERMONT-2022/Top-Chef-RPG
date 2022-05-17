@@ -1,5 +1,6 @@
 
 export class Lesson{
+  private _id : number =0;
   private _name : string ="";
   private _strengthIncrease :number =0;
   private _dexterityIncrease : number = 0;
@@ -11,6 +12,14 @@ export class Lesson{
 
 
   constructor() {
+  }
+
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
   }
 
   get name(): string {
