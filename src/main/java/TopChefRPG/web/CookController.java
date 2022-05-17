@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @CrossOrigin
 @RestController
@@ -62,14 +63,14 @@ public class CookController {
     public void changeName(@RequestBody CookDTO cookDTO, @PathVariable int idCook) {
         logger.info("changement du nom du cook {}", idCook);
         Cook cook = cookService.getCookById(idCook);
-        if (cookDTO.getNewName() != cookDTO.getName() && cookDTO.getNewName().length()>0)
+        if (!cookDTO.getNewName().equals( cookDTO.getName()) && cookDTO.getNewName().length()>0)
         {
             cookService.changeName(cook, cookDTO.getNewName());
         }
         else
         {
             String error = "" ;
-            if (cookDTO.getNewName() != cookDTO.getName())
+            if (!Objects.equals(cookDTO.getNewName(), cookDTO.getName()))
             {
                 error = "the new name is identical to the old name";
             }
