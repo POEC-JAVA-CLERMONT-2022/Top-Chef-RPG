@@ -147,4 +147,24 @@ public class Recipe {
     public Integer getCreativityRequired() {
         return creativityRequired;
     }
+
+    public void buildListIngredient(){
+        this.requiredIngredients = new ArrayList<>();
+        if (!this.getFirstIngredient().isEmpty()) {
+            this.requiredIngredients.add(new Ingredient(this.getFirstIngredient(), this.getFirstQty()));
+        }
+        if (!this.getSecondIngredient().isEmpty()) {
+            this.requiredIngredients.add(new Ingredient(this.getSecondIngredient(), this.getSecondQty()));
+        }
+        if (!this.getThirdIngredient().isEmpty()) {
+            this.requiredIngredients.add(new Ingredient(this.getThirdIngredient(), this.getThirdQty()));
+        }
+        this.lootIngredient = new ArrayList<>();
+        if (!this.getLooting1Name().isEmpty()) {
+            this.lootIngredient.add(new Ingredient(this.getLooting1Name(), this.getLooting1Qty()));
+        }
+        if (!this.getLooting2Name().isEmpty()) {
+            this.lootIngredient.add(new Ingredient(this.getLooting2Name(), this.getLooting2Qty()));
+        }
+    }
 }
