@@ -172,7 +172,7 @@ public class CookService {
                 }
             }
         }
-        if (haveBuyLesson == false)
+        if (!haveBuyLesson)
         {
             throw new TopChefException(ErrorType.INCORRECT_DATA, "Le cook ne possède pas encore la leçon. Cook id : "+cook.getId() + " Lesson id: "+idLesson, HttpStatus.NOT_ACCEPTABLE);
         }
@@ -181,21 +181,12 @@ public class CookService {
     }
 
     public Cook getCookById(int id) {
-        try {
-            if( cookRepository.existsById(id))
-            {
-                return cookRepository.getCookById(id);
-            }
-            else {
-                throw new TopChefException(ErrorType.NO_DATA, "No cook with id : "+ id+" in BDD", HttpStatus.NOT_FOUND);
-            }
-        }
-        catch (Exception exception)
+        if( cookRepository.existsById(id))
         {
-            throw exception;
+            return cookRepository.getCookById(id);
         }
-
+        else {
+            throw new TopChefException(ErrorType.NO_DATA, "No cook with id : "+ id+" in BDD", HttpStatus.NOT_FOUND);
+        }
     }
-
-
 }
