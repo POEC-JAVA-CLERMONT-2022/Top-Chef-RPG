@@ -36,11 +36,11 @@ public class Cook {
     @OneToMany(targetEntity = Ingredient.class, cascade = CascadeType.ALL,  mappedBy = "cook",  fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Ingredient> ingredients;
-    @OneToMany(targetEntity = CookLesson.class, cascade = CascadeType.ALL, mappedBy = "cook", fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Cook_Lesson.class, cascade = CascadeType.ALL, mappedBy = "cook", fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<CookLesson> cookLessons;
-    @ManyToOne     @JoinColumn(name = "idUser" ,nullable = false)
+    private List<Cook_Lesson> cookLessons;
+    @ManyToOne     @JoinColumn(name = "id_User" ,nullable = false)
     private User user;
 
     public int getDexterity() {
@@ -98,10 +98,10 @@ public class Cook {
     public List<Ingredient> getIngredients() {
         return this.ingredients;
     }
-    public List<CookLesson> getCookLessons() {
+    public List<Cook_Lesson> getCookLessons() {
         return this.cookLessons;
     }
-    public void addLesson(CookLesson cookLesson) {
+    public void addLesson(Cook_Lesson cookLesson) {
         this.cookLessons.add(cookLesson);
     }
     public void changeExperience(int changeValue) {

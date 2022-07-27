@@ -10,39 +10,24 @@ public class Lesson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-
     @Column(name = "name")
     private String name;
-
-    @Column(name = "strengthIncrease")
+    @Column(name = "strength_Increase")
     private int strengthIncrease;
-
-    @Column(name = "dexterityIncrease")
+    @Column(name = "dexterity_Increase")
     private int dexterityIncrease;
-
-    @Column(name = "creativityIncrease")
+    @Column(name = "creativity_Increase")
     private int creativityIncrease;
-
     private int luckIncrease;
-
     private int experienceCost;
-
-
     // variables pour l'achat
     private String ingredientName;
-
     private int ingredientQuantity;
-
-    @OneToMany(targetEntity = CookLesson.class, mappedBy = "lesson")
-    private List<CookLesson> cookLessons;
-
-
+    @OneToMany(targetEntity = Cook_Lesson.class, mappedBy = "lesson")
+    private List<Cook_Lesson> cookLessons;
     public Lesson() {
-
     }
-
     public Lesson(String name, Integer strengthIncrease, Integer dexterityIncrease, Integer creativityIncrease, Integer luckIncrease, Integer experienceCost, String ingredientName, int ingredientQuantity) {
-
         this.name = name;
         this.strengthIncrease = strengthIncrease;
         this.dexterityIncrease = dexterityIncrease;
@@ -56,32 +41,24 @@ public class Lesson {
     public int getIdLesson() {
         return id;
     }
-
     public String getName() {
         return name;
     }
-
     public int getStrengthIncrease() {
         return strengthIncrease;
     }
-
     public int getDexterityIncrease() {
         return dexterityIncrease;
     }
-
     public int getCreativityIncrease() {
         return creativityIncrease;
     }
-
     public int getLuckIncrease() {
         return luckIncrease;
     }
-
     public int getExperienceCost() {
         return experienceCost;
     }
-
     public String getIngredientName() { return ingredientName; }
-
     public int getIngredientQuantity() { return ingredientQuantity; }
 }

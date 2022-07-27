@@ -6,7 +6,6 @@ import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Service.DTO.ResultLessonDTO;
 import TopChefRPG.Service.DTO.ResultRecipeDTO;
 import TopChefRPG.model.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -139,7 +138,7 @@ public class CookService {
         ResultLessonDTO resultLessonDTO = new ResultLessonDTO(-1,-1,-1,-1,-1);
         boolean haveBuyLesson = false;
         // on parcourt les cooklessons possedées par le cook pour voir si il possède la bonne leçon.
-        for (CookLesson cl : cook.getCookLessons())
+        for (Cook_Lesson cl : cook.getCookLessons())
         {
 
             if (cl.getLesson().getIdLesson() == idLesson) {

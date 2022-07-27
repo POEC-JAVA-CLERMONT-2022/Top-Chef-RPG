@@ -8,7 +8,7 @@ import TopChefRPG.Repository.IngredientRepository;
 import TopChefRPG.Service.DTO.IngredientDTO;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Ingredient;
-import TopChefRPG.model.IngredientList;
+import TopChefRPG.model.Ingredient_List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -33,7 +33,7 @@ public class IngredientService {
     }
 
     public void initializeIngredient(Cook cook) {
-        for (IngredientList ingredientList : ingredientListRepository.findAll()) {
+        for (Ingredient_List ingredientList : ingredientListRepository.findAll()) {
             Ingredient ingredient = new Ingredient(ingredientList.getName(), cook);
             cook.getIngredients().add(ingredient);
         }
@@ -76,27 +76,27 @@ public class IngredientService {
     }
 
     public void initializeIngredientListInBDD() {
-        IngredientList ing = new IngredientList("pomme");
+        Ingredient_List ing = new Ingredient_List("pomme");
         ingredientListRepository.save(ing);
-        ing = new IngredientList("patate");
+        ing = new Ingredient_List("patate");
         ingredientListRepository.save(ing);
-        ing = new IngredientList("steak");
+        ing = new Ingredient_List("steak");
         ingredientListRepository.save(ing);
-        ing = new IngredientList("chou");
+        ing = new Ingredient_List("chou");
         ingredientListRepository.save(ing);
-        ing = new IngredientList("tomate");
+        ing = new Ingredient_List("tomate");
         ingredientListRepository.save(ing);
-        ing = new IngredientList("saucisse");
+        ing = new Ingredient_List("saucisse");
         ingredientListRepository.save(ing);
-        ing = new IngredientList("farine");
+        ing = new Ingredient_List("farine");
         ingredientListRepository.save(ing);
-        ing = new IngredientList("eau");
+        ing = new Ingredient_List("eau");
         ingredientListRepository.save(ing);
-        ing = new IngredientList("pate à tarte");
+        ing = new Ingredient_List("pate à tarte");
         ingredientListRepository.save(ing);
-        ing = new IngredientList("pate à pizza");
+        ing = new Ingredient_List("pate à pizza");
         ingredientListRepository.save(ing);
-        ing = new IngredientList("mozzarela");
+        ing = new Ingredient_List("mozzarela");
         ingredientListRepository.save(ing);
     }
 

@@ -1,9 +1,7 @@
 package TopChefRPG.model;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,7 +15,7 @@ public class CookLessonTest {
         User paulo = new User();
         Cook cook2 = new Cook("alexandra", 'F', paulo);
         Lesson patate = new Lesson("patate", 3, 3, 3, 3, 3, "patate", 3);
-        CookLesson cookLesson = new CookLesson(cook2, patate);
+        Cook_Lesson cookLesson = new Cook_Lesson(cook2, patate);
         assertNotNull(cookLesson);
         assertEquals("alexandra", cookLesson.getCook().getName());
         assertEquals("patate", cookLesson.getLesson().getName());
@@ -31,7 +29,7 @@ public class CookLessonTest {
         User paulo = new User();
         Cook cook2 = new Cook("alexandra", 'F', paulo);
         Lesson patate = new Lesson("patate", 3, 3, 3, 3, 3, "patate", 3);
-        CookLesson cookLesson = new CookLesson(cook2, patate);
+        Cook_Lesson cookLesson = new Cook_Lesson(cook2, patate);
         cookLesson.incrementCountUse();
         assertNotNull(cookLesson);
         assertEquals(1, cookLesson.getCountUse());

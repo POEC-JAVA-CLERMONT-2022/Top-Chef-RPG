@@ -12,12 +12,12 @@ public class Ingredient {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-    @Column (name="IngredientName")
+    @Column (name="Ingredient_Name")
     private String name;
     @Column (name="Quantity")
     private int quantity;
     @ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name="idCook", nullable=false)
+    @JoinColumn(name="id_Cook", nullable=false)
     private Cook cook;
     public Ingredient() {
     }

@@ -5,7 +5,7 @@ import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.CookLessonRepository;
 import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.model.Cook;
-import TopChefRPG.model.CookLesson;
+import TopChefRPG.model.Cook_Lesson;
 import TopChefRPG.model.Ingredient;
 import TopChefRPG.model.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class CookLessonService {
 
         // vérifier si le cook n'a pas déjà la lecon
         boolean alreadyBuyedLesson = false;
-        for (CookLesson cl : cook.getCookLessons())
+        for (Cook_Lesson cl : cook.getCookLessons())
         {
             if (cl.getLesson().getIdLesson() == lesson.getIdLesson())
             {
@@ -54,7 +54,7 @@ public class CookLessonService {
                     if (ingCook.getIngredientQuantity() >= lesson.getIngredientQuantity())
                     {
                         ingCook.setIngredientQuantity(- lesson.getIngredientQuantity());
-                        CookLesson cookLesson = new CookLesson(cook, lesson);
+                        Cook_Lesson cookLesson = new Cook_Lesson(cook, lesson);
                         cook.addLesson(cookLesson);
                     }
                     else
@@ -68,14 +68,14 @@ public class CookLessonService {
         return cookRepository.save(cook);
     }
 
-    public List<CookLesson> getCookLesson(Cook cook){
+    public List<Cook_Lesson> getCookLesson(Cook cook){
         return cookLessonRepository.findCookLessonByCook (cook);
     }
 
     public List<Lesson> getLessonsOfCook(Cook cook)
     {
         List<Lesson> lessons = new ArrayList<>();
-        for (CookLesson cl : cook.getCookLessons())
+        for (Cook_Lesson cl : cook.getCookLessons())
         {
             lessons.add(cl.getLesson());
         }
