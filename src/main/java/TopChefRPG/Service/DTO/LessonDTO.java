@@ -5,7 +5,7 @@ import TopChefRPG.model.Lesson;
 public class LessonDTO {
     public  int id;
     public String name;
-    public int strengthIncrease;
+    private int strengthIncrease;
     private int dexterityIncrease;
     private int creativityIncrease;
     private int luckIncrease;

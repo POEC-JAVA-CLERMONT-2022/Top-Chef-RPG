@@ -1,19 +1,18 @@
 package TopChefRPG.Exception;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 
 public class TopChefException extends RuntimeException{
-    private ErrorType exceptionType;
+    private final ErrorType exceptionType;
 
-    private String exceptionDescription;
+    private final String exceptionDescription;
 
     public HttpStatus getHttpStatus() {
         return httpStatus;
     }
 
-    private HttpStatus httpStatus;
+    private final HttpStatus httpStatus;
 
     public TopChefException(ErrorType errorType, String description, HttpStatus httpStatus)
     {

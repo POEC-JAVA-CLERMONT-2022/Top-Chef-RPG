@@ -3,6 +3,7 @@ import TopChefRPG.Exception.ErrorType;
 import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.LessonRepository;
 import TopChefRPG.Service.DTO.LessonDTO;
+import TopChefRPG.Service.mapper.LessonMapper;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class LessonService {
@@ -18,6 +20,8 @@ public class LessonService {
     LessonRepository lessonRepository;
 
     CookLessonService cookLessonService;
+
+    LessonMapper lessonMapper;
 
     @Autowired
     public LessonService(LessonRepository lessonRepository,CookLessonService cookLessonService){
@@ -60,11 +64,7 @@ public class LessonService {
     public List<LessonDTO> getLessonsBuyed (Cook cook)
     {
         List<LessonDTO> lessonDTOS = new ArrayList<>();
-        for (Lesson lesson : cookLessonService.getLessonsOfCook(cook))
-        {
-            LessonDTO lessonDTO = new LessonDTO(lesson);
-            lessonDTOS.add(lessonDTO);
-        }
+        cookLessonService.getLessonsOfCook(cook).forEach(lesson -> lessonDTOS.add(lessonMapper.lessonToLessonDTO(lesson)));
         return lessonDTOS;
     }
 
@@ -73,21 +73,9 @@ public class LessonService {
         List<Lesson> lessons = getAllLessons();
         if (lessons.isEmpty())
         {
-            throw new TopChefException(ErrorType.DATA_NOT_INITIALIZED_IN_BDD, "Aucune lecçon n'existe en BDD", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new TopChefException(ErrorType.DATA_NOT_INITIALIZED_IN_BDD, "Aucune leçon n'existe en BDD", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         List<Lesson> ownedLessons = cookLessonService.getLessonsOfCook(cook);
-        List<LessonDTO> notOwnedLessons =new ArrayList<>();
-
-        // on parcourt la liste des lessons achetées et on les retire de la liste générale de leçons.
-        for (Lesson lessonowned : ownedLessons)
-        {
-            lessons.removeIf(lesson -> lessonowned == lesson);
-        }
-        // on rempli la liste de lessons non achetées
-        for(Lesson notOwnedLesson : lessons)
-        {
-            notOwnedLessons.add(new LessonDTO(notOwnedLesson));
-        }
-        return notOwnedLessons;
+        return new ArrayList<>(lessonMapper.ListLessonToListLessonDTO(lessons.stream().filter(ownedLessons::contains).collect(Collectors.toList())));
     }
 }

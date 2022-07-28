@@ -12,9 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CookService {
-    private CookRepository cookRepository;
-    private IngredientService ingredientService;
-    private RecipeService recipeService;
+    private final CookRepository cookRepository;
+    private final IngredientService ingredientService;
+    private final RecipeService recipeService;
 
     public CookService (CookRepository cookRepository, IngredientService ingredientService, RecipeService recipeService )
     {
@@ -39,7 +39,6 @@ public class CookService {
     {
         if (cookRepository.existsById(idCook))
         {
-            Cook cook = getCookById(idCook);
             cookRepository.deleteCookById(idCook);
         }
         else

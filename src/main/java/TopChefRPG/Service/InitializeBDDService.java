@@ -80,9 +80,7 @@ public class InitializeBDDService {
         List<Cook> cooks = userService.getAllCooks(user);
         Cook cook;
         if (cooks.size() == 0) {
-            cook = cookService.createCook("superCook", 'M', user);
-        } else {
-            cook = cooks.get(0);
+            cookService.createCook("superCook", 'M', user);
         }
         User user2 = userService.create("deleteMe", "mymail@toto.com","pass" );
         Cook cookdrop = cookService.createCook("dropme", 'F', user2);
@@ -93,30 +91,6 @@ public class InitializeBDDService {
         {
             exception.printStackTrace();
         }
-        //var delete = userService.getAllCooks(user2).remove(cookdrop);
-        //user2 = userService.saveUser(user2);
 
-
-        // suppression marche sur le user
-        //userService.deleteUser(user2.getId());
-        //cookService.delCookById(cookdrop.getId());
-
-
-        /*
-        cook = cookService.getCookById(cook.getId());
-
-
-        while (cook.getIngredients().get(0).getIngredientQuantity() < 30) {
-            ResultRecipeDTO rr = cookService.tryRecipe(1, cook);
-        }
-
-        while (cook.getIngredients().get(1).getIngredientQuantity() < 30)
-        {
-            ResultRecipeDTO rr = cookService.tryRecipe(2, cook);
-        }
-*/
-
-
-        //Lesson lesson = lessonService.getLessonById(1);
     }
 }
