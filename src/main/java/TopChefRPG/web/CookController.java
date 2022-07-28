@@ -5,6 +5,7 @@ import TopChefRPG.Exception.ErrorType;
 import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Service.*;
 import TopChefRPG.Service.DTO.*;
+import TopChefRPG.Service.mapper.CookMapperImpl;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Lesson;
 import TopChefRPG.model.Recipe;
@@ -31,15 +32,18 @@ public class CookController {
     CookLessonService cookLessonService;
     IngredientService ingredientService;
 
+    CookMapperImpl cookMapper;
+
     @Autowired
     public CookController(CookService cookService, UserService userService, RecipeService recipeService,
-                          LessonService lessonService, CookLessonService cookLessonService, IngredientService ingredientService) {
+                          LessonService lessonService, CookLessonService cookLessonService, IngredientService ingredientService, CookMapperImpl cookMapper) {
         this.cookService = cookService;
         this.userService = userService;
         this.recipeService = recipeService;
         this.lessonService = lessonService;
         this.cookLessonService = cookLessonService;
         this.ingredientService = ingredientService;
+        this.cookMapper = cookMapper;
     }
 
     //http://localhost:8080/cook/1
@@ -47,8 +51,7 @@ public class CookController {
     public ResponseEntity<CookDTO> getCookById(@PathVariable int id) {
         try {
             logger.info("given cook " + id+ " try to get data of Cook from BDD ");
-            CookDTO cookDTO = new CookDTO();
-            cookDTO.initialiseCookDTO(cookService.getCookById(id));
+            CookDTO cookDTO = cookMapper.cookToCookDto(cookService.getCookById(id));
             return new ResponseEntity<> (cookDTO, HttpStatus.OK);
         }
         catch (Exception exception)

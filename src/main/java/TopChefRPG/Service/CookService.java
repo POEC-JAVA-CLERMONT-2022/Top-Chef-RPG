@@ -6,19 +6,15 @@ import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Service.DTO.ResultLessonDTO;
 import TopChefRPG.Service.DTO.ResultRecipeDTO;
 import TopChefRPG.model.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CookService {
-    private CookRepository cookRepository;
-
-    private IngredientService ingredientService;
-
-    private RecipeService recipeService;
-
+    private final CookRepository cookRepository;
+    private final IngredientService ingredientService;
+    private final RecipeService recipeService;
 
     public CookService (CookRepository cookRepository, IngredientService ingredientService, RecipeService recipeService )
     {
@@ -26,7 +22,6 @@ public class CookService {
         this.ingredientService = ingredientService;
         this.recipeService = recipeService;
     }
-
     public Cook createCook(String name, Character gender, User user) {
         Cook cook = new Cook(name, gender, user);
         cook = this.cookRepository.save(cook);
@@ -34,28 +29,23 @@ public class CookService {
         ingredientService.initializeIngredient(cook);
         return cook;
     }
-
     public Cook changeName(Cook cook, String newName) {
         cook.setName(newName);
         cookRepository.save(cook);
         return cook;
     }
-
     @Transactional
     public void delCookById(int idCook)
     {
         if (cookRepository.existsById(idCook))
         {
-            Cook cook = getCookById(idCook);
             cookRepository.deleteCookById(idCook);
         }
         else
         {
             throw  new TopChefException(ErrorType.NO_DATA, "no cook find in BDD with id : "+idCook + ". impossible to delete", HttpStatus.NOT_FOUND);
         }
-
 }
-
 
     // fonction qui gère la réalisation d'une recette et renvoi un objet spécifique pour l'affichage de la recette
     public ResultRecipeDTO tryRecipe(int idRecipe, Cook cook) {
@@ -97,7 +87,6 @@ public class CookService {
 
 
             RRDTO.addIngredientUsed(ingredientService.ingredientsToDTOS(recipe.requiredIngredients));
-
             // on test la réussite de la recette, si le score est supperieur à 100
             if (recipeService.getChanceSucces(recipe, cook)> Math.random()*100)
             {
@@ -111,7 +100,6 @@ public class CookService {
                         }
                     }
                 }
-
                 // mise à jour de l'expérience du cook
                 cook.changeExperience(recipe.getExperience());
                 // on nourrit l'objet du message de retour
@@ -120,7 +108,6 @@ public class CookService {
                 RRDTO.addIngredientLoot(ingredientService.ingredientsToDTOS(recipe.lootIngredient));
                 RRDTO.setExperienceGain(recipe.getExperience());
                 RRDTO.setSucces(true);
-
             }
             else
             {
@@ -139,9 +126,8 @@ public class CookService {
         ResultLessonDTO resultLessonDTO = new ResultLessonDTO(-1,-1,-1,-1,-1);
         boolean haveBuyLesson = false;
         // on parcourt les cooklessons possedées par le cook pour voir si il possède la bonne leçon.
-        for (CookLesson cl : cook.getCookLessons())
+        for (Cook_Lesson cl : cook.getCookLessons())
         {
-
             if (cl.getLesson().getIdLesson() == idLesson) {
                 haveBuyLesson = true;
                 Lesson lesson = cl.getLesson();
@@ -172,7 +158,7 @@ public class CookService {
                 }
             }
         }
-        if (haveBuyLesson == false)
+        if (!haveBuyLesson)
         {
             throw new TopChefException(ErrorType.INCORRECT_DATA, "Le cook ne possède pas encore la leçon. Cook id : "+cook.getId() + " Lesson id: "+idLesson, HttpStatus.NOT_ACCEPTABLE);
         }
@@ -181,21 +167,12 @@ public class CookService {
     }
 
     public Cook getCookById(int id) {
-        try {
-            if( cookRepository.existsById(id))
-            {
-                return cookRepository.getCookById(id);
-            }
-            else {
-                throw new TopChefException(ErrorType.NO_DATA, "No cook with id : "+ id+" in BDD", HttpStatus.NOT_FOUND);
-            }
-        }
-        catch (Exception exception)
+        if( cookRepository.existsById(id))
         {
-            throw exception;
+            return cookRepository.getCookById(id);
         }
-
+        else {
+            throw new TopChefException(ErrorType.NO_DATA, "No cook with id : "+ id+" in BDD", HttpStatus.NOT_FOUND);
+        }
     }
-
-
 }

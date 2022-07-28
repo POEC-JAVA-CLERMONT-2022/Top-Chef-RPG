@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
 @Entity
-public class CookLesson {
+public class Cook_Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,16 +14,16 @@ public class CookLesson {
     private Integer countUse;
 
     @ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name="idCook", nullable=false)
+    @JoinColumn(name="id_Cook", nullable=false)
     private Cook cook;
 
     @ManyToOne
-    @JoinColumn(name="idLesson", nullable=false)
+    @JoinColumn(name="id_Lesson", nullable=false)
     private Lesson lesson;
 
-    public CookLesson(){}
+    public Cook_Lesson(){}
 
-    public CookLesson(Cook cook, Lesson lesson)
+    public Cook_Lesson(Cook cook, Lesson lesson)
     {
         this.cook = cook;
         this.lesson =lesson;

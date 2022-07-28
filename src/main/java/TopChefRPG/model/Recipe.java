@@ -7,31 +7,26 @@ import java.util.ArrayList;
 
 @Entity
 public class Recipe {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-
     @Column(name = "name")
     private String name;
-
-    @Column(name = "firstIngredient")
+    @Column(name = "first_Ingredient")
     private String firstIngredient;
-
-    @Column(name = "firstQty")
+    @Column(name = "first_Qty")
     private Integer firstQty;
-
-    @Column(name = "secondIngredient")
+    @Column(name = "second_Ingredient")
     private String secondIngredient;
 
-    @Column(name = "secondQty")
+    @Column(name = "second_Qty")
     private Integer secondQty;
 
-    @Column(name = "thirdIngredient")
+    @Column(name = "third_Ingredient")
     private String thirdIngredient;
 
-    @Column(name = "thirdQty")
+    @Column(name = "third_Qty")
     private Integer thirdQty;
 
     @Column(name = "experience")
@@ -49,13 +44,13 @@ public class Recipe {
     @Column(name = "looting2Qty")
     private Integer looting2Qty;
 
-    @Column(name = "strengthRequired")
+    @Column(name = "strength_Required")
     private Integer strengthRequired;
 
-    @Column(name = "dexterityRequired")
+    @Column(name = "dexterity_Required")
     private Integer dexterityRequired;
 
-    @Column(name = "creativityRequired")
+    @Column(name = "creativity_Required")
     private Integer creativityRequired;
 
     @Transient
@@ -63,8 +58,6 @@ public class Recipe {
 
     @Transient
     public ArrayList<Ingredient> lootIngredient;
-
-
 
     public Recipe() {
     }
@@ -153,5 +146,25 @@ public class Recipe {
 
     public Integer getCreativityRequired() {
         return creativityRequired;
+    }
+
+    public void buildListIngredient(){
+        this.requiredIngredients = new ArrayList<>();
+        if (!this.getFirstIngredient().isEmpty()) {
+            this.requiredIngredients.add(new Ingredient(this.getFirstIngredient(), this.getFirstQty()));
+        }
+        if (!this.getSecondIngredient().isEmpty()) {
+            this.requiredIngredients.add(new Ingredient(this.getSecondIngredient(), this.getSecondQty()));
+        }
+        if (!this.getThirdIngredient().isEmpty()) {
+            this.requiredIngredients.add(new Ingredient(this.getThirdIngredient(), this.getThirdQty()));
+        }
+        this.lootIngredient = new ArrayList<>();
+        if (!this.getLooting1Name().isEmpty()) {
+            this.lootIngredient.add(new Ingredient(this.getLooting1Name(), this.getLooting1Qty()));
+        }
+        if (!this.getLooting2Name().isEmpty()) {
+            this.lootIngredient.add(new Ingredient(this.getLooting2Name(), this.getLooting2Qty()));
+        }
     }
 }

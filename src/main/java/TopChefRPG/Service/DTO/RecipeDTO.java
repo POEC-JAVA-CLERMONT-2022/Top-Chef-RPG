@@ -1,7 +1,6 @@
 package TopChefRPG.Service.DTO;
 import TopChefRPG.model.Ingredient;
 import TopChefRPG.model.Recipe;
-import com.sun.xml.bind.v2.runtime.reflect.Lister;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +22,8 @@ public class RecipeDTO {
     {
         this.idRecipe = recipe.getIdRecipe();
         this.name = recipe.getName();
-        this.ingredientsRequired = new ArrayList<IngredientDTO>();
-        this.lootIngredient =  new ArrayList<IngredientDTO>();
+        this.ingredientsRequired = new ArrayList<>();
+        this.lootIngredient =  new ArrayList<>();
         this.strengthRequired = recipe.getStrengthRequired();
         this.creativityRequired = recipe.getCreativityRequired();
         this.dexterityRequired = recipe.getDexterityRequired();

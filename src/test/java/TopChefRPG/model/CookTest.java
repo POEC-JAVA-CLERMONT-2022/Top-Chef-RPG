@@ -10,7 +10,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import  TopChefRPG.model.CookLesson;
 
 @SpringBootTest
 
@@ -22,7 +21,7 @@ public class CookTest {
     Cook cook2;
     User paulo;
     Lesson patate;
-    CookLesson cooklesson;
+    Cook_Lesson cooklesson;
 
     @Autowired
     UserService userService;
@@ -39,8 +38,9 @@ public class CookTest {
         paulo = userService.create("paulo", "mail", "password");
         cook1 = new Cook("alexandre", 'M', paulo);
         cook2 = new Cook("alexandra", 'F', paulo);
-        patate = new Lesson("patate", 3, 3, 3, 3, 3, "patate", 3);
-        cooklesson = new CookLesson(cook1, patate);
+        patate = new Lesson();
+        patate.setparameerOfLesson("patate", 3, 3, 3, 3, 3, "patate", 3);
+        cooklesson = new Cook_Lesson(cook1, patate);
 
     }
 

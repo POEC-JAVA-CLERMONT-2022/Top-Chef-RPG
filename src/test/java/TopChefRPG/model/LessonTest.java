@@ -1,5 +1,4 @@
 package TopChefRPG.model;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -10,7 +9,8 @@ public class LessonTest {
     @Test
     public void createLesson()
     {
-        Lesson lesson =  new Lesson("lessonName",10,15,20,25,100,"ingredientName",10);
+        Lesson lesson =  new Lesson();
+        lesson.setparameerOfLesson("lessonName",10,15,20,25,100,"ingredientName",10);
         assertNotNull(lesson);
         assertEquals(lesson.getName(), "lessonName");
         assertEquals(lesson.getStrengthIncrease(),10 );

@@ -12,27 +12,21 @@ public class Ingredient {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-
-    @Column (name="IngredientName")
+    @Column (name="Ingredient_Name")
     private String name;
-
     @Column (name="Quantity")
     private int quantity;
-
     @ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name="idCook", nullable=false)
+    @JoinColumn(name="id_Cook", nullable=false)
     private Cook cook;
-
     public Ingredient() {
     }
-
     public Ingredient(String name, Cook cook)
     {
         this.name=name;
         this.quantity=-1;
         this.cook=cook;
     }
-
     // constructeur specifique pour les recettes ou les ingredients ne sont pas propres à un user
     // et ne seront jamais en BDD
     public Ingredient(String name, int quantity)
@@ -40,7 +34,6 @@ public class Ingredient {
         this.name= name;
         this.quantity = quantity;
     }
-
     public int getIngredientQuantity()
     {
         return this.quantity;
@@ -60,26 +53,19 @@ public class Ingredient {
             throw new TopChefException(ErrorType.INCORRECT_DATA, "impossible de modifier la quantité de l'ingrédient à une valeur inférieure à zéro", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     public String getName()
     {
         return this.name;
     }
-
     @Override
     public String toString()
     {
-        String retour ="";
-        if (this.name.length()>0 )
-        {
-            retour+= "Ingredient : " +this.name;
-        }
-        // si la quantité à une valeur d'au moins -1
-        if (this.quantity >= -2)
-        {
-            retour+= " Quantité : "+ this.quantity;
-        }
-        return retour;
+        StringBuilder retour = new StringBuilder();
+        String ingredientName = (!this.name.isEmpty()) ? this.name: "undefined";
+        retour.append("Ingredient : ").append(ingredientName);
+        String quantity = (this.quantity > -1) ? String.valueOf(this.quantity) : "0";
+        retour.append(" Quantité : ").append(quantity);
+        return retour.toString();
     }
 
     public int getId() {

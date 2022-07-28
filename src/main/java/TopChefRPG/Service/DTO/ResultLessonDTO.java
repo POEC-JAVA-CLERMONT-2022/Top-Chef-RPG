@@ -1,7 +1,6 @@
 package TopChefRPG.Service.DTO;
 
 public class ResultLessonDTO {
-
     public int dexterityChange;
     public int creativityChange;
     public int strengthChange;
