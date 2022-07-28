@@ -27,7 +27,7 @@ public class Lesson {
     private List<Cook_Lesson> cookLessons;
     public Lesson() {
     }
-    public Lesson(String name, Integer strengthIncrease, Integer dexterityIncrease, Integer creativityIncrease, Integer luckIncrease, Integer experienceCost, String ingredientName, int ingredientQuantity) {
+    public void setparameerOfLesson(String name, Integer strengthIncrease, Integer dexterityIncrease, Integer creativityIncrease, Integer luckIncrease, Integer experienceCost, String ingredientName, int ingredientQuantity) {
         this.name = name;
         this.strengthIncrease = strengthIncrease;
         this.dexterityIncrease = dexterityIncrease;

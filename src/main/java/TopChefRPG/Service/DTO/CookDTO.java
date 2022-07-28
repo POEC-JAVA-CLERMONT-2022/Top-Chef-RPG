@@ -1,8 +1,5 @@
 package TopChefRPG.Service.DTO;
 
-import TopChefRPG.model.Cook;
-import org.springframework.beans.BeanUtils;
-
 public class CookDTO {
     private String name;
     private String newName;
@@ -82,18 +79,8 @@ public class CookDTO {
         this.experience = experience;
     }
 
-    public CookDTO(String name, int idCook) {
-        this.name = name;
-        this.id = idCook;
-    }
-
     public CookDTO() {
     }
-
-    public void initialiseCookDTO(Cook cook) {
-        BeanUtils.copyProperties(cook, this);
-    }
-
     public void setNewName(String newName) {
         this.newName = newName;
     }

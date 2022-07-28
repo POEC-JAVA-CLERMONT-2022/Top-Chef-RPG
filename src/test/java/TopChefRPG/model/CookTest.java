@@ -38,7 +38,8 @@ public class CookTest {
         paulo = userService.create("paulo", "mail", "password");
         cook1 = new Cook("alexandre", 'M', paulo);
         cook2 = new Cook("alexandra", 'F', paulo);
-        patate = new Lesson("patate", 3, 3, 3, 3, 3, "patate", 3);
+        patate = new Lesson();
+        patate.setparameerOfLesson("patate", 3, 3, 3, 3, 3, "patate", 3);
         cooklesson = new Cook_Lesson(cook1, patate);
 
     }
