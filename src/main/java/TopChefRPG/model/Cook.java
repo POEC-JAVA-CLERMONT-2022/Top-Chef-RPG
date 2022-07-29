@@ -40,8 +40,8 @@ public class Cook {
     @Fetch(value = FetchMode.SUBSELECT)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Cook_Lesson> cookLessons;
-    @ManyToOne     @JoinColumn(name = "id_User" ,nullable = false)
-    private User user;
+    @ManyToOne     @JoinColumn(name = "id_Owner" ,nullable = false)
+    private Owner owner;
 
     public int getDexterity() {
         return dexterity;
@@ -61,13 +61,13 @@ public class Cook {
     public Character getGender() {
         return gender;
     }
-    public User getUser() {
-        return user;
+    public Owner getUser() {
+        return owner;
     }
     public String getName() {
         return this.name;
     }
-    public Cook(String name, Character gender, User user) {
+    public Cook(String name, Character gender, Owner user) {
         this.name = name;
         this.creativity = 1;
         this.dexterity = 1;
@@ -77,7 +77,7 @@ public class Cook {
         this.gender = gender;
         this.ingredients = new ArrayList<>();
         this.cookLessons = new ArrayList<>();
-        this.user = user;
+        this.owner = user;
     }
     public Cook() {
     }
@@ -89,11 +89,7 @@ public class Cook {
     }
     @Override
     public String toString() {
-        String retour = "";
-        if (this.name.length() > 0)
-            retour += "nom : " + this.name;
-        retour += " ,experience : " + this.experience;
-        return retour;
+        return "nom : " + this.name + " ,experience : " + this.experience;
     }
     public List<Ingredient> getIngredients() {
         return this.ingredients;

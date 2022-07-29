@@ -26,7 +26,7 @@ public class CookController {
     Logger logger = LoggerFactory.getLogger(CookController.class);
 
     CookService cookService;
-    UserService userService;
+    OwnerService ownerService;
     RecipeService recipeService;
     LessonService lessonService;
     CookLessonService cookLessonService;
@@ -35,10 +35,10 @@ public class CookController {
     CookMapperImpl cookMapper;
 
     @Autowired
-    public CookController(CookService cookService, UserService userService, RecipeService recipeService,
+    public CookController(CookService cookService, OwnerService ownerService, RecipeService recipeService,
                           LessonService lessonService, CookLessonService cookLessonService, IngredientService ingredientService, CookMapperImpl cookMapper) {
         this.cookService = cookService;
-        this.userService = userService;
+        this.ownerService = ownerService;
         this.recipeService = recipeService;
         this.lessonService = lessonService;
         this.cookLessonService = cookLessonService;

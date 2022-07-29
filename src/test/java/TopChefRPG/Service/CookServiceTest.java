@@ -1,7 +1,7 @@
 package TopChefRPG.Service;
 
 import TopChefRPG.model.Cook;
-import TopChefRPG.model.User;
+import TopChefRPG.model.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,21 +14,21 @@ class CookServiceTest {
 
     Cook cook1;
     Cook cook2;
-    User paulo;
+    Owner paulo;
     CookService cookService;
-    UserService userService;
+    OwnerService ownerService;
 
     @Autowired
-    public CookServiceTest (CookService cookService, UserService userService)
+    public CookServiceTest (CookService cookService, OwnerService ownerService)
     {
         this.cookService =cookService;
-        this.userService = userService;
+        this.ownerService = ownerService;
     }
 
 
     @BeforeEach
     public void varInitialize() {
-        paulo = userService.create("paulo", "mail", "password");
+        paulo = ownerService.create("paulo", "mail", "password");
         cook1 = cookService.createCook("alexandre", 'M', paulo);
         cook2 = cookService.createCook("alexandra", 'F', paulo);
     }
