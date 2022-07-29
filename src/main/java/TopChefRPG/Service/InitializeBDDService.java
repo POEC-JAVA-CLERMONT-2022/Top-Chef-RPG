@@ -5,7 +5,7 @@ import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.IngredientListRepository;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Lesson;
-import TopChefRPG.model.User;
+import TopChefRPG.model.Owner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,18 +22,18 @@ public class InitializeBDDService {
 
     LessonService lessonService;
 
-    UserService userService;
+    OwnerService ownerService;
 
     CookService cookService;
 
     @Autowired
     public InitializeBDDService(IngredientListRepository ingredientListRepository, IngredientService ingredientService,
-                                RecipeService recipeService, LessonService lessonService, UserService userService, CookService cookService) {
+                                RecipeService recipeService, LessonService lessonService, OwnerService ownerService, CookService cookService) {
         this.ingredientListRepository = ingredientListRepository;
         this.ingredientService = ingredientService;
         this.recipeService = recipeService;
         this.lessonService = lessonService;
-        this.userService = userService;
+        this.ownerService = ownerService;
         this.cookService = cookService;
     }
 
@@ -67,22 +67,22 @@ public class InitializeBDDService {
 
     public void setUSerANdCookInBDD() {
         // inintialisation d'un context de données en BDD
-        List<User> users = userService.findAll();
+        List<Owner> users = ownerService.findAll();
         int idUser;
         if (users.size() == 0) {
-            User newUser = userService.create("userTest", "mymail@mail.com", "mdp");
+            Owner newUser = ownerService.create("userTest", "mymail@mail.com", "mdp");
             idUser = newUser.getId();
         } else {
             idUser = users.get(0).getId();
         }
-        User user = userService.findById(idUser);
+        Owner user = ownerService.findById(idUser);
 
-        List<Cook> cooks = userService.getAllCooks(user);
+        List<Cook> cooks = ownerService.getAllCooks(user);
         Cook cook;
         if (cooks.size() == 0) {
             cookService.createCook("superCook", 'M', user);
         }
-        User user2 = userService.create("deleteMe", "mymail@toto.com","pass" );
+        Owner user2 = ownerService.create("deleteMe", "mymail@toto.com","pass" );
         Cook cookdrop = cookService.createCook("dropme", 'F', user2);
         try {
             cookService.delCookById(cookdrop.getId());

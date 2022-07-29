@@ -1,24 +1,19 @@
 package TopChefRPG.model;
 
-import TopChefRPG.model.Cook;
-import TopChefRPG.model.Ingredient;
-import TopChefRPG.model.User;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
 @SpringBootTest
 public class IngredientTest {
 
-    User userTest;
+    Owner userTest;
     Cook cook;
 
    @BeforeEach
     public void contentInitializing()
     {
-        userTest= new User("userForIngredientTest", "mail", "password");
+        userTest= new Owner("userForIngredientTest", "mail", "password");
         cook = new Cook("cookTestIngredient", 'F', userTest);
     }
 
