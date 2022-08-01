@@ -4,7 +4,7 @@ import TopChefRPG.Exception.ErrorType;
 import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Service.CookService;
 import TopChefRPG.Service.RecipeService;
-import TopChefRPG.Service.OwnerService;
+import TopChefRPG.Service.UserService;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,12 +21,12 @@ public class CookTest {
 
     Cook cook1;
     Cook cook2;
-    Owner paulo;
+    User paulo;
     Lesson patate;
     Cook_Lesson cooklesson;
 
     @Autowired
-    OwnerService ownerService;
+    UserService userService;
 
     @Autowired
     CookService cookService;
@@ -37,7 +37,7 @@ public class CookTest {
 
     @BeforeEach
     public void varInitialize() {
-        paulo = ownerService.create("paulo", "mail", "password");
+        paulo = userService.create("paulo", "mail", "password");
         cook1 = new Cook("alexandre", 'M', paulo);
         cook2 = new Cook("alexandra", 'F', paulo);
         patate = new Lesson();

@@ -1,6 +1,7 @@
 package TopChefRPG.Repository;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Owner;
+import TopChefRPG.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -19,7 +20,7 @@ public interface CookRepository extends JpaRepository<Cook, Integer> {
 
     Cook getCookById(int id);
 
-    List<Cook> getCooksByOwner(Owner owner);
+    List<Cook> getCooksByUser(User user);
 
 
 }

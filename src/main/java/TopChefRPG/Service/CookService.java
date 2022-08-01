@@ -22,7 +22,7 @@ public class CookService {
         this.ingredientService = ingredientService;
         this.recipeService = recipeService;
     }
-    public Cook createCook(String name, Character gender, Owner user) {
+    public Cook createCook(String name, Character gender, User user) {
         Cook cook = new Cook(name, gender, user);
         cook = this.cookRepository.save(cook);
         // instancier la liste d'ingredients
