@@ -20,17 +20,14 @@ public class Owner {
     private String password;
 
     // en prévision de la possibilité d'avoir plusieurs cuistots par user, on stock les users sous forme de liste
-    @OneToMany( targetEntity=Cook.class, mappedBy="owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Cook> cooks;
+
 
     public Owner(String name, String mail, String password) {
         this.name = name;
         this.password= password;
         this.mail =mail;
     }
-    public List<Cook> getCooks() {
-        return cooks;
-    }
+
     public Owner() {
     }
 
