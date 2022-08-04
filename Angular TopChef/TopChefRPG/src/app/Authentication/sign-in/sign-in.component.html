@@ -1,0 +1,21 @@
+<p>Welcome To Top Chef !</p>
+<p>please register to create an account : </p>
+<form [formGroup]="userFormGroup">
+  <input formControlName="userName"
+         type="text"
+         placeholder="enter your name here"
+  >
+  <input formControlName="mail"
+         type="text"
+         placeholder="enter your mail here"
+  >
+  <input formControlName="password"
+         type="text"
+         placeholder="enter your password here"
+  >
+
+  <button [disabled]="userFormGroup.invalid" (click)="createUser()">créer le compte</button>
+  <div (click)="test()">Faire un test </div>
+  <br>
+  <div (click)="testJGetson()">Faire un test Json </div>
+</form>
