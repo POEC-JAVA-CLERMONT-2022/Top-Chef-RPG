@@ -35,15 +35,6 @@ public class UserDetailsImpl implements UserDetails {
 
     }
 
-    public static UserDetails build(User user) {
-        this.userName = user.getUserName();
-        this.password = user.getPassword();
-        this.active = user.isActive();
-        this.authorities = Arrays.stream(user.getRoles().split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
-
-    }
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;

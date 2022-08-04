@@ -26,7 +26,7 @@ public class User {
 
     private String roles;
 
-    @OneToMany( targetEntity=Cook.class, mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany( targetEntity=Cook.class, mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Cook> cooks;
 
 
@@ -76,5 +76,21 @@ public class User {
 
     public void setRoles(String roles) {
         this.roles = roles;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public List<Cook> getCooks() {
+        return cooks;
+    }
+
+    public void setCooks(List<Cook> cooks) {
+        this.cooks = cooks;
     }
 }

@@ -5,7 +5,7 @@ import {FrigoComponent} from "./frigo/frigo.component";
 import {RecipeComponent} from "./recipe/recipe.component";
 import {LessonComponent} from "./lesson/lesson.component";
 import {MainComponent} from "./main/main.component";
-import {NewCookComponent} from "./new-cook/new-cook.component";
+import {SignInComponent} from "./Authentication/sign-in/sign-in.component";
 import {LessonMarketComponent} from "./lesson-market/lesson-market.component";
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
   {path : 'recipe' , component : RecipeComponent},
   {path : 'lesson' , component : LessonComponent},
   {path : 'home/:id' , component : MainComponent},
-  {path : '', component : NewCookComponent},
+  {path : '', component : SignInComponent},
   {path : 'lessonmarket/:id', component : LessonMarketComponent}
 ];
 

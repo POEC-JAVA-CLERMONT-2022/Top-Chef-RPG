@@ -11,6 +11,8 @@ import { FrigoComponent } from './frigo/frigo.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { NewCookComponent } from './new-cook/new-cook.component';
 import { LessonMarketComponent } from './lesson-market/lesson-market.component';
+import { LogInComponent } from './Authentication/log-in/log-in.component';
+import { SignInComponent } from './Authentication/sign-in/sign-in.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { LessonMarketComponent } from './lesson-market/lesson-market.component';
     FrigoComponent,
     LessonComponent,
     NewCookComponent,
-    LessonMarketComponent
+    LessonMarketComponent,
+    LogInComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

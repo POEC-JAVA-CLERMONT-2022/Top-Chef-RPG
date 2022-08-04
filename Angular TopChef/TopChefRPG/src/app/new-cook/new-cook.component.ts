@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./new-cook.component.scss']
 })
 export class NewCookComponent implements OnInit {
-  cookFormGroup! : FormGroup
+  cookFormGroup! : FormGroup;
 
   constructor(private request : RequestServiceService, private router :Router) { }
 
@@ -19,7 +19,7 @@ export class NewCookComponent implements OnInit {
     this.cookFormGroup = new FormGroup(
       {
          cookName : new FormControl(
-          '', [Validators.required, Validators.minLength(3),]
+          '', [Validators.required, Validators.minLength(3)]
         )
       }
 

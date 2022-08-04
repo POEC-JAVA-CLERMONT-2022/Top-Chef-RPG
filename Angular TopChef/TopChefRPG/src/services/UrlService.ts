@@ -5,7 +5,7 @@ export class UrlService {
 
   static headers: { headers: HttpHeaders } = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/ld+json'
+      'Content-Type': 'application/json'
     })
   }
 
@@ -13,6 +13,7 @@ export class UrlService {
   //static urlApi: string = "https://topchefapp.azurewebsites.net";
   static urlApi: string = "http://localhost:8080"
 
+  static urlSignIn : string = "/auth/signin";
 
   static urlCreateCook : string='/users/createCook/1';
   static urlGetCookById: string = "/cook/";

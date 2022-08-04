@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/name")
-    public ResponseEntity<String> getOwnerById(@PathVariable int id) {
+    public ResponseEntity<String> getUserById(@PathVariable int id) {
         User userFind = userService.findById(id);
         if (userFind.getId() ==0)
         {
@@ -42,11 +42,11 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void delOwnerById(@PathVariable int id) {
-        userService.deleteOwner(id);
+    public void delUserById(@PathVariable int id) {
+        userService.deleteUser(id);
     }
 
-    @PostMapping("/createCook/{idOwner}")
+    @PostMapping("/createCook/{idUser}")
     public int createCook(@RequestBody CookDTO cook, @PathVariable int idUser)
     {
         User user = userService.findById(idUser);
