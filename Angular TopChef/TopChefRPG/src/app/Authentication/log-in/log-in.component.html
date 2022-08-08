@@ -1,1 +1,16 @@
-<p>log-in works!</p>
+<form [formGroup]="userFormGroup">
+  <input formControlName="userName"
+         type="text"
+         placeholder="enter your name here"
+  >
+  <input formControlName="password"
+         type="text"
+         placeholder="enter your password here"
+  >
+
+  <button [disabled]="userFormGroup.invalid" (click)="logIn()">connexion</button>
+</form>
+
+<p></p>
+<div *ngIf="showError">{{errorMessage}}</div>
+<div (click)="createAccount()"><p>Pas encore de compte ?? clique ici !</p></div>

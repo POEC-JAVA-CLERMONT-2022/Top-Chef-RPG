@@ -15,7 +15,8 @@
   >
 
   <button [disabled]="userFormGroup.invalid" (click)="createUser()">créer le compte</button>
-  <div (click)="test()">Faire un test </div>
-  <br>
-  <div (click)="testJGetson()">Faire un test Json </div>
 </form>
+
+<div *ngIf="showError">{{errorMessage}}</div>
+
+<div (click)="gologin()">GO TO LOG IN</div>

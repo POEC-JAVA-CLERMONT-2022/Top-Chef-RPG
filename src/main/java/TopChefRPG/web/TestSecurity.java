@@ -3,23 +3,23 @@ package TopChefRPG.web;
 import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Repository.IngredientRepository;
 import TopChefRPG.Repository.UserRepository;
+import TopChefRPG.Service.DTO.IngredientDTO;
+import TopChefRPG.Service.DTO.LoginDTO;
+import TopChefRPG.Service.IngredientService;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Ingredient;
 import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.function.Supplier;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
-@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600, allowedHeaders ="*")
+@RequestMapping(value="/api")
 public class TestSecurity {
     @Autowired
     IngredientRepository ingredientRepository;
@@ -40,13 +40,20 @@ public class TestSecurity {
     }
 
     @GetMapping( "/test")
-    public String test (){
-        return "hopla ça passe";
+    public ResponseEntity<String> test (){
+        return new ResponseEntity("hopla ça passe",HttpStatus.OK);
     }
 
-    @GetMapping( "/testJson")
-    public Ingredient testGetJson () {
+    @GetMapping( value="/testJson", produces="application/json")
+    public ResponseEntity<IngredientDTO> testGetJson () {
         Ingredient ingredient = ingredientRepository.getById(1);
-        return ingredient;
+        IngredientDTO ingredientDTO = new IngredientDTO(ingredient);
+        return new ResponseEntity<>(ingredientDTO, HttpStatus.OK);
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<String> registerUser(@Valid @RequestBody LoginDTO loginDTO){
+        System.out.println(loginDTO);
+        return new ResponseEntity<>("Pa passe ici", HttpStatus.OK);
     }
 }

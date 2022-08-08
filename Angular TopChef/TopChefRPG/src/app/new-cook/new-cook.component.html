@@ -1,11 +1,11 @@
+<h3>Content de te revoir {{user.userName}}</h3>
+
 <form [formGroup]="cookFormGroup">
   <input formControlName="cookName"
          type="text"
          placeholder="enter your cook name here"
          >
-  <input formControlName="cookName"
-         type="text"
-         placeholder="enter your cook name here"
-  >
   <button [disabled]="cookName.invalid" (click)="createCook()">create cook</button>
 </form>
+
+<div (click)="showToken()">show token : </div><div>{{token}}</div>

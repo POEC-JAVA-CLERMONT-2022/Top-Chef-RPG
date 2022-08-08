@@ -5,9 +5,12 @@ import {UrlService} from "./UrlService";
 
 
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+const httpOptionsJson = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+const httpOptionsText = {
+  headers: new HttpHeaders({ 'Content-Type': 'text' })};
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,19 +28,19 @@ export class RequestServiceService {
     return this.httpClient.get<T>(UrlService.urlApi + endUrl );
   }
 
-  getTextRequest<T>(endUrl : string): Observable<any>{
+  getTextRequest(endUrl : string): Observable<any>{
     console.log("url appelée : " + UrlService.urlApi + endUrl);
     return  this.httpClient.get(UrlService.urlApi + endUrl , {responseType: 'text'} );
   }
 
-  getJsonRequest<T>(endUrl : string): Observable<any>{
+  getJsonRequest(endUrl : string): Observable<any>{
     console.log("url appelée : " + UrlService.urlApi + endUrl);
     return  this.httpClient.get(UrlService.urlApi + endUrl , {responseType: 'json'} );
   }
 
-  postRequest<T>(endUrl : string, body : any): Observable<T>{
+  postRequest<T>(endUrl : string, body : any): Observable<any>{
     console.log("url appelée : "+ UrlService.urlApi + endUrl );
-    return this.httpClient.post<T>( UrlService.urlApi + endUrl, body, httpOptions);
+    return this.httpClient.post( UrlService.urlApi + endUrl, body, httpOptionsJson );
   }
 
   deleteRequest(endUrl : string ): void {

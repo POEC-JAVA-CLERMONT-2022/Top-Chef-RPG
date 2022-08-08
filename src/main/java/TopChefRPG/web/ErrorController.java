@@ -16,14 +16,14 @@ import org.springframework.web.context.request.WebRequest;
 public class ErrorController {
     Logger logger = LoggerFactory.getLogger(CookController.class);
 
-    @ExceptionHandler(value = Exception.class)
+/*    @ExceptionHandler(value = Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity handleException (Exception exception, WebRequest webRequest)
     {
         // gestion des erreurs ici pour tous les controlleurs qui ont un throws
         logger.error(exception.getMessage());
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR) ;
-    }
+    }*/
 
     @ExceptionHandler(value = TopChefException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)

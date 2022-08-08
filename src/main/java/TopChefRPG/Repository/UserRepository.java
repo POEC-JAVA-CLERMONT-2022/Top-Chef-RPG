@@ -1,6 +1,4 @@
 package TopChefRPG.Repository;
-
-import TopChefRPG.model.Owner;
 import TopChefRPG.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,6 +12,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findUserByMailAndPassword(String mail, String password);
 
-    Optional<User> findUserByMail(String mail);
+    Optional<User> findUserByMail  (String mail);
 
 }

@@ -14,6 +14,8 @@ import { LessonMarketComponent } from './lesson-market/lesson-market.component';
 import { LogInComponent } from './Authentication/log-in/log-in.component';
 import { SignInComponent } from './Authentication/sign-in/sign-in.component';
 
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { SignInComponent } from './Authentication/sign-in/sign-in.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
