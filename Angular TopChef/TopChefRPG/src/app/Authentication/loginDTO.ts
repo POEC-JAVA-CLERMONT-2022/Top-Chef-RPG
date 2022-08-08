@@ -4,7 +4,4 @@ export class LoginDTO{
   public password ="";
 
   constructor(){}
-
-
-
 }

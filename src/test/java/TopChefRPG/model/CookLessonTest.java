@@ -12,7 +12,7 @@ public class CookLessonTest {
     @Test
     @DisplayName("test cooklesson countuse")
     public void testcountuse() {
-        Owner paulo = new Owner();
+        User paulo = new User();
         Cook cook2 = new Cook("alexandra", 'F', paulo);
         Lesson patate = new Lesson();
         patate.setparameerOfLesson("patate", 3, 3, 3, 3, 3, "patate", 3);

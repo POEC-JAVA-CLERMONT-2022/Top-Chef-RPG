@@ -7,13 +7,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class IngredientTest {
 
-    Owner userTest;
+    User userTest;
     Cook cook;
 
    @BeforeEach
     public void contentInitializing()
     {
-        userTest= new Owner("userForIngredientTest", "mail", "password");
+        userTest= new User("userForIngredientTest", "mail", "password");
         cook = new Cook("cookTestIngredient", 'F', userTest);
     }
 

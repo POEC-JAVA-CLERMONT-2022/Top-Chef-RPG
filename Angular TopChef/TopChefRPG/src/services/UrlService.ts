@@ -14,6 +14,9 @@ export class UrlService {
   static urlApi: string = "http://localhost:8080"
 
   static urlSignIn : string = "/auth/signin";
+  static urlLogIn : string = "/auth/login";
+
+  static urlGetUserByToken : string = "/users/getUser"
 
   static urlCreateCook : string='/users/createCook/1';
   static urlGetCookById: string = "/cook/";

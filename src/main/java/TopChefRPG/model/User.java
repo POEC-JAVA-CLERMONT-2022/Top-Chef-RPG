@@ -1,12 +1,6 @@
 package TopChefRPG.model;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -32,9 +26,9 @@ public class User {
 
     public User(){}
 
-    public User(String userName,  String mail, String password){
+    public User(String userName, String mailUser, String password){
         this.userName =userName;
-        this.mail = mail;
+        this.mail = mailUser;
         this.password = password;
     }
 
@@ -93,4 +87,6 @@ public class User {
     public void setCooks(List<Cook> cooks) {
         this.cooks = cooks;
     }
+
+
 }

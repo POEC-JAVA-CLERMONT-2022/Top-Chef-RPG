@@ -1,16 +1,14 @@
 package TopChefRPG.Service.DTO;
 
-public class LoginDTO {
+import java.util.ArrayList;
+import java.util.List;
 
+public class UserDTO {
     private String userName;
-
-    private String password;
-
     private String mail;
-
-    private String token;
-
-    public LoginDTO(){}
+    private int id;
+    //private List<String> CooksNameList = new ArrayList<>();
+    public UserDTO(){}
 
     public String getUserName() {
         return userName;
@@ -18,14 +16,6 @@ public class LoginDTO {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getMail() {
@@ -36,11 +26,13 @@ public class LoginDTO {
         this.mail = mail;
     }
 
-    public String getToken() {
-        return token;
+    public int getId() {
+        return id;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setId(int id) {
+        this.id = id;
     }
+
+
 }

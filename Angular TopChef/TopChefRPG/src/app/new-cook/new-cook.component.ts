@@ -4,6 +4,7 @@ import {RequestServiceService} from "../../services/request-service.service";
 import {UrlService} from "../../services/UrlService";
 import {Cook} from "../../models/Cook";
 import {Router} from "@angular/router";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-new-cook',
@@ -12,6 +13,9 @@ import {Router} from "@angular/router";
 })
 export class NewCookComponent implements OnInit {
   cookFormGroup! : FormGroup;
+  token : string ="";
+  user : User = new User();
+  cooks : Array<Cook> = new Array<Cook>();
 
   constructor(private request : RequestServiceService, private router :Router) { }
 
@@ -24,10 +28,18 @@ export class NewCookComponent implements OnInit {
       }
 
     )
+    this.setUserName();
+
   }
 
   get cookName() : AbstractControl{
     return <AbstractControl>this.cookFormGroup.get('cookName');
+  }
+
+  setUserName() : void{
+    this.request.getJsonRequest(UrlService.urlGetUserByToken).subscribe(result=>{
+      this.user = result;
+    })
   }
 
   createCook():void{
@@ -53,4 +65,10 @@ export class NewCookComponent implements OnInit {
 
   }
 
+  showToken() {
+    this.request.getTextRequest(UrlService.urlGetUserByToken).subscribe((result)=>{
+      console.log(result);
+      this.token =result;
+    })
+  }
 }

@@ -5,7 +5,6 @@ import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.IngredientListRepository;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.Lesson;
-import TopChefRPG.model.Owner;
 import TopChefRPG.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
