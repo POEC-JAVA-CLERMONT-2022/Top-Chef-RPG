@@ -1,7 +1,7 @@
 package TopChefRPG.Service.DTO;
 
 public class LessonDTO {
-    public  int id;
+    private int id;
     public String name;
     private int strengthIncrease;
     private int dexterityIncrease;
@@ -11,13 +11,16 @@ public class LessonDTO {
     private String ingredientName;
     private int ingredientQuantity;
 
-    public LessonDTO(){}
+    public LessonDTO() {
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {this.name = name;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getStrengthIncrease() {
         return strengthIncrease;
@@ -73,5 +76,13 @@ public class LessonDTO {
 
     public void setIngredientQuantity(int ingredientQuantity) {
         this.ingredientQuantity = ingredientQuantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

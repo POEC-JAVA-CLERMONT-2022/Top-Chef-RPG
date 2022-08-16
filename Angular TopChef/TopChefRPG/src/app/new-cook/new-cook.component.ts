@@ -6,6 +6,7 @@ import {Cook} from "../../models/Cook";
 import {Router} from "@angular/router";
 import {User} from "../../models/User";
 
+
 @Component({
   selector: 'app-new-cook',
   templateUrl: './new-cook.component.html',
@@ -28,7 +29,8 @@ export class NewCookComponent implements OnInit {
       }
 
     )
-    this.setUserName();
+    this.setUser();
+    this.setListCooks();
 
   }
 
@@ -36,10 +38,22 @@ export class NewCookComponent implements OnInit {
     return <AbstractControl>this.cookFormGroup.get('cookName');
   }
 
-  setUserName() : void{
+  setUser() : void{
     this.request.getJsonRequest(UrlService.urlGetUserByToken).subscribe(result=>{
       this.user = result;
     })
+  }
+
+  setListCooks() : void{
+    this.request.getJsonRequest(UrlService.urlGetListCooks).subscribe(result=>{
+      this.cooks = result;
+    })
+  }
+  selectCook(idCook : number){
+    this.router.navigate(['home/', idCook]);
+
+
+
   }
 
   createCook():void{
@@ -59,16 +73,11 @@ export class NewCookComponent implements OnInit {
 
     this.request.postRequest<number>(UrlService.urlCreateCook,JsonCOOk).pipe().subscribe((result=>{
       let idCook :number =result;
+      this.setListCooks();
       console.log(idCook);
-      this.router.navigate(['home/', idCook]);
+      //this.router.navigate(['home/', idCook]);
     }));
 
   }
 
-  showToken() {
-    this.request.getTextRequest(UrlService.urlGetUserByToken).subscribe((result)=>{
-      console.log(result);
-      this.token =result;
-    })
-  }
 }

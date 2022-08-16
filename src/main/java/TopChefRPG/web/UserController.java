@@ -7,6 +7,7 @@ import TopChefRPG.Service.CookService;
 import TopChefRPG.Service.DTO.CookDTO;
 import TopChefRPG.Service.DTO.UserDTO;
 import TopChefRPG.Service.UserService;
+import TopChefRPG.Service.mapper.CookMapperImpl;
 import TopChefRPG.Service.mapper.UserMapperImpl;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.User;
@@ -19,6 +20,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -35,14 +39,17 @@ public class UserController {
 
     CookService cookService;
 
+    CookMapperImpl cookMapper;
+
     UserMapperImpl userMapper;
     @Autowired
-    public UserController(UserService userService, CookService cookService, JwtUtils jwtUtils, UserMapperImpl userMapper)
+    public UserController(UserService userService, CookService cookService, JwtUtils jwtUtils, UserMapperImpl userMapper, CookMapperImpl cookMapper)
     {
         this.userService = userService;
         this.cookService = cookService;
         this.jwtUtils = jwtUtils;
         this.userMapper = userMapper;
+        this.cookMapper = cookMapper;
     }
 
     @GetMapping("/getUser")
@@ -76,13 +83,26 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    @PostMapping("/createCook/{idUser}")
+    @PostMapping("/createCook")
     @PreAuthorize("hasRole('USER')")
-    public int createCook(@RequestBody CookDTO cook, @PathVariable int idUser)
+    public int createCook(@RequestBody CookDTO cook)
     {
-        User user = userService.findById(idUser);
+        User user = userService.findContextUser();
         Cook cookreturned = cookService.createCook(cook.getName(), 'M', user);
         return cookreturned.getId();
+    }
+
+    @GetMapping("/getCookList")
+    @PreAuthorize("hasRole('USER')")
+    public List<CookDTO> getCooks (){
+        List<Cook> cooks = userService.findListOfCook();
+
+        List<CookDTO> cooksDTO =  new ArrayList<>();
+        for (Cook cook : cooks){
+            cooksDTO.add(cookMapper.cookToCookDto(cook));
+        }
+
+        return cooksDTO;
     }
 
 

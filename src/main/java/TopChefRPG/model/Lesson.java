@@ -61,4 +61,6 @@ public class Lesson {
     }
     public String getIngredientName() { return ingredientName; }
     public int getIngredientQuantity() { return ingredientQuantity; }
+
+    public int getId() {return id; }
 }
