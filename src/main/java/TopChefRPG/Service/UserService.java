@@ -4,6 +4,10 @@ import TopChefRPG.Exception.ErrorType;
 import TopChefRPG.Exception.TopChefException;
 import TopChefRPG.Repository.CookRepository;
 import TopChefRPG.Repository.UserRepository;
+import TopChefRPG.Service.DTO.CookDTO;
+import TopChefRPG.Service.DTO.UserDTO;
+import TopChefRPG.Service.mapper.CookMapper;
+import TopChefRPG.Service.mapper.CookMapperImpl;
 import TopChefRPG.model.Cook;
 import TopChefRPG.model.User;
 import TopChefRPG.model.UserDetailsImpl;
@@ -15,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -22,6 +27,8 @@ public class UserService {
     private UserRepository userRepository;
 
     private CookRepository cookRepository;
+
+    private CookMapperImpl  cookMapper;
 
 
     @Autowired
@@ -82,6 +89,11 @@ public class UserService {
     public User findContextUser() {
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userRepository.findUserByUserName(userDetails.getUsername());
+    }
+
+    public List<Cook> findListOfCook(){
+        User user = findContextUser();
+        return user.getCooks();
     }
 
     public User save(User user) {

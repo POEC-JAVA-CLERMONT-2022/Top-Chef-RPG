@@ -14,12 +14,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
 
-@CrossOrigin
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/cook")
 public class CookController {
@@ -47,6 +48,7 @@ public class CookController {
     }
 
     //http://localhost:8080/cook/1
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{id}")
     public ResponseEntity<CookDTO> getCookById(@PathVariable int id) {
         try {
@@ -95,12 +97,14 @@ public class CookController {
 
 
     //http://localhost:8080/cook/ingredients/1
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/ingredients/{idCook}")
     public ResponseEntity<List<IngredientDTO>> getIngredients(@PathVariable int idCook) {
         return new ResponseEntity<>( ingredientService.getIngredientOfCook(idCook), HttpStatus.OK);
     }
 
     //http://localhost:8080/cook/getRecipe/1
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/getRecipe/{idCook}")
     public List<RecipeDTO> getRecipe(@PathVariable int idCook) {
         Cook cook = cookService.getCookById(idCook);
@@ -108,6 +112,7 @@ public class CookController {
     }
 
     //http://localhost:8080/cook/doRecipe/1/1
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/doRecipe/{idCook}/{idRecipe}")
     public ResultRecipeDTO doRecipe(@PathVariable int idCook, @PathVariable int idRecipe) {
         Cook cook = cookService.getCookById(idCook);
@@ -116,6 +121,8 @@ public class CookController {
     }
 
     //http://localhost:8080/cook/lessons/tobuy/1
+    @PreAuthorize("hasRole('USER')")
+
     @GetMapping("/lessons/toBuy/{idCook}")
     public List<LessonDTO> getLessonToBuy(@PathVariable int idCook) {
         Cook cook = cookService.getCookById(idCook);
@@ -123,6 +130,8 @@ public class CookController {
     }
 
     //http://localhost:8080/cook/lessons/buy/1/1
+    @PreAuthorize("hasRole('USER')")
+
     @PostMapping("/lessons/buy/{idCook}/{idLesson}")
     public void buyLesson(@PathVariable int idCook, @PathVariable int idLesson) {
         Cook cook = cookService.getCookById(idCook);
@@ -131,6 +140,7 @@ public class CookController {
     }
 
     //http://localhost:8080/cook/lessons/ownedByCook/1
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/lessons/ownedByCook/{idCook}")
     public List<LessonDTO> getLessonsOwned(@PathVariable int idCook) {
         Cook cook = cookService.getCookById(idCook);
@@ -138,6 +148,7 @@ public class CookController {
     }
 
     //http://localhost:8080/cook/lessons/doLesson/1/1
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/lessons/doLesson/{idCook}/{idLesson}")
     public ResultLessonDTO doLesson(@PathVariable int idCook, @PathVariable int idLesson) {
         Cook cook = cookService.getCookById(idCook);

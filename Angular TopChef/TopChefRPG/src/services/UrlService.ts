@@ -18,7 +18,8 @@ export class UrlService {
 
   static urlGetUserByToken : string = "/users/getUser"
 
-  static urlCreateCook : string='/users/createCook/1';
+  static urlCreateCook : string='/users/createCook';
+  static urlGetListCooks : string='/users/getCookList'
   static urlGetCookById: string = "/cook/";
   static urlGetIngredient : string = "/cook/ingredients/";
 

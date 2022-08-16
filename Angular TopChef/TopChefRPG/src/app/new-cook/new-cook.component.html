@@ -1,5 +1,8 @@
 <h3>Content de te revoir {{user.userName}}</h3>
 
+
+
+
 <form [formGroup]="cookFormGroup">
   <input formControlName="cookName"
          type="text"
@@ -7,5 +10,7 @@
          >
   <button [disabled]="cookName.invalid" (click)="createCook()">create cook</button>
 </form>
-
-<div (click)="showToken()">show token : </div><div>{{token}}</div>
+<h4>Select a cook to start cooking</h4>
+<div *ngFor="let cook of cooks" >
+  <div (click)="selectCook(cook.id)">{{cook.name}}</div>
+</div>
